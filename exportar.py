@@ -5,12 +5,10 @@ import requests
 # 1. AQUÍ AGREGA TU LISTA DE SENSORES DE FORMA ORDENADA
 # Puedes añadir todos los que quieras siguiendo este formato: "nombre_en_web": "sensor.de_home_assistant"
 SENSORES_A_RECOPILAR = {
-    "potencia_solar": "sensor.potencia_placas",
+# 1. TUS SENSORES REALES DE HOME ASSISTANT
+    "potencia_solar": "sensor.irradiancia_solar_potencia_panel_testigo",
     "voltaje_bateria": "sensor.voltaje_bateria",
-    "potencia_casa": "sensor.potencia_salida_casa",
-    # Cuando agregues más sensores en el futuro, solo pon una coma arriba y añádelos aquí:
-    # "nivel_agua": "sensor.nivel_del_deposito",
-    # "temperatura_salon": "sensor.temperatura_salon"
+    "potencia_casa": "sensor.potencia_salida_casa"
 }
 
 def obtener_datos_ha():
