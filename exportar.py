@@ -6,7 +6,7 @@ import requests
 # Puedes añadir todos los que quieras siguiendo este formato: "nombre_en_web": "sensor.de_home_assistant"
 SENSORES_A_RECOPILAR = {
 # 1. TUS SENSORES REALES DE HOME ASSISTANT
-    "potencia_solar": "sensor.irradiancia_solar_potencia_panel_testigo",
+    "potencia_solar": "sensor.irradiancia_solar_potencia_solar_real_estimada",
     "voltaje_bateria": "sensor.voltaje_bateria",
     "potencia_casa": "sensor.potencia_salida_casa"
 }
