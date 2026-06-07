@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <h1>Monitoreo de Mi Casita</h1>
+    <h1>Monitoreo 2.0 de Mi Casita</h1>
     
     <div class="dashboard">
         <div class="card">
@@ -33,37 +33,45 @@
     <div class="time">Última actualización: <span id="hora">--:--:--</span></div>
 
     <script>
-        // Función mágica para leer los datos cada 15 segundos sin recargar la página entera
+        // Función corregida para leer las variables del JSON actual
         async function actualizarDatos() {
             try {
-                // Buscamos el archivo json en la misma carpeta de la web
+                // Buscamos el archivo json evitando que el navegador guarde copia vieja
                 const respuesta = await fetch('datos.json?t=' + new Date().getTime());
                 const datos = await respuesta.json();
                 
-                // Ponemos los valores en la pantalla
+                // Mostrar la potencia de las placas
                 document.getElementById('potencia').innerText = datos.potencia_solar + " W";
-                document.getElementById('hora').innerText = datos.actualizado;
                 
-                // Lógica de color caprichosa para la batería
+                // Mostrar la hora de la última actualización
+                document.getElementById('hora').innerText = datos.actualizado;                
+                // Convertir el voltaje a número decimal para evaluar su color
                 const v = parseFloat(datos.voltaje_bateria);
                 const elemVoltaje = document.getElementById('voltaje');
-                elemVoltaje.innerText = v + " V";
                 
-                if (v < 12.0) {
-                    elemVoltaje.style.color = "#e74c3c"; // Rojo (Batería baja)
+                // Si el voltaje es un número válido, mostrarlo y cambiar su color
+                if (!isNaN(v)) {
+                    elemVoltaje.innerText = v + " V";
+                    if (v < 12.0) {
+                        elemVoltaje.style.color = "#e74c3c"; // Rojo si la batería está baja
+                    } else {
+                        elemVoltaje.style.color = "#2ecc71"; // Verde si la batería está sana
+                    }
                 } else {
-                    elemVoltaje.style.color = "#2ecc71"; // Verde (Batería sana)
+                    elemVoltaje.innerText = datos.voltaje_bateria + " V";
+                    elemVoltaje.style.color = "#fff"; // Blanco si da un texto como "unknown"
                 }
                 
             } catch (error) {
-                console.log("Esperando nuevos datos...", error);
+                console.log("Esperando la llegada de nuevos datos...", error);
             }
         }
 
-        // Ejecutar al cargar la web y repetir estrictamente cada 15 segundos
+        // Ejecutar inmediatamente al abrir y repetir estrictamente cada 15 segundos
         actualizarDatos();
         setInterval(actualizarDatos, 15000);
     </script>
+
 </body>
 </html>
 
