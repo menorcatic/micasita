@@ -1,2 +1,69 @@
-<h1>Hola Mundo! Mi web micasita funciona</h1>
-<h2>ESTA ES MI CASITA</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Casita - Estado Solar</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 20px; }
+        .dashboard { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 10px; width: 220px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        .value { font-size: 2rem; font-weight: bold; margin: 10px 0; }
+        .time { font-size: 0.8rem; color: #888; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Monitoreo de Mi Casita</h1>
+    
+    <div class="dashboard">
+        <div class="card">
+            <h3>Potencia Solar</h3>
+            <!-- Color naranja para la energía solar -->
+            <div id="potencia" class="value" style="color: #f39c12;">-- W</div>
+        </div>
+        
+        <div class="card">
+            <h3>Voltaje Batería</h3>
+            <!-- Este valor cambiará de color según el voltaje -->
+            <div id="voltaje" class="value">-- V</div>
+        </div>
+    </div>
+
+    <div class="time">Última actualización: <span id="hora">--:--:--</span></div>
+
+    <script>
+        // Función mágica para leer los datos cada 15 segundos sin recargar la página entera
+        async function actualizarDatos() {
+            try {
+                // Buscamos el archivo json en la misma carpeta de la web
+                const respuesta = await fetch('datos.json?t=' + new Date().getTime());
+                const datos = await respuesta.json();
+                
+                // Ponemos los valores en la pantalla
+                document.getElementById('potencia').innerText = datos.potencia_solar + " W";
+                document.getElementById('hora').innerText = datos.actualizado;
+                
+                // Lógica de color caprichosa para la batería
+                const v = parseFloat(datos.voltaje_bateria);
+                const elemVoltaje = document.getElementById('voltaje');
+                elemVoltaje.innerText = v + " V";
+                
+                if (v < 12.0) {
+                    elemVoltaje.style.color = "#e74c3c"; // Rojo (Batería baja)
+                } else {
+                    elemVoltaje.style.color = "#2ecc71"; // Verde (Batería sana)
+                }
+                
+            } catch (error) {
+                console.log("Esperando nuevos datos...", error);
+            }
+        }
+
+        // Ejecutar al cargar la web y repetir estrictamente cada 15 segundos
+        actualizarDatos();
+        setInterval(actualizarDatos, 15000);
+    </script>
+</body>
+</html>
+
