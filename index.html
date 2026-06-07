@@ -34,42 +34,25 @@
 
     <script>
         // Función corregida para leer las variables del JSON actual
-        async function actualizarDatos() {
-            try {
-                // Buscamos el archivo json evitando que el navegador guarde copia vieja
-                const respuesta = await fetch('datos.json?t=' + new Date().getTime());
-                const datos = await respuesta.json();
-                
-                // Mostrar la potencia de las placas
-                document.getElementById('potencia').innerText = datos.potencia_solar + " W";
-                
-                // Mostrar la hora de la última actualización
-                document.getElementById('hora').innerText = datos.actualizado;                
-                // Convertir el voltaje a número decimal para evaluar su color
-                const v = parseFloat(datos.voltaje_bateria);
-                const elemVoltaje = document.getElementById('voltaje');
-                
-                // Si el voltaje es un número válido, mostrarlo y cambiar su color
-                if (!isNaN(v)) {
-                    elemVoltaje.innerText = v + " V";
-                    if (v < 12.0) {
-                        elemVoltaje.style.color = "#e74c3c"; // Rojo si la batería está baja
-                    } else {
-                        elemVoltaje.style.color = "#2ecc71"; // Verde si la batería está sana
-                    }
-                } else {
-                    elemVoltaje.innerText = datos.voltaje_bateria + " V";
-                    elemVoltaje.style.color = "#fff"; // Blanco si da un texto como "unknown"
-                }
-                
-            } catch (error) {
-                console.log("Esperando la llegada de nuevos datos...", error);
-            }
-        }
+async function actualizarDatos() {
+    try {
+        // Esta línea destruye la caché y descarga los datos reales de GitHub
+        const respuesta = await fetch('datos.json', { cache: "no-store" });
+        const datos = await respuesta.json();
+        
+        // Pinta los vatios y voltios en las tarjetas oscuras
+        document.getElementById('potencia').innerText = datos.potencia_solar + " W";
+        document.getElementById('voltaje').innerText = datos.voltaje_bateria + " V";
+        document.getElementById('hora').innerText = datos.actualizado;
+        
+    } catch (error) {
+        console.log("Esperando datos...", error);
+    }
+}
 
         // Ejecutar inmediatamente al abrir y repetir estrictamente cada 15 segundos
         actualizarDatos();
-        setInterval(actualizarDatos, 15000);
+        setInterval(actualizarDatos, 60000);
     </script>
 
 </body>
