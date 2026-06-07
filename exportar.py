@@ -14,30 +14,33 @@ SENSORES_A_RECOPILAR = {
 def obtener_datos_ha():
     datos_finales = {}
     
-    # Añadimos la marca de tiempo con la hora real de la consulta
+    # Capturamos la hora real del reloj del mini PC
     ahora = datetime.datetime.now()
     datos_finales["actualizado"] = ahora.strftime("%H:%M:%S")
     
-    # Consultamos el estado de cada sensor al servidor local de Home Assistant
-    # Usamos la API interna que ya provee la terminal de HA OS
+    # PEGA AQUÍ TU NUEVO TOKEN (Asegúrate de que NO tenga espacios al final antes de la comilla)
+    MI_NUEVO_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkNzIwYjBkZGYzZTM0NmQwYTIwMThmODYxZmZlODM5YiIsImlhdCI6MTc4MDg0NzM2NCwiZXhwIjoyMDk2MjA3MzY0fQ.C9Ku8c9_08VOijG82sebGjnxDkJKCm8wEk9sSFcmdJA"
+
+    headers = {
+        "Authorization": f"Bearer {MI_NUEVO_TOKEN}", 
+        "Content-Type": "application/json"
+    }
+    
     for clave_web, entidad_ha in SENSORES_A_RECOPILAR.items():
         try:
+            # Usamos la dirección local directa de tu Home Assistant
             url = f"http://localhost:8123/api/states/{entidad_ha}"
-            headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkNzIwYjBkZGYzZTM0NmQwYTIwMThmODYxZmZlODM5YiIsImlhdCI6MTc4MDg0NzM2NCwiZXhwIjoyMDk2MjA3MzY0fQ.C9Ku8c9_08VOijG82sebGjnxDkJKCm8wEk9sSFcmdJA ", "Content-Type": "application/json"}
-            # Nota: HA OS inyecta el Token de forma automática en el entorno de la terminal
-            import os
-            if "SUPERVISOR_TOKEN" in os.environ:
-                headers["Authorization"] = f"Bearer {os.environ['SUPERVISOR_TOKEN']}"
-                
             respuesta = requests.get(url, headers=headers, timeout=5)
+            
             if respuesta.status_code == 200:
                 datos_finales[clave_web] = respuesta.json().get("state", "unknown")
             else:
-                datos_finales[clave_web] = "error_api"
+                datos_finales[clave_web] = f"error_{respuesta.status_code}"
         except Exception:
             datos_finales[clave_web] = "error_conexion"
             
     return datos_finales
+
 
 def guardar_y_subir():
     # Creamos el JSON estructurado
