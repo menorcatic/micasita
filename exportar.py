@@ -22,8 +22,8 @@ def obtener_datos_ha():
     # Usamos la API interna que ya provee la terminal de HA OS
     for clave_web, entidad_ha in SENSORES_A_RECOPILAR.items():
         try:
-            url = f"http://supervisor/core/api/states/{entidad_ha}"
-            headers = {"Authorization": "Bearer ", "Content-Type": "application/json"}
+            url = f"http://localhost:8123/api/states/{entidad_ha}"
+            headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkNzIwYjBkZGYzZTM0NmQwYTIwMThmODYxZmZlODM5YiIsImlhdCI6MTc4MDg0NzM2NCwiZXhwIjoyMDk2MjA3MzY0fQ.C9Ku8c9_08VOijG82sebGjnxDkJKCm8wEk9sSFcmdJA ", "Content-Type": "application/json"}
             # Nota: HA OS inyecta el Token de forma automática en el entorno de la terminal
             import os
             if "SUPERVISOR_TOKEN" in os.environ:
