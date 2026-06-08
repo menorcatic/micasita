@@ -107,6 +107,8 @@ function renderizarColumnaDerecha() {
         if (window.datosSensores && window.datosSensores[sensor.grupo] && window.datosSensores[sensor.grupo][sensor.id] !== undefined) {
             valorActual = window.datosSensores[sensor.grupo][sensor.id];
         }
+        if (valorActual === 'unknown' || valorActual === 'unavailable') {
+        valorActual = '--';
 
         const colorFondo = obtenerColorRelleno(sensor.id, valorActual);
 
