@@ -68,14 +68,14 @@
 
         function obtenerColorRelleno(idSensor, valor) {
             const num = parseFloat(valor);
-            if (isNaN(num)) return 'transparent';return 'transparent';
+            if (isNaN(num)) return 'transparent';
             
             if (idSensor === 'PotPlacas') {
                 if (num === 0) return 'transparent';      // De noche, solo reborde
                 if (num < 1000) return '#27ae60';       // Producción baja, fondo verde
                 return '#f1c40f';                        // Producción alta, fondo amarillo
             }
-            
+            return 'transparent';
         }
 
 function renderizarColumnaDerecha() {
