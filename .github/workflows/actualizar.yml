@@ -1,0 +1,25 @@
+name: Actualizar JSON de Sensores
+on:
+  repository_dispatch:
+    types: [actualizar_sensores]
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Crear o sobrescribir sensores.json
+        run: |
+          echo '${{ toJson(github.event.client_payload) }}' > sensores.json
+
+      - name: Hacer Commit y Push (Sobrescribir archivo)
+        run: |
+          git config --global user.name "HA Bot"
+          git config --global user.email "ha-bot@://github.com"
+          git add sensores.json
+          git commit -m "Actualización de sensores en tiempo real" --allow-empty
+          git push origin main
