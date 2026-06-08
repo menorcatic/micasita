@@ -3,194 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Casita - Monitoreo Avanzado</title>
+    <title>Mi Casita - Monitoreo Compacto</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1a1a1a; /* Fondo oscuro para resaltar */
+            background-color: #1a1a1a;
             color: #ffffff;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
         }
 
-        /* Contenedor principal de la web */
         .contenido-principal {
             flex: 1;
-            padding-right: 20px;
+            padding-right: 10px;
         }
 
-        /* Columna pegada a la derecha */
+        /* Columna derecha reducida a la mitad de anchura (de 220px a 110px) */
         .columna-derecha {
-            width: 220px;
+            width: 110px; 
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Espacio entre rectángulos */
+            gap: 5px; /* Espacio entre cajitas reducido a la mitad */
         }
 
-        /* Formato base de las cajitas de los sensores (Borde blanco y esquinas curvas) */
+        /* Cajitas reducidas a la mitad de altura y grosor */
         .caja-sensor {
-            border: 2px solid #ffffff;
-            border-radius: 12px; /* Esquinas curvas */
-            padding: 10px;
+            border: 1px solid #ffffff; /* Borde más fino */
+            border-radius: 6px; /* Curvatura más sutil */
+            padding: 4px; /* Menos espacio interno */
             text-align: center;
-            font-size: 16px;
+            font-size: 11px; /* Letra más pequeña */
             font-weight: bold;
-            color: #ffffff; /* Texto siempre blanco */
-            background-color: transparent; /* Solo reborde por defecto */
-            transition: background-color 0.5s ease;
+            color: #ffffff;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
         }
 
-        /* Título pequeño dentro de la caja */
+        /* Título mini dentro de la caja */
         .caja-sensor span {
             display: block;
-            font-size: 11px;
-            color: #cccccc;
-            margin-bottom: 4px;
+            font-size: 8px; /* Texto ultra compacto */
+            color: #aaaaaa;
+            margin-bottom: 2px;
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <!-- Zona izquierda para el diseño, mapas o iconos futuros -->
     <div class="contenido-principal">
         <h1>Monitoreo General de Mi Casita</h1>
-        <p>Los datos globales están guardados en memoria y listos para interactuar con futuros iconos dinámicos.</p>
-        <p>Última lectura: <span id="hora-lectura">--:--:--</span></p>
+        <p>Lectura: <span id="hora-lectura">--:--:--</span></p>
     </div>
 
-    <!-- Columna de sensores en el extremo derecho (Contiene las 25 cajas potenciales) -->
+    <!-- Columna ultra compacta pegada a la derecha -->
     <div class="columna-derecha" id="panel-sensores">
-        <!-- Las cajas se generan automáticamente con JavaScript para mantener el código limpio -->
+        <!-- Las cajas se generan aquí automáticamente -->
     </div>
 
     <script>
-        // VARIABLE GLOBAL: Aquí se almacena todo el JSON para usarlo en cualquier parte de la web
         window.datosSensores = {};
 
-        // CONFIGURACIÓN DE GRADUACIONES Y COLORES (Las 8 lógicas de rangos)
         function obtenerColorRelleno(idSensor, valor) {
             const num = parseFloat(valor);
-            if (isNaN(num)) return 'transparent'; // Solo reborde si no hay datos
-
-            // --- 1º Graduación: Temperatura del Aire (Ejemplo: TM) ---
-            if (['TM'].includes(idSensor)) {
-                if (num < 15) return '#2980b9'; // Azul frío
-                if (num <= 25) return 'transparent'; // Rango confort (Solo reborde)
-                return '#e67e22'; // Naranja calor
-            }
-
-            // --- 2º Graduación: Temperatura Agua Calefacción (Ejemplo: TDepCa, TDepFr) ---
-            if (['TDepCa', 'TDepFr', 'TR'].includes(idSensor)) {
-                if (num < 35) return '#34495e';
-                if (num < 50) return '#d35400';
-                return '#c0392b'; // Rojo caliente
-            }
-
-            // --- 3º Graduación: Temperatura del SSR (Ejemplo: TSSR) ---
-            if (['TSSR'].includes(idSensor)) {
-                if (num > 60) return '#9b59b6'; // Alerta Púrpura por calor en SSR
-                return 'transparent';
-            }
-
-            // --- 4º Graduación: Temperatura Tubos de Vacío (Ejemplo: TS, TSR1, TSR2, TTub) ---
-            if (['TS', 'TSR1', 'TSR2', 'TTub'].includes(idSensor)) {
-                if (num > 80) return '#7f8c8d'; 
-                return 'transparent';
-            }
-
-            // --- 5º Graduación: Sensores de Nivel (NDepCa, NDepAl, nDepfr) ---
-            if (['NDepCa', 'NDepAl', 'nDepfr'].includes(idSensor)) {
-                if (num < 20) return '#7f8c8d'; // Vacío
-                return '#27ae60'; // Nivel correcto verde
-            }
-
-            // --- 6º Graduación: Sensores de Potencia (PotPlaca_Est, PotPlacas, PotCons, VBat) ---
-            if (['PotPlaca_Est', 'PotPlacas', 'PotCons', 'VBat'].includes(idSensor)) {
-                if (idSensor === 'PotPlacas' && num > 2000) return '#f1c40f'; // Destello solar amarillo
-                return 'transparent';
-            }
-
-            // --- 7º Graduación: Sensor de Flujo (Ret) ---
-            if (idSensor === 'Ret') {
-                if (num > 0) return '#16a085'; // Flujo activo turquesa
-                return 'transparent';
-            }
-
-            // --- 8º Graduación: Sensor de Densidad (Den) ---
-            if (idSensor === 'Den') {
-                return 'transparent'; 
-            }
-
-            return 'transparent'; // Por defecto, solo reborde
+            if (isNaN(num)) return 'transparent';
+            // (Aquí irán tus lógicas de colores en el futuro)
+            return 'transparent';
         }
 
-        // FUNCIÓN PARA GENERAR Y ACTUALIZAR LA COLUMNA DE LA DERECHA
         function renderizarColumnaDerecha() {
             const panel = document.getElementById('panel-sensores');
-            panel.innerHTML = ''; // Limpiamos pantalla
+            panel.innerHTML = '';
 
-            // Lista ordenada de los sensores que queremos mostrar en la columna (puedes añadir hasta 25)
+            // Lista con las claves exactas de tu JSON
             const listaOrdenada = [
-                { id: 'PotPlaca_Est', etiqueta: 'Pot. Placa Est.' },
-                { id: 'PotPlacas', etiqueta: 'Pot. Placas Real' },
-                { id: 'PotCons', etiqueta: 'Pot. Consumo' },
-                { id: 'VBat', etiqueta: 'Voltaje Bat.' },
-                { id: 'TSSR', etiqueta: 'Temp. SSR' },
-                { id: 'TM', etiqueta: 'Temp. Ambiente (TM)' },
-                { id: 'TS', etiqueta: 'Temp. TS' },
-                { id: 'TR', etiqueta: 'Temp. TR' },
-                { id: 'TSR1', etiqueta: 'Temp. TSR1' },
-                { id: 'TSR2', etiqueta: 'Temp. TSR2' },
-                { id: 'TDepCa', etiqueta: 'Temp. Dep. Caliente' },
-                { id: 'TDepFr', etiqueta: 'Temp. Dep. Frío' },
-                { id: 'TTub', etiqueta: 'Temp. Tubos' },
-                { id: 'TBat', etiqueta: 'Temp. Batería' },
-                { id: 'NDepCa', etiqueta: 'Nivel Dep. Caliente' },
-                { id: 'NDepAl', etiqueta: 'Nivel Dep. Alto' },
-                { id: 'nDepfr', etiqueta: 'Nivel Dep. Frío' },
-                { id: 'Ret', etiqueta: 'Flujo Retorno' },
+                { id: 'PotPlaca_Est', etiqueta: 'Placa Est.' },
+                { id: 'PotPlacas', etiqueta: 'Placas Real' },
+                { id: 'PotCons', etiqueta: 'Consumo' },
+                { id: 'VBat', etiqueta: 'V. Batería' },
+                { id: 'TSSR', etiqueta: 'T. SSR' },
+                { id: 'TM', etiqueta: 'T. Amb (TM)' },
+                { id: 'TS', etiqueta: 'T. TS' },
+                { id: 'TR', etiqueta: 'T. TR' },
+                { id: 'TSR1', etiqueta: 'T. TSR1' },
+                { id: 'TSR2', etiqueta: 'T. TSR2' },
+                { id: 'TDepCa', etiqueta: 'T. Dep. Ca.' },
+                { id: 'TDepFr', etiqueta: 'T. Dep. Fr.' },
+                { id: 'TTub', etiqueta: 'T. Tubos' },
+                { id: 'TBat', size: 'T. Bat.' },
+                { id: 'NDepCa', etiqueta: 'N. Dep. Ca.' },
+                { id: 'NDepAl', etiqueta: 'N. Dep. Al.' },
+                { id: 'nDepfr', etiqueta: 'N. Dep. Fr.' },
+                { id: 'Ret', etiqueta: 'Flujo Ret.' },
                 { id: 'Den', etiqueta: 'Densidad' }
             ];
 
             listaOrdenada.forEach(sensor => {
-                const valorActual = window.datosSensores[sensor.id] !== undefined ? window.datosSensores[sensor.id] : '--';
+                // Comprobamos si el dato existe en el objeto global
+                let valorActual = '--';
+                if (window.datosSensores && window.datosSensores[sensor.id] !== undefined) {
+                    valorActual = window.datosSensores[sensor.id];
+                }
+
                 const colorFondo = obtenerColorRelleno(sensor.id, valorActual);
 
-                // Creamos el rectángulo con las esquinas curvas
                 const caja = document.createElement('div');
                 caja.className = 'caja-sensor';
-                caja.style.backgroundColor = colorFondo; // El color determinado por los rangos
+                caja.style.backgroundColor = colorFondo;
                 caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
                 
                 panel.appendChild(caja);
             });
         }
 
-        // FUNCIÓN PRINCIPAL DE CARGA
         async function consultarServidor() {
             try {
                 const respuesta = await fetch('./sensores.json?v=' + new Date().getTime());
                 const datos = await respuesta.json();
 
-                // 1. Guardamos el JSON en nuestra variable global
+                // Guardamos los datos directamente
                 window.datosSensores = datos;
-
-                // 2. Pintamos la columna de la derecha
                 renderizarColumnaDerecha();
 
-                // 3. Actualizamos reloj
                 document.getElementById('hora-lectura').innerText = new Date().toLocaleTimeString();
             } catch (error) {
                 console.error("Error al sincronizar datos:", error);
+                // Si falla la lectura, pintamos la columna con '--' igualmente
+                renderizarColumnaDerecha();
             }
         }
 
-        // Ejecución constante
         consultarServidor();
-        setInterval(consultarServidor, 20000); // Sincroniza cada 20 segundos
+        setInterval(consultarServidor, 20000);
     </script>
 </body>
 </html>
