@@ -1,5 +1,31 @@
 {
-  "potencia_placas": 2035.5,
-  "temperatura_salon": 733,
-  "voltaje_bateria": 27
+  "densidad": {
+    "Den": "unknown"
+  },
+  "flujo": {
+    "Ret": "unknown"
+  },
+  "nivel": {
+    "NDepAl": "unknown",
+    "NDepCa": "unknown",
+    "nDepfr": "unknown"
+  },
+  "potencia": {
+    "PotCons": 758,
+    "PotPlaca_Est": "unknown",
+    "PotPlacas": 1232.48400878906,
+    "VBat": 27
+  },
+  "temperatura": {
+    "TBat": "unknown",
+    "TDepCa": "unknown",
+    "TDepFr": "unknown",
+    "TM": "unknown",
+    "TR": "unknown",
+    "TS": "unknown",
+    "TSR1": "unknown",
+    "TSR2": "unknown",
+    "TSSR": "unknown",
+    "TTub": "unknown"
+  }
 }
