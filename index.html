@@ -5,56 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Casita - Estado Solar</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 20px; }
-        .dashboard { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        .card { background: #1e1e1e; padding: 20px; border-radius: 10px; width: 220px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
-        .value { font-size: 2rem; font-weight: bold; margin: 10px 0; }
-        .time { font-size: 0.8rem; color: #888; margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; font-size: 24px; }
+        h3 { margin-bottom: 5px; color: #7f8c8d; font-size: 16px; }
+        .valor { font-size: 28px; font-weight: bold; margin-top: 0; color: #2980b9; }
+        .update { font-size: 12px; color: #95a5a6; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <h1>Monitoreo 2.0 de Mi Casita</h1>
-    
-    <div class="dashboard">
-        <div class="card">
-            <h3>Potencia Solar</h3>
-            <!-- Color naranja para la energía solar -->
-            <div id="potencia" class="value" style="color: #f39c12;">-- W</div>
-        </div>
-        
-        <div class="card">
-            <h3>Voltaje Batería</h3>
-            <!-- Este valor cambiará de color según el voltaje -->
-            <div id="voltaje" class="value">-- V</div>
-        </div>
+    <div class="container">
+        <h1>Monitoreo 2.0 de Mi Casita</h1>
+        <hr>
+
+        <h3>Potencia Solar</h3>
+        <p class="valor"><span id="potencia">--</span> W</p>
+
+        <h3>Voltaje Batería</h3>
+        <p class="valor"><span id="voltaje">--</span> V</p>
+
+        <h3>Potencia Salida Casa</h3>
+        <p class="valor"><span id="temperatura">--</span> W</p>
+
+        <p class="update">Última actualización: <span id="actualizacion">--:--:--</span></p>
     </div>
 
-    <div class="time">Última actualización: <span id="hora">--:--:--</span></div>
-
     <script>
-        // Función corregida para leer las variables del JSON actual
-async function actualizarDatos() {
-    try {
-        // Esta línea destruye la caché y descarga los datos reales de GitHub
-        const respuesta = await fetch('datos.json', { cache: "no-store" });
-        const datos = await respuesta.json();
-        
-        // Pinta los vatios y voltios en las tarjetas oscuras
-        document.getElementById('potencia').innerText = datos.potencia_solar + " W";
-        document.getElementById('voltaje').innerText = datos.voltaje_bateria + " V";
-        document.getElementById('hora').innerText = datos.actualizado;
-        
-    } catch (error) {
-        console.log("Esperando datos...", error);
-    }
-}
+        async function cargarSensores() {
+            try {
+                // Añadimos un número aleatorio al final para evitar que el navegador guarde en caché el JSON viejo
+                const respuesta = await fetch('./sensores.json?nocache=' + new Date().getTime());
+                const datos = await respuesta.json();
 
-        // Ejecutar inmediatamente al abrir y repetir estrictamente cada 15 segundos
-        actualizarDatos();
-        setInterval(actualizarDatos, 60000);
+                // Muestra los datos usando las claves exactas que definiste en tu REST payload
+                document.getElementById('potencia').innerText = datos.potencia_placas || '--';
+                document.getElementById('voltaje').innerText = datos.voltaje_bateria || '--';
+                document.getElementById('temperatura').innerText = datos.temperatura_salon || '--';
+                
+                // Muestra la hora en la que tu página web leyó el archivo con éxito
+                const ahora = new Date();
+                document.getElementById('actualizacion').innerText = ahora.toLocaleTimeString();
+            } catch (error) {
+                console.error("Error al leer el archivo sensores.json:", error);
+            }
+        }
+
+        // Carga los datos de inmediato al abrir la web
+        cargarSensores();
+        
+        // Comprueba si hay datos nuevos de forma automática cada 60 segundos
+        setInterval(cargarSensores, 60000);
     </script>
 
 </body>
 </html>
-
