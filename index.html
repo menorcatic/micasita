@@ -48,9 +48,9 @@
         async function cargarSensores() {
             try {
                 // Añadimos un número aleatorio al final para evitar que el navegador guarde en caché el JSON viejo
-                const respuesta = await fetch('./sensores.json?nocache=' + new Date().getTime());
+                const respuesta = await fetch('./sensores.json?v=' + new Date().getTime());
                 const datos = await respuesta.json();
-
+                
                 // Muestra los datos usando las claves exactas que definiste en tu REST payload
                 document.getElementById('potencia').innerText = datos.potencia_placas || '--';
                 document.getElementById('voltaje').innerText = datos.voltaje_bateria || '--';
@@ -68,7 +68,7 @@
         cargarSensores();
         
         // Comprueba si hay datos nuevos de forma automática cada 60 segundos
-        setInterval(cargarSensores, 60000);
+        setInterval(cargarSensores, 15000);
     </script>
 
 </body>
