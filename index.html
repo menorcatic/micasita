@@ -73,50 +73,51 @@
             return 'transparent';
         }
 
-        function renderizarColumnaDerecha() {
-            const panel = document.getElementById('panel-sensores');
-            panel.innerHTML = '';
+function renderizarColumnaDerecha() {
+    const panel = document.getElementById('panel-sensores');
+    panel.innerHTML = '';
 
-            // Lista con las claves exactas de tu JSON
-            const listaOrdenada = [
-                { id: 'PotPlaca_Est', etiqueta: 'Placa Est.' },
-                { id: 'PotPlacas', etiqueta: 'Placas Real' },
-                { id: 'PotCons', etiqueta: 'Consumo' },
-                { id: 'VBat', etiqueta: 'V. Batería' },
-                { id: 'TSSR', etiqueta: 'T. SSR' },
-                { id: 'TM', etiqueta: 'T. Amb (TM)' },
-                { id: 'TS', etiqueta: 'T. TS' },
-                { id: 'TR', etiqueta: 'T. TR' },
-                { id: 'TSR1', etiqueta: 'T. TSR1' },
-                { id: 'TSR2', etiqueta: 'T. TSR2' },
-                { id: 'TDepCa', etiqueta: 'T. Dep. Ca.' },
-                { id: 'TDepFr', etiqueta: 'T. Dep. Fr.' },
-                { id: 'TTub', etiqueta: 'T. Tubos' },
-                { id: 'TBat', size: 'T. Bat.' },
-                { id: 'NDepCa', etiqueta: 'N. Dep. Ca.' },
-                { id: 'NDepAl', etiqueta: 'N. Dep. Al.' },
-                { id: 'nDepfr', etiqueta: 'N. Dep. Fr.' },
-                { id: 'Ret', etiqueta: 'Flujo Ret.' },
-                { id: 'Den', etiqueta: 'Densidad' }
-            ];
+    // Añadimos el "grupo" exacto donde está guardado cada sensor en el JSON
+    const listaOrdenada = [
+        { id: 'PotPlaca_Est', grupo: 'potencia', etiqueta: 'Placa Est.' },
+        { id: 'PotPlacas', grupo: 'potencia', etiqueta: 'Placas Real' },
+        { id: 'PotCons', grupo: 'potencia', etiqueta: 'Consumo' },
+        { id: 'VBat', grupo: 'potencia', etiqueta: 'V. Batería' },
+        { id: 'TSSR', grupo: 'temperatura', etiqueta: 'T. SSR' },
+        { id: 'TM', grupo: 'temperatura', etiqueta: 'T. Amb (TM)' },
+        { id: 'TS', grupo: 'temperatura', etiqueta: 'T. TS' },
+        { id: 'TR', grupo: 'temperatura', etiqueta: 'T. TR' },
+        { id: 'TSR1', grupo: 'temperatura', etiqueta: 'T. TSR1' },
+        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T. TSR2' },
+        { id: 'TDepCa', grupo: 'temperatura', etiqueta: 'T. Dep. Ca.' },
+        { id: 'TDepFr', grupo: 'temperatura', etiqueta: 'T. Dep. Fr.' },
+        { id: 'TTub', grupo: 'temperatura', etiqueta: 'T. Tubos' },
+        { id: 'TBat', grupo: 'temperatura', etiqueta: 'T. Bat.' },
+        { id: 'NDepCa', grupo: 'nivel', etiqueta: 'N. Dep. Ca.' },
+        { id: 'NDepAl', grupo: 'nivel', etiqueta: 'N. Dep. Al.' },
+        { id: 'nDepfr', grupo: 'nivel', etiqueta: 'N. Dep. Fr.' },
+        { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret.' },
+        { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' }
+    ];
 
-            listaOrdenada.forEach(sensor => {
-                // Comprobamos si el dato existe en el objeto global
-                let valorActual = '--';
-                if (window.datosSensores && window.datosSensores[sensor.id] !== undefined) {
-                    valorActual = window.datosSensores[sensor.id];
-                }
-
-                const colorFondo = obtenerColorRelleno(sensor.id, valorActual);
-
-                const caja = document.createElement('div');
-                caja.className = 'caja-sensor';
-                caja.style.backgroundColor = colorFondo;
-                caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
-                
-                panel.appendChild(caja);
-            });
+    listaOrdenada.forEach(sensor => {
+        let valorActual = '--';
+        
+        // Accedemos primero al grupo y luego al sensor (Ej: datos.potencia.PotPlacas)
+        if (window.datosSensores && window.datosSensores[sensor.grupo] && window.datosSensores[sensor.grupo][sensor.id] !== undefined) {
+            valorActual = window.datosSensores[sensor.grupo][sensor.id];
         }
+
+        const colorFondo = obtenerColorRelleno(sensor.id, valorActual);
+
+        const caja = document.createElement('div');
+        caja.className = 'caja-sensor';
+        caja.style.backgroundColor = colorFondo;
+        caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
+        
+        panel.appendChild(caja);
+    });
+}
 
         async function consultarServidor() {
             try {
