@@ -72,22 +72,26 @@
             
             if (idSensor === 'PotPlacas') {
                 if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 1000) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo verde
-                return 'rgba(0, 255, 0, 0.5)';                        // Producción alta, fondo amarillo
+                if (num < 400) return 'rgba(255, 0, 0, 0.0)';       // Producción baja, fondo rojo
+                if (num < 1000) return 'rgba(255, 165, 0, 0.0)';       // Producción media, fondo naranja
+                if (num < 2000) return 'rgba(255, 255, 0, 0.0)';       // Producción buena, fondo amarillo
+                return 'rgba(0, 255, 0, 0.0)';                        // Producción alta, fondo verde
             }
 
             if (idSensor === 'PotCons') {
                 if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 600) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo amarillo
-                return 'rgba(255, 165, 0, 0.5)';                        // Producción alta, fondo naranja
+                if (num < 300) return 'rgba(0, 255, 0, 0.0)';       // Producción baja, fondo verde
+                if (num < 500) return 'rgba(255, 255, 0, 0.0)';       // Producción media, fondo amarillo
+                if (num < 800) return 'rgba(255, 165, 0, 0.0)';       // Producción alta, fondo naranja
+                return 'rgba(255, 0, 0, 0.0)';                        // Producción muy alta, fondo rojo
             }
             
             if (idSensor === 'VBat') {
                 if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 24) return 'rgba(255, 0, 0, 0.5)';       // Producción baja, fondo rojo
-                if (num < 25) return 'rgba(255, 165, 0, 0.5)';       // Producción baja, fondo naranja
-                if (num < 26) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo amarillo
-                return 'rgba(0, 255, 0, 0.5)';                        // Producción alta, fondo verde
+                if (num < 24) return 'rgba(255, 0, 0, 0.0)';       // Producción baja, fondo rojo
+                if (num < 25) return 'rgba(255, 165, 0, 0.0)';       // Producción media, fondo naranja
+                if (num < 26) return 'rgba(255, 255, 0, 0.0)';       // Producción buena, fondo amarillo
+                return 'rgba(0, 255, 0, 0.0)';                        // Producción alta, fondo verde
             }
             
             return 'transparent';
