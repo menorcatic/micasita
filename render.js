@@ -89,3 +89,43 @@ function renderizarDepositos() {
         contenedorMaestro.appendChild(caja);
     });
 }
+
+function renderizarSolar() {
+    const contenedorMaestro = document.getElementById('panel-solar');
+    if (!contenedorMaestro) return;
+
+    contenedorMaestro.innerHTML = '';
+
+    // Extraemos el valor actual del sensor TTub (Temperatura de Tubos)
+    let valorTemp = '--';
+    if (window.datosSensores && window.datosSensores['temperatura'] && window.datosSensores['temperatura']['TTub'] !== undefined) {
+        valorTemp = window.datosSensores['temperatura']['TTub'];
+    }
+    if (valorTemp === 'unknown' || valorTemp === 'unavailable') {
+        valorTemp = '--';
+    }
+
+    // Le pedimos a colores.js un color térmico basado en la temperatura
+    // Como la función colores espera un ID para discriminar, podemos pasarle 'PotPlacas' de forma provisional
+    // para que use su lógica de colores (Rojo frío/bajo, Verde medio, Amarillo alto) o la que prefieras
+    const estilosColector = obtenerColorRelleno('PotPlacas', valorTemp); 
+
+    // Fabricamos el contenedor con el título de solapa TUBOS y el esquema visual
+    const caja = document.createElement('div');
+    caja.className = 'caja-pestana';
+    caja.id = 'contenedor-solar';
+
+    caja.innerHTML = `
+        <span class="titulo-solapa">PANEL S.</span>
+        <div class="esquema-solar">
+            <!-- El colector rectangular adopta el color térmico del sensor -->
+            <div class="colector-bloque" id="colector-solar" style="background-color: ${estilosColector.fondo}; color: ${estilosColector.texto};">
+                ${valorTemp} °C
+            </div>
+            <!-- El dibujo de los tubos alineados debajo -->
+            <div class="tubos-rejilla"></div>
+        </div>
+    `;
+
+    contenedorMaestro.appendChild(caja);
+}
