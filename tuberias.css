@@ -1,67 +1,113 @@
 /* ==========================================
-   CONDUCTO DINÁMICO EN T (SOLAR -> AC)
+   CIRCUITO DE FLUIDOS TÉRMICOS COBRIZO
    ========================================== */
-#conducto-solar-ac {
+#panel-calefaccion {
     position: fixed;
-    /* Centrado exactamente bajo el bloque solar/tubos */
-    left: 85px; 
-    top: 155px; /* Nace justo al terminar el contenedor solar */
-    
-    /* El tubo baja hasta tocar el techo del depósito AC (415px de recorrido total) */
-    width: 6px; 
-    height: 415px; 
-    
+    left: 0; top: 0; right: 0; bottom: 0;
     pointer-events: none;
-    z-index: 1; /* Pasa por debajo de los marcos para un acabado limpio */
+    z-index: 1; /* Pasa por debajo de los marcos */
+}
 
-    /* DIBUJO DE LA RECTAL Y LA DERIVACIÓN EN T USANDO CAPAS DE COLOR */
-    background: 
-        /* La T: Línea horizontal de 6px de grosor a 220px del techo que va a la derecha */
-        linear-gradient(90deg, rgba(0, 210, 255, 0.6) 100%, transparent 0) 0 220px / 100% 6px,
-        /* El Tubo Principal: Línea vertical que baja iluminada */
-        linear-gradient(rgba(0, 210, 255, 0.6) 100%, transparent 0) 0 0 / 6px 100%;
+/* EL DIBUJO ESTÁTICO DE LAS TUBERÍAS (Acortado y en color cálido) */
+.camino-tuberias {
+    position: absolute;
+    left: 85px;
+    top: 155px;
+    width: 600px;
+    height: 415px;
+    
+    /* El fondo ahora usa un tono naranja/cobrizo industrial */
+    background-image: 
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Retorno horizontal */
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Caída vertical salón */
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* T horizontal superior */
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)); /* Caída vertical solar */
     background-repeat: no-repeat;
     
-    /* Efecto de brillo metálico en los bordes del tubo */
+    /* Dimensiones: El tubo vertical principal se acorta a 378px para no pisar el depósito */
+    background-size: 
+        410px 6px,   
+        195px 6px, /* Ajustado el retorno vertical del salón */
+        410px 6px,   
+        6px 378px;   /* CAMBIO: De 415px a 378px (Se detiene en la solapa AC) */
+        
+    /* Coordenadas de posición milimétricas */
+    background-position: 
+        0px 375px,   /* CAMBIO: Sube el retorno horizontal al nivel del techo de AC */
+        404px 186px, /* Ajustada la caída vertical tras el salón */
+        0px 186px,   /* Ajustada la altura de la T de calefacción */
+        0px 0px;     
+    
+    /* Brillo metálico cobrizo interno */
     box-shadow: 
-        inset 1px 0px 0px rgba(255, 255, 255, 0.2),
-        inset -1px 0px 0px rgba(255, 255, 255, 0.2);
+        inset 1px 0px 0px rgba(255, 255, 255, 0.15),
+        inset -1px 0px 0px rgba(255, 255, 255, 0.15);
 }
 
-/* ANIMACIÓN DEL FLUJO: Efecto de agua corriendo dentro del tubo */
-#conducto-solar-ac::after {
+/* LA ANIMACIÓN DE FLUJO SUAVIZADA Y DIFUMINADA */
+.camino-tuberias::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; left: 0; width: 100%; height: 100%;
     
-    /* Crea un patrón repetitivo de guiones celestes (el agua en movimiento) */
+    /* CAMBIO: Gradiente mucho más suave y menos contrastado para las burbujas */
     background: repeating-linear-gradient(
         0deg,
-        rgba(255, 255, 255, 0.7) 0px,
-        rgba(255, 255, 255, 0.7) 8px,
-        transparent 8px,
-        transparent 20px
+        rgba(255, 230, 200, 0.4) 0px,
+        rgba(255, 230, 200, 0.4) 12px,
+        transparent 12px,
+        transparent 30px
     );
-    background-size: 6px 28px;
+    background-size: 6px 42px;
     
-    /* Aplica la máscara en T idéntica al fondo para que el agua no se salga del tubo */
+    /* Recorte exacto para que el flujo siga el nuevo camino acortado */
     clip-path: polygon(
-        0 0, 6px 0, 
-        6px 220px, 100% 220px, 100% 226px, 6px 226px, 
-        6px 100%, 0 100%
+        0px 0px, 6px 0px, 
+        6px 186px, 410px 186px, 410px 192px, 
+        404px 192px, 404px 375px, 
+        0px 375px, 0px 381px, 
+        6px 381px, 6px 100%, 0px 100%
     );
     
-    /* Lanza la animación infinita hacia abajo */
-    animation: flujoAgua 1.2s linear infinite;
-    opacity: 0.8;
+    /* CAMBIO: Difumina los extremos de la animación para que no se corten en seco */
+    mask-image: radial-gradient(circle at 88px 160px, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    
+    animation: simularFlujo 1.4s linear infinite; /* Un pelín más lento para transmitir densidad térmica */
 }
 
-/* El truco mágico: Mueve el gradiente verticalmente para simular movimiento */
-@keyframes flujoAgua {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 28px; /* Empuja las "burbujas" hacia abajo */
-    }
+@keyframes simularFlujo {
+    from { background-position: 0 0; }
+    to { background-position: 0 42px; }
+}
+
+/* ==========================================
+   POSICIONAMIENTO ADAPTADO PARA LOS SUBSISTEMAS
+   ========================================== */
+.bloque-serie {
+    position: fixed;
+    top: 225px; /* CAMBIO: Se resitúan para encajar sobre la nueva altura de la línea (186px) */
+    width: 116px;
+    height: 110px;
+}
+
+#cal-tr   { left: 160px; } 
+#cal-tsr1 { left: 288px; } 
+#cal-tsr2 { left: 416px; } 
+
+/* Estilos interiores de los radiadores y suelo (Se quedan igual) */
+.lamas-radiador {
+    width: 96px; height: 40px;
+    margin: 5px auto;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.suelo-serpiente {
+    width: 96px; height: 40px;
+    margin: 5px auto;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 3px, transparent 3px, transparent 7px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
 }
