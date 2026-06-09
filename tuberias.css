@@ -1,110 +1,57 @@
 /* ==========================================
-   CIRCUITO DE FLUIDOS TÉRMICOS COBRIZO
+   CONDUCTO DINÁMICO RECTO (SOLAR -> AC)
    ========================================== */
-#panel-calefaccion {
+#conducto-solar-ac {
     position: fixed;
-    left: 0; top: 0; right: 0; bottom: 0;
+    /* Centrado exactamente bajo el bloque solar/tubos */
+    left: 85px; 
+    top: 155px; /* Nace justo al terminar el contenedor solar */
+    
+    /* El tubo baja de forma recta hasta el depósito AC */
+    width: 6px; 
+    height: 415px; 
+    
     pointer-events: none;
-    z-index: 1; /* Pasa por debajo de los marcos */
-}
+    z-index: 1; /* Pasa por debajo de los marcos para un acabado limpio */
 
-/* EL DIBUJO ESTÁTICO DE LAS TUBERÍAS */
-.camino-tuberias {
-    position: absolute;
-    left: 85px;
-    top: 155px;
-    width: 600px;
-    height: 415px;
-    
-    /* Fondo con tono naranja/cobrizo industrial */
-    background-image: 
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Retorno horizontal */
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Caída vertical */
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* T horizontal */
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)); /* Caída vertical solar */
+    /* DIBUJO DEL TUBO RECTO AZUL */
+    background: linear-gradient(rgba(0, 210, 255, 0.6) 100%, transparent 0);
     background-repeat: no-repeat;
+    background-size: 6px 100%;
     
-    /* Dimensiones fijas en píxeles */
-    background-size: 
-        410px 6px,   
-        195px 6px, 
-        410px 6px,   
-        6px 378px;   
-        
-    /* Coordenadas de posición milimétricas */
-    background-position: 
-        0px 375px,   
-        404px 186px, 
-        0px 186px,   
-        0px 0px;     
-    
+    /* Efecto de brillo metálico en los bordes del tubo */
     box-shadow: 
-        inset 1px 0px 0px rgba(255, 255, 255, 0.15),
-        inset -1px 0px 0px rgba(255, 255, 255, 0.15);
+        inset 1px 0px 0px rgba(255, 255, 255, 0.2),
+        inset -1px 0px 0px rgba(255, 255, 255, 0.2);
 }
 
-/* LA ANIMACIÓN DE FLUJO CORREGIDA (Sin mezcla de unidades) */
-.camino-tuberias::after {
+/* ANIMACIÓN DEL FLUJO ORIGINAL (GUIONES BLANCOS) */
+#conducto-solar-ac::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
     
+    /* Patrón repetitivo de guiones celestes/blancos originales */
     background: repeating-linear-gradient(
         0deg,
-        rgba(255, 230, 200, 0.4) 0px,
-        rgba(255, 230, 200, 0.4) 12px,
-        transparent 12px,
-        transparent 30px
+        rgba(255, 255, 255, 0.7) 0px,
+        rgba(255, 255, 255, 0.7) 8px,
+        transparent 8px,
+        transparent 20px
     );
-    background-size: 6px 42px;
+    background-size: 6px 28px;
     
-    /* CORRECCIÓN CRÍTICA: Todo en px absolutos basados en el alto de 415px del contenedor */
-    clip-path: polygon(
-        0px 0px, 6px 0px, 
-        6px 186px, 410px 186px, 410px 192px, 
-        404px 192px, 404px 375px, 
-        0px 375px, 0px 381px, 
-        6px 381px, 6px 415px, 0px 415px
-    );
-    
-    /* CORRECCIÓN CRÍTICA: Se añade el prefijo webkit para que no se oculte de forma invisible */
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
-    
-    animation: simularFlujo 1.4s linear infinite; 
+    /* Animación infinita fluida hacia abajo */
+    animation: flujoAgua 1.2s linear infinite;
+    opacity: 0.8;
 }
 
-@keyframes simularFlujo {
-    from { background-position: 0 0; }
-    to { background-position: 0 42px; }
+@keyframes flujoAgua {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 28px;
+    }
 }
 
-/* ==========================================
-   POSICIONAMIENTO DE LOS SUBSISTEMAS
-   ========================================== */
-.bloque-serie {
-    position: fixed;
-    top: 225px; 
-    width: 116px;
-    height: 110px;
-}
-
-#cal-tr   { left: 160px; } 
-#cal-tsr1 { left: 288px; } 
-#cal-tsr2 { left: 416px; } 
-
-.lamas-radiador {
-    width: 96px; height: 40px;
-    margin: 5px auto;
-    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-}
-
-.sucho-serpiente, .suelo-serpiente {
-    width: 96px; height: 40px;
-    margin: 5px auto;
-    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 3px, transparent 3px, transparent 7px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-}
