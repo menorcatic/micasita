@@ -3,16 +3,14 @@
    ========================================== */
 #conducto-solar-ac {
     position: fixed;
-    /* Centrado exactamente bajo el bloque solar/tubos */
     left: 85px; 
-    top: 155px; /* Nace justo al terminar el contenedor solar */
     
-    /* El tubo baja de forma recta hasta el depósito AC */
-    width: 6px; 
-    height: 350px; 
+    /* CAMBIO CRÍTICO: Quitamos el 'top' y el 'height' viejo */
+    bottom: 140px; /* Se clava justo encima de la solapa del depósito */
+    height: 350px; /* Mantiene su longitud exacta */
     
     pointer-events: none;
-    z-index: 1; /* Pasa por debajo de los marcos para un acabado limpio */
+    z-index: 1;
 
     /* CAMBIO: DIBUJO DEL TUBO EN TONO COBRE / NARANJA INDUSTRIAL */
     background: linear-gradient(rgba(240, 80, 40, 0.6) 100%, transparent 0);
