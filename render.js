@@ -1,3 +1,6 @@
+// ==========================================
+// 1. FUNCIÓN PARA LOS SENSORES DE LA DERECHA
+// ==========================================
 function renderizarColumnaDerecha() {
     const panel = document.getElementById('panel-sensores');
     if (!panel) return; 
@@ -36,18 +39,53 @@ function renderizarColumnaDerecha() {
             valorActual = '--';
         }
 
-        // 1. Recibimos el objeto con los dos estilos (fondo y texto) desde colores.js
         const estilosEstablecidos = obtenerColorRelleno(sensor.id, valorActual);
 
         const caja = document.createElement('div');
         caja.className = 'caja-sensor';
         
-        // 2. Aplicamos el color de fondo y el color de texto correspondientes
         caja.style.backgroundColor = estilosEstablecidos.fondo;
         caja.style.color = estilosEstablecidos.texto; 
         
         caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
         
         panel.appendChild(caja);
+    });
+}
+
+// ==========================================
+// 2. FUNCIÓN PARA LOS DEPÓSITOS DE ABAJO (NUEVA)
+// ==========================================
+function renderizarDepositos() {
+    const contenedorMaestro = document.getElementById('panel-depositos');
+    if (!contenedorMaestro) return;
+
+    contenedorMaestro.innerHTML = '';
+
+    // Tu lista modular de depósitos
+    const listaDepositos = [
+        { idHtml: 'deposito-ac', idFluido: 'dep1-fluido', idLitros: 'dep1-litros', idTemp: 'dep1-temp', etiqueta: 'AGUA C.', litros: '650', temp: '42.5', color: '#ff5500', nivelTop: '35%' },
+        { idHtml: 'deposito-af', idFluido: 'dep2-fluido', idLitros: 'dep2-litros', idTemp: 'dep2-temp', etiqueta: 'AGUA F.', litros: '420', temp: '16.8', color: '#00d2ff', nivelTop: '60%' }
+    ];
+
+    listaDepositos.forEach(dep => {
+        const caja = document.createElement('div');
+        caja.className = 'caja-pestana';
+        caja.id = dep.idHtml; 
+
+        caja.innerHTML = `
+            <span class="titulo-solapa">${dep.etiqueta}</span>
+            <div class="contenedor-deposito">
+                <div class="tanque-visual">
+                    <div class="fluido" id="${dep.idFluido}" style="top: ${dep.nivelTop}; background-color: ${dep.color};"></div>
+                </div>
+                <div class="datos-deposito">
+                    <div class="valor-nivel"><span id="${dep.idLitros}">${dep.litros}</span> L</div>
+                    <div class="valor-temp"><span id="${dep.idTemp}">${dep.temp}</span> °C</div>
+                </div>
+            </div>
+        `;
+
+        contenedorMaestro.appendChild(caja);
     });
 }
