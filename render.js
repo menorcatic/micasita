@@ -36,13 +36,13 @@ function renderizarColumnaDerecha() {
             valorActual = '--';
         }
 
-        // Ahora recibimos el objeto con fondo y texto
+        // 1. Recibimos el objeto con los dos estilos (fondo y texto) desde colores.js
         const estilosEstablecidos = obtenerColorRelleno(sensor.id, valorActual);
 
         const caja = document.createElement('div');
         caja.className = 'caja-sensor';
         
-        // Aplicamos los dos colores dinámicamente desde JavaScript
+        // 2. Aplicamos el color de fondo y el color de texto correspondientes
         caja.style.backgroundColor = estilosEstablecidos.fondo;
         caja.style.color = estilosEstablecidos.texto; 
         
