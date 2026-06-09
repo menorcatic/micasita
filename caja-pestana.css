@@ -97,9 +97,92 @@
     bottom: 25px;
 }
 
+
+
 /* El depósito de Agua Fría se desplaza a la derecha dejando 1 cuadrado de separación */
 #deposito-af {
     left: 153px; /* 25px iniciales + 116px de la primera caja + 12px de separación */
     bottom: 25px;
 }
 
+/* ==========================================
+   NUEVO CONTENEDOR DE TUBOS DE VACÍO (ARRIBA IZQ)
+   ========================================== */
+#contenedor-solar {
+    position: fixed;
+    left: 25px;
+    top: 25px; /* Posicionado arriba */
+    width: 150px; /* Más ancho */
+    height: 130px; /* Más alto */
+    color: #ffffff;
+    padding: 25px 12px 10px 12px;
+    box-sizing: border-box;
+}
+
+/* Trazo geométrico recalculado para 150x130px con grosor de 3px */
+#contenedor-solar::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.4); 
+    clip-path: polygon(
+        0 15px, 15px 0, 70px 0, 85px 15px, 140px 15px, 150px 25px, 150px 120px, 140px 130px, 10px 130px, 0 120px, 0 15px,
+        3px 16.24px, 11.24px 127px, 138.76px 127px, 147px 118.76px, 147px 26.24px, 138.76px 18px, 83.76px 18px, 68.76px 3px, 16.24px 3px, 3px 16.24px
+    );
+}
+
+/* DISEÑO SINÓPTICO DEL ICONO SOLAR */
+.esquema-solar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    gap: 8px;
+}
+
+/* El rectángulo superior (Colector térmico que cambiará de color) */
+.colector-bloque {
+    width: 110px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    background-color: transparent; /* Se rellenará desde JS */
+    transition: background-color 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Rejilla inferior que simula los tubos de vacío de vidrio */
+.tubos-rejilla {
+    width: 90px;
+    height: 45px;
+    /* Genera líneas verticales repetidas espaciadas simulando tubos */
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 210, 255, 0.3) 0px,
+        rgba(0, 210, 255, 0.3) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+/* ==========================================
+   ESTILO PARA LLEVAR LA LECTURA ABAJO DERECHA
+   ========================================== */
+#contenedor-lectura {
+    position: fixed;
+    right: 150px; /* Separado de la columna de sensores */
+    bottom: 25px;
+    font-size: 11px;
+    color: #aaaaaa;
+    font-weight: bold;
+}
