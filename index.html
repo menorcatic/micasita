@@ -27,7 +27,7 @@
             position: relative; /* Necesario para posicionar el marco */
         }
 
-        /* ESTO DIBUJA EL MARCO CON CHAFLÁN */
+        /* ESTO DIBUJA EL MARCO CON CHAFLÁN VISIBLE */
         body::before {
             content: "";
             position: absolute;
@@ -37,25 +37,28 @@
             right: 10px;
             bottom: 10px;
             
-            /* Color del marco (puedes cambiarlo por #ffffff si lo quieres blanco puro) */
-            background-color: rgba(255, 255, 255, 0.4); 
+            /* Dibuja los chaflanes usando esquinas cortadas transparentes */
+            background:
+                linear-gradient(135deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) top left,
+                linear-gradient(-135deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) top right,
+                linear-gradient(45deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) bottom left,
+                linear-gradient(-45deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) bottom right;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
             
-            /* El truco del chaflán de 10px usando clip-path */
-            clip-path: polygon(
-                10px 0%, calc(100% - 10px) 0%, 100% 10px, 
-                100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 
-                0% calc(100% - 10px), 0% 10px
-            );
-            
-            /* Grosor del marco (2px) mediante una máscara */
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            /* Aplica el mismo truco al contenido interno para dejar solo el borde de 2px */
+            -webkit-mask: 
+                linear-gradient(135deg, transparent 11px, #fff 0) top left,
+                linear-gradient(-135deg, transparent 11px, #fff 0) top right,
+                linear-gradient(45deg, transparent 11px, #fff 0) bottom left,
+                linear-gradient(-45deg, transparent 11px, #fff 0) bottom right;
+            -webkit-mask-size: 50% 50%;
+            -webkit-mask-repeat: no-repeat;
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            padding: 2px; 
-            
-            pointer-events: none; /* Evita que el marco interfiera con los clics */
-        }
 
+            pointer-events: none; /* Evita interferir con los clics de la página */
+        }
 
         .contenido-principal {
             flex: 1;
