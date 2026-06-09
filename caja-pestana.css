@@ -88,3 +88,18 @@
     font-size: 10px; /* Un punto más pequeña */
     color: #00ffcc; 
 }
+
+/* POSICIONAMIENTO INDEPENDIENTE DE CADA DEPÓSITO */
+
+/* El depósito de Agua Caliente se queda en su sitio original */
+#deposito-ac {
+    left: 25px;
+    bottom: 25px;
+}
+
+/* El depósito de Agua Fría se desplaza a la derecha dejando 1 cuadrado de separación */
+#deposito-af {
+    left: 153px; /* 25px iniciales + 116px de la primera caja + 12px de separación */
+    bottom: 25px;
+}
+
