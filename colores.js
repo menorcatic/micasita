@@ -1,30 +1,37 @@
 function obtenerColorRelleno(idSensor, valor) {
     const num = parseFloat(valor);
-    if (isNaN(num)) return 'transparent';
+    
+    // Configuración por defecto (Fondo transparente, texto blanco)
+    let configuracion = {
+        fondo: 'transparent',
+        texto: '#ffffff'
+    };
+
+    if (isNaN(num)) return configuracion;
     
     if (idSensor === 'PotPlacas') {
-        if (num === 0) return 'transparent';      
-        if (num < 400) return 'rgb(255, 0, 0)';       
-        if (num < 1000) return 'rgb(255, 165, 0)';       
-        if (num < 2000) return 'rgb(255, 255, 0)';       
-        return 'rgb(0, 255, 0)';                        
+        if (num === 0) return configuracion; // De noche, por defecto
+        if (num < 400) configuracion.fondo = 'rgb(255, 0, 0)'; // Rojo
+        else if (num < 1000) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } // Naranja -> Texto Negro
+        else if (num < 2000) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } // Amarillo -> Texto Negro
+        else configuracion.fondo = 'rgb(0, 255, 0)'; // Verde
     }
 
-    if (idSensor === 'PotCons') {
-        if (num === 0) return 'transparent';      
-        if (num < 300) return 'rgb(0, 255, 0)';       
-        if (num < 500) return 'rgb(255, 255, 0)';       
-        if (num < 800) return 'rgb(255, 165, 0)';       
-        return 'rgb(255, 0, 0)';                        
+    else if (idSensor === 'PotCons') {
+        if (num === 0) return configuracion;
+        if (num < 300) configuracion.fondo = 'rgb(0, 255, 0)'; // Verde
+        else if (num < 500) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } // Amarillo -> Texto Negro
+        else if (num < 800) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } // Naranja -> Texto Negro
+        else configuracion.fondo = 'rgb(255, 0, 0)'; // Rojo
     }
     
-    if (idSensor === 'VBat') {
-        if (num === 0) return 'transparent';      
-        if (num < 24) return 'rgb(255, 0, 0)';       
-        if (num < 25) return 'rgb(255, 165, 0)';       
-        if (num < 26) return 'rgb(255, 255, 0)';       
-        return 'rgb(0, 255, 0)';                        
+    else if (idSensor === 'VBat') {
+        if (num === 0) return configuracion;
+        if (num < 24) configuracion.fondo = 'rgb(255, 0, 0)'; // Rojo
+        else if (num < 25) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } // Naranja -> Texto Negro
+        else if (num < 26) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } // Amarillo -> Texto Negro
+        else configuracion.fondo = 'rgb(0, 255, 0)'; // Verde
     }
     
-    return 'transparent';
+    return configuracion;
 }
