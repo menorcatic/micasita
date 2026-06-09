@@ -6,59 +6,51 @@
     <title>Mi Casita - Monitoreo Compacto</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #070166;
+             font-family: Arial, sans-serif;
+             background-color: #070166;
             
             /* Tu malla de guiones */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-                linear-gradient(#070166 5px, transparent 5px), 
-                linear-gradient(90deg, #070166 5px, transparent 5px);
-            background-size: 12px 12px, 12px 12px, 8px 8px, 8px 8px;
+             background-image: 
+                  linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
+                  linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                  linear-gradient(#070166 5px, transparent 5px), 
+                  linear-gradient(90deg, #070166 5px, transparent 5px);
+              background-size: 12px 12px, 12px 12px, 8px 8px, 8px 8px;
             
-            color: #ffffff;
-            margin: 0;
-            padding: 25px; /* Aumentado para que el contenido no toque el marco */
-            display: flex;
-            justify-content: space-between;
-            min-height: 100vh;
-            box-sizing: border-box;
-            position: relative; /* Necesario para posicionar el marco */
-        }
+              color: #ffffff;
+              margin: 0;
+              padding: 25px; /* Aumentado para que el contenido no toque el marco */
+              display: flex;
+              justify-content: space-between;
+              min-height: 100vh;
+              box-sizing: border-box;
+              position: relative; /* Necesario para posicionar el marco */
+          }
 
-        /* ESTO DIBUJA EL MARCO CON CHAFLÁN VISIBLE */
-        body::before {
-            content: "";
-            position: absolute;
-            /* Margen de 10px desde el borde de la pantalla */
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
+            /* MARCO CON CHAFLÁN DIRECTO MEDIANTE COORDENADAS */
+          body::before {
+                content: "";
+               position: absolute;
+               top: 10px;
+               left: 10px;
+               right: 10px;
+               bottom: 10px;
+               pointer-events: none;
+                
+                /* Color del marco */
+               background-color: rgba(255, 255, 255, 0.4); 
             
-            /* Dibuja los chaflanes usando esquinas cortadas transparentes */
-            background:
-                linear-gradient(135deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) top left,
-                linear-gradient(-135deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) top right,
-                linear-gradient(45deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) bottom left,
-                linear-gradient(-45deg, transparent 10px, rgba(255, 255, 255, 0.4) 0) bottom right;
-            background-size: 50% 50%;
-            background-repeat: no-repeat;
-            
-            /* Aplica el mismo truco al contenido interno para dejar solo el borde de 2px */
-            -webkit-mask: 
-                linear-gradient(135deg, transparent 11px, #fff 0) top left,
-                linear-gradient(-135deg, transparent 11px, #fff 0) top right,
-                linear-gradient(45deg, transparent 11px, #fff 0) bottom left,
-                linear-gradient(-45deg, transparent 11px, #fff 0) bottom right;
-            -webkit-mask-size: 50% 50%;
-            -webkit-mask-repeat: no-repeat;
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+                /* Dibuja las líneas exteriores, entra 2px (grosor) y dibuja el hueco */
+               clip-path: polygon(
+                    /* 1. Borde Exterior con Chaflanes de 10px */
+                   10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px,
+                    /* Cierre y salto al interior */
+                   10px 0, 
+                  /* 2. Borde Interior (sumando 2px de grosor a todo) */
+                   10.83px 2px, 2px 10.83px, 2px calc(100% - 10.83px), 10.83px calc(100% - 2px), calc(100% - 10.83px) calc(100% - 2px), calc(100% - 2px) calc(100% - 10.83px), calc(100% - 2px) 10.83px, calc(100% - 10.83px) 2px
+              );
+         }
 
-            pointer-events: none; /* Evita interferir con los clics de la página */
-        }
 
         .contenido-principal {
             flex: 1;
