@@ -9,6 +9,7 @@ async function consultarServidor() {
 
         renderizarColumnaDerecha(); // Dibuja tus sensores
         renderizarDepositos();      // ¡Dibuja tus depósitos automáticamente!
+        renderizarSolar();          // ¡Dibuja tus tubos de vacío del techo!
 
         const elementoHora = document.getElementById('hora-lectura');
         if (elementoHora) {
