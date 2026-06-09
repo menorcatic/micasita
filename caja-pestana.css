@@ -2,12 +2,13 @@
     position: fixed; 
     left: 25px;      
     bottom: 25px;    
-    width: 200px;
+    width: 116px; /* Reducido de 200px a 116px (84px menos) */
     height: 115px; 
     color: #ffffff;
-    padding: 22px 12px 10px 12px; 
+    padding: 22px 10px 10px 10px; /* Ajustado el espacio interno */
     box-sizing: border-box;
 }
+
 .caja-pestana::before {
     content: "";
     position: absolute;
@@ -17,11 +18,21 @@
     bottom: 0;
     pointer-events: none;
     background-color: rgba(255, 255, 255, 0.4); 
+    
+    /* RECALCULADO EL TRAZO GEOMÉTRICO PARA EL ANCHO DE 116PX */
     clip-path: polygon(
-        0 15px, 15px 0, 70px 0, 85px 15px, 190px 15px, 200px 25px, 200px 105px, 190px 115px, 10px 115px, 0 105px, 0 15px, 
-        3px 16.24px, 11.24px 112px, 188.76px 112px, 197px 103.76px, 197px 26.24px, 188.76px 18px, 83.76px 18px, 68.76px 3px, 16.24px 3px, 3px 16.24px
+        /* --- 1. SILUETA EXTERIOR --- */
+        0 15px, 15px 0, 70px 0, 85px 15px, 
+        106px 15px, 116px 25px, /* Esquina superior derecha ajustada a 116px */
+        116px 105px, 106px 115px, /* Esquina inferior derecha ajustada a 116px */
+        10px 115px, 0 105px, 
+        0 15px, 
+        
+        /* --- 2. SILUETA INTERIOR (Grosor de 3px constantes) --- */
+        3px 16.24px, 11.24px 112px, 104.76px 112px, 113px 103.76px, 113px 26.24px, 104.76px 18px, 83.76px 18px, 68.76px 3px, 16.24px 3px, 3px 16.24px
     );
 }
+
 .caja-pestana .titulo-solapa {
     position: absolute;
     top: 2px;
@@ -34,14 +45,16 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
 .contenedor-deposito {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px; /* Reducido el espacio para que quepa bien en el nuevo ancho */
     height: 100%;
 }
+
 .tanque-visual {
-    width: 35px;
+    width: 30px; /* Sutilmente más estrecho para equilibrar el diseño */
     height: 65px;
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 6px;
@@ -49,6 +62,7 @@
     overflow: hidden; 
     background-color: rgba(255, 255, 255, 0.05);
 }
+
 .fluido {
     position: absolute;
     left: 0;
@@ -57,17 +71,20 @@
     top: 40%; 
     transition: top 0.5s ease, background-color 0.5s ease; 
 }
+
 .datos-deposito {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
+
 .valor-nivel {
-    font-size: 16px;
+    font-size: 14px; /* Un punto más pequeña para asegurar que no se corte el texto */
     font-weight: bold;
     color: #ffffff;
 }
+
 .valor-temp {
-    font-size: 11px;
+    font-size: 10px; /* Un punto más pequeña */
     color: #00ffcc; 
 }
