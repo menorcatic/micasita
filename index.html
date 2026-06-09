@@ -8,47 +8,13 @@
         body {
              font-family: Arial, sans-serif;
              background-color: #070166;
-            
-            /* Tu malla de guiones */
-             background-image: 
-                  linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
-                  linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-                  linear-gradient(#070166 5px, transparent 5px), 
-                  linear-gradient(90deg, #070166 5px, transparent 5px);
-              background-size: 12px 12px, 12px 12px, 8px 8px, 8px 8px;
-            
-              color: #ffffff;
-              margin: 0;
-              padding: 25px; /* Aumentado para que el contenido no toque el marco */
-              display: flex;
-              justify-content: space-between;
-              min-height: 100vh;
-              box-sizing: border-box;
-              position: relative; /* Necesario para posicionar el marco */
+             color: #ffffff;
+             margin: 0;
+             padding: 25px; /* Aumentado para que el contenido no toque el marco */
+             display: flex;
+             justify-content: space-between;
           }
-        /* MARCO CON CHAFLÁN DIRECTO DE 3PX DE GROSOR */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            pointer-events: none;
-            
-            /* Color del marco */
-            background-color: rgba(255, 255, 255, 0.4); 
-            
-            /* Dibuja el borde exterior y resta 3px exactos hacia el interior */
-            clip-path: polygon(
-                /* 1. Borde Exterior con Chaflanes de 10px */
-                10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px,
-                /* Cierre y salto al interior */
-                10px 0, 
-                /* 2. Borde Interior (ajustado para mantener 3px de grosor en todo el recorrido) */
-                11.24px 3px, 3px 11.24px, 3px calc(100% - 11.24px), 11.24px calc(100% - 3px), calc(100% - 11.24px) calc(100% - 3px), calc(100% - 3px) calc(100% - 11.24px), calc(100% - 3px) 11.24px, calc(100% - 11.24px) 3px
-            );
-        }
+      
         .contenido-principal {
             flex: 1;
             padding-right: 10px;
@@ -83,56 +49,11 @@
             margin-bottom: 2px;
             text-transform: uppercase;
         }
-        /* CAJA CONTENEDORA ABAJO A LA IZQUIERDA */
-        .caja-pestana {
-            position: fixed; /* Lo fija en la pantalla */
-            left: 25px;      /* Separación del lado izquierdo */
-            bottom: 25px;    /* Separación del fondo */
-            width: 200px;
-            /* El alto total pasa a ser 115px (100px de caja + 15px de pestaña) */
-            height: 115px; 
-            color: #ffffff;
-            padding: 20px 10px 10px 10px; /* Más espacio arriba para no pisar la pestaña */
-            box-sizing: border-box;
-            font-size: 12px;
-        }
-
-        /* EL MARCO CON PESTAÑA Y CHAFLANES REFORZADO A 3PX */
-        .caja-pestana::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            background-color: rgba(255, 255, 255, 0.4); /* Mismo color del marco principal */
-            
-            /* Dibuja la silueta exterior con la pestaña arriba a la izquierda y luego el hueco de 3px */
-            clip-path: polygon(
-                /* --- 1. SILUETA EXTERIOR --- */
-                /* Pestaña superior (Inicia en x:0 y sube en x:15px hasta x:70px) */
-                0 15px, 15px 0, 70px 0, 85px 15px, 
-                /* Esquina superior derecha (Chaflán a 10px) */
-                190px 15px, 200px 25px, 
-                /* Esquina inferior derecha (Chaflán a 10px) */
-                200px 105px, 190px 115px, 
-                /* Esquina inferior izquierda (Chaflán a 10px) */
-                10px 115px, 0 105px, 
-                
-                /* CIERRE Y SALTO AL INTERIOR */
-                0 15px, 
-                
-                /* --- 2. SILUETA INTERIOR (Grosor de 3px) --- */
-                3px 16.24px, 11.24px 112px, 188.76px 112px, 197px 103.76px, 197px 26.24px, 188.76px 18px, 83.76px 18px, 68.76px 3px, 16.24px 3px, 3px 16.24px
-            );
+        
         }
     </style>
 </head>
 <body>
-    <!-- Caja con pestaña de archivo abajo a la izquierda -->
-    <div class="caja-pestana"></div>
-
     <div class="contenido-principal">
         <h1>Monitoreo General de Mi Casita con Colores</h1>
         <p>Lectura: <span id="hora-lectura">--:--:--</span></p>
