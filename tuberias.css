@@ -8,7 +8,7 @@
     z-index: 1; /* Pasa por debajo de los marcos */
 }
 
-/* EL DIBUJO ESTÁTICO DE LAS TUBERÍAS (Acortado y en color cálido) */
+/* EL DIBUJO ESTÁTICO DE LAS TUBERÍAS */
 .camino-tuberias {
     position: absolute;
     left: 85px;
@@ -16,41 +16,39 @@
     width: 600px;
     height: 415px;
     
-    /* El fondo ahora usa un tono naranja/cobrizo industrial */
+    /* Fondo con tono naranja/cobrizo industrial */
     background-image: 
         linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Retorno horizontal */
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Caída vertical salón */
-        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* T horizontal superior */
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* Caída vertical */
+        linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)), /* T horizontal */
         linear-gradient(rgba(240, 80, 40, 0.5), rgba(240, 80, 40, 0.5)); /* Caída vertical solar */
     background-repeat: no-repeat;
     
-    /* Dimensiones: El tubo vertical principal se acorta a 378px para no pisar el depósito */
+    /* Dimensiones fijas en píxeles */
     background-size: 
         410px 6px,   
-        195px 6px, /* Ajustado el retorno vertical del salón */
+        195px 6px, 
         410px 6px,   
-        6px 378px;   /* CAMBIO: De 415px a 378px (Se detiene en la solapa AC) */
+        6px 378px;   
         
     /* Coordenadas de posición milimétricas */
     background-position: 
-        0px 375px,   /* CAMBIO: Sube el retorno horizontal al nivel del techo de AC */
-        404px 186px, /* Ajustada la caída vertical tras el salón */
-        0px 186px,   /* Ajustada la altura de la T de calefacción */
+        0px 375px,   
+        404px 186px, 
+        0px 186px,   
         0px 0px;     
     
-    /* Brillo metálico cobrizo interno */
     box-shadow: 
         inset 1px 0px 0px rgba(255, 255, 255, 0.15),
         inset -1px 0px 0px rgba(255, 255, 255, 0.15);
 }
 
-/* LA ANIMACIÓN DE FLUJO SUAVIZADA Y DIFUMINADA */
+/* LA ANIMACIÓN DE FLUJO CORREGIDA (Sin mezcla de unidades) */
 .camino-tuberias::after {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     
-    /* CAMBIO: Gradiente mucho más suave y menos contrastado para las burbujas */
     background: repeating-linear-gradient(
         0deg,
         rgba(255, 230, 200, 0.4) 0px,
@@ -60,20 +58,20 @@
     );
     background-size: 6px 42px;
     
-    /* Recorte exacto para que el flujo siga el nuevo camino acortado */
+    /* CORRECCIÓN CRÍTICA: Todo en px absolutos basados en el alto de 415px del contenedor */
     clip-path: polygon(
         0px 0px, 6px 0px, 
         6px 186px, 410px 186px, 410px 192px, 
         404px 192px, 404px 375px, 
         0px 375px, 0px 381px, 
-        6px 381px, 6px 100%, 0px 100%
+        6px 381px, 6px 415px, 0px 415px
     );
     
-    /* CAMBIO: Difumina los extremos de la animación para que no se corten en seco */
-    mask-image: radial-gradient(circle at 88px 160px, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    /* CORRECCIÓN CRÍTICA: Se añade el prefijo webkit para que no se oculte de forma invisible */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
     
-    animation: simularFlujo 1.4s linear infinite; /* Un pelín más lento para transmitir densidad térmica */
+    animation: simularFlujo 1.4s linear infinite; 
 }
 
 @keyframes simularFlujo {
@@ -82,11 +80,11 @@
 }
 
 /* ==========================================
-   POSICIONAMIENTO ADAPTADO PARA LOS SUBSISTEMAS
+   POSICIONAMIENTO DE LOS SUBSISTEMAS
    ========================================== */
 .bloque-serie {
     position: fixed;
-    top: 225px; /* CAMBIO: Se resitúan para encajar sobre la nueva altura de la línea (186px) */
+    top: 225px; 
     width: 116px;
     height: 110px;
 }
@@ -95,7 +93,6 @@
 #cal-tsr1 { left: 288px; } 
 #cal-tsr2 { left: 416px; } 
 
-/* Estilos interiores de los radiadores y suelo (Se quedan igual) */
 .lamas-radiador {
     width: 96px; height: 40px;
     margin: 5px auto;
@@ -104,7 +101,7 @@
     border-radius: 4px;
 }
 
-.suelo-serpiente {
+.sucho-serpiente, .suelo-serpiente {
     width: 96px; height: 40px;
     margin: 5px auto;
     background: repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 3px, transparent 3px, transparent 7px);
