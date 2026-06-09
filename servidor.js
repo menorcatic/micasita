@@ -6,9 +6,9 @@ async function consultarServidor() {
         const datos = await respuesta.json();
 
         window.datosSensores = datos;
-        
-        // Esta función viene del archivo render.js externo
-        renderizarColumnaDerecha();
+
+        renderizarColumnaDerecha(); // Dibuja tus sensores
+        renderizarDepositos();      // ¡Dibuja tus depósitos automáticamente!
 
         const elementoHora = document.getElementById('hora-lectura');
         if (elementoHora) {
