@@ -34,39 +34,38 @@
         <!-- Las cajas se generan aquí automáticamente -->
     </div>
 
-    <script>
-        window.datosSensores = {};
-
-        function obtenerColorRelleno(idSensor, valor) {
-            const num = parseFloat(valor);
-            if (isNaN(num)) return 'transparent';
-            
-            if (idSensor === 'PotPlacas') {
-                if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 400) return 'rgb(255, 0, 0)';       // Producción baja, fondo rojo
-                if (num < 1000) return 'rgb(255, 165, 0)';       // Producción media, fondo naranja
-                if (num < 2000) return 'rgb(255, 255, 0)';       // Producción buena, fondo amarillo
-                return 'rgb(0, 255, 0)';                        // Producción alta, fondo verde
-            }
-
-            if (idSensor === 'PotCons') {
-                if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 300) return 'rgb(0, 255, 0)';       // Producción baja, fondo verde
-                if (num < 500) return 'rgb(255, 255, 0)';       // Producción media, fondo amarillo
-                if (num < 800) return 'rgb(255, 165, 0)';       // Producción alta, fondo naranja
-                return 'rgb(255, 0, 0)';                        // Producción muy alta, fondo rojo
-            }
-            
-            if (idSensor === 'VBat') {
-                if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 24) return 'rgb(255, 0, 0)';       // Producción baja, fondo rojo
-                if (num < 25) return 'rgb(255, 165, 0)';       // Producción media, fondo naranja
-                if (num < 26) return 'rgb(255, 255, 0)';       // Producción buena, fondo amarillo
-                return 'rgb(0, 255, 0)';                        // Producción alta, fondo verde
-            }
-            
-            return 'transparent';
+<script>
+    window.datosSensores = {};
+    function obtenerColorRelleno(idSensor, valor) {
+        const num = parseFloat(valor);
+        if (isNaN(num)) return 'transparent';
+        
+        if (idSensor === 'PotPlacas') {
+            if (num === 0) return 'transparent';      // De noche, solo reborde
+            if (num < 400) return 'rgb(255, 0, 0)';       // Producción baja, fondo rojo
+            if (num < 1000) return 'rgb(255, 165, 0)';       // Producción media, fondo naranja
+            if (num < 2000) return 'rgb(255, 255, 0)';       // Producción buena, fondo amarillo
+            return 'rgb(0, 255, 0)';                        // Producción alta, fondo verde
         }
+
+        if (idSensor === 'PotCons') {
+            if (num === 0) return 'transparent';      // De noche, solo reborde
+            if (num < 300) return 'rgb(0, 255, 0)';       // Producción baja, fondo verde
+            if (num < 500) return 'rgb(255, 255, 0)';       // Producción media, fondo amarillo
+            if (num < 800) return 'rgb(255, 165, 0)';       // Producción alta, fondo naranja
+            return 'rgb(255, 0, 0)';                        // Producción muy alta, fondo rojo
+        }
+        
+        if (idSensor === 'VBat') {
+            if (num === 0) return 'transparent';      // De noche, solo reborde
+            if (num < 24) return 'rgb(255, 0, 0)';       // Producción baja, fondo rojo
+            if (num < 25) return 'rgb(255, 165, 0)';       // Producción media, fondo naranja
+            if (num < 26) return 'rgb(255, 255, 0)';       // Producción buena, fondo amarillo
+            return 'rgb(0, 255, 0)';                        // Producción alta, fondo verde
+        }
+        
+        return 'transparent';
+    }
 
 function renderizarColumnaDerecha() {
     const panel = document.getElementById('panel-sensores');
@@ -116,22 +115,22 @@ function renderizarColumnaDerecha() {
     });
 }
 
-        async function consultarServidor() {
-            try {
-                const respuesta = await fetch('./sensores.json?v=' + new Date().getTime());
-                const datos = await respuesta.json();
+    async function consultarServidor() {
+        try {
+            const respuesta = await fetch('./sensores.json?v=' + new Date().getTime());
+            const datos = await respuesta.json();
 
-                // Guardamos los datos directamente
-                window.datosSensores = datos;
-                renderizarColumnaDerecha();
+            // Guardamos los datos directamente
+            window.datosSensores = datos;
+            renderizarColumnaDerecha();
 
-                document.getElementById('hora-lectura').innerText = new Date().toLocaleTimeString();
-            } catch (error) {
-                console.error("Error al sincronizar datos:", error);
-                // Si falla la lectura, pintamos la columna con '--' igualmente
-                renderizarColumnaDerecha();
-            }
+            document.getElementById('hora-lectura').innerText = new Date().toLocaleTimeString();
+        } catch (error) {
+            console.error("Error al sincronizar datos:", error);
+            // Si falla la lectura, pintamos la columna con '--' igualmente
+            renderizarColumnaDerecha();
         }
+    }
 
         consultarServidor();
         setInterval(consultarServidor, 20000);
