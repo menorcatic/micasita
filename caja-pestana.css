@@ -1,0 +1,73 @@
+.caja-pestana {
+    position: fixed; 
+    left: 25px;      
+    bottom: 25px;    
+    width: 200px;
+    height: 115px; 
+    color: #ffffff;
+    padding: 22px 12px 10px 12px; 
+    box-sizing: border-box;
+}
+.caja-pestana::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.4); 
+    clip-path: polygon(
+        0 15px, 15px 0, 70px 0, 85px 15px, 190px 15px, 200px 25px, 200px 105px, 190px 115px, 10px 115px, 0 105px, 0 15px, 
+        3px 16.24px, 11.24px 112px, 188.76px 112px, 197px 103.76px, 197px 26.24px, 188.76px 18px, 83.76px 18px, 68.76px 3px, 16.24px 3px, 3px 16.24px
+    );
+}
+.caja-pestana .titulo-solapa {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 85px;
+    text-align: center;
+    font-size: 8px;
+    font-weight: bold;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.contenedor-deposito {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+}
+.tanque-visual {
+    width: 35px;
+    height: 65px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden; 
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.fluido {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 40%; 
+    transition: top 0.5s ease, background-color 0.5s ease; 
+}
+.datos-deposito {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.valor-nivel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.valor-temp {
+    font-size: 11px;
+    color: #00ffcc; 
+}
