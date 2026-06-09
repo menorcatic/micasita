@@ -15,35 +15,8 @@
         <p>Lectura: <span id="hora-lectura">--:--:--</span></p>
     </div>
 
-    <!-- CONTENEDOR DE AGUA CALIENTE (Abajo a la izquierda) -->
-    <div class="caja-pestana" id="deposito-ac">
-        <span class="titulo-solapa">AGUA C.</span>
-        <div class="contenedor-deposito">
-            <div class="tanque-visual">
-                <!-- Color rojo/naranja de ejemplo para el agua caliente -->
-                <div class="fluido" id="dep1-fluido" style="top: 35%; background-color: #ff5500;"></div>
-            </div>
-            <div class="datos-deposito">
-                <div class="valor-nivel"><span id="dep1-litros">650</span> L</div>
-                <div class="valor-temp"><span id="dep1-temp">42.5</span> °C</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTENEDOR DE AGUA FRÍA (A la derecha del caliente) -->
-    <div class="caja-pestana" id="deposito-af">
-        <span class="titulo-solapa">AGUA F.</span>
-        <div class="contenedor-deposito">
-            <div class="tanque-visual">
-                <!-- Color azul para el agua fría -->
-                <div class="fluido" id="dep2-fluido" style="top: 60%; background-color: #00d2ff;"></div>
-            </div>
-            <div class="datos-deposito">
-                <div class="valor-nivel"><span id="dep2-litros">420</span> L</div>
-                <div class="valor-temp"><span id="dep2-temp">16.8</span> °C</div>
-            </div>
-        </div>
-    </div>
+    <!-- AQUÍ SE GENERARÁN TODOS LOS DEPÓSITOS DE FORMA AUTOMÁTICA -->
+    <div id="panel-depositos"></div>
 
     <!-- Columna ultra compacta pegada a la derecha -->
     <div class="columna-derecha" id="panel-sensores"></div>
