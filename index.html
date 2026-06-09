@@ -72,9 +72,24 @@
             
             if (idSensor === 'PotPlacas') {
                 if (num === 0) return 'transparent';      // De noche, solo reborde
-                if (num < 1000) return 'rgba(247, 243, 12, 0.5)';       // Producción baja, fondo verde
-                return 'rgba(247, 243, 12, 0.5)';                        // Producción alta, fondo amarillo
+                if (num < 1000) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo verde
+                return 'rgba(0, 255, 0, 0.5)';                        // Producción alta, fondo amarillo
             }
+
+            if (idSensor === 'PotCons') {
+                if (num === 0) return 'transparent';      // De noche, solo reborde
+                if (num < 600) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo amarillo
+                return 'rgba(255, 165, 0, 0.5)';                        // Producción alta, fondo naranja
+            }
+            
+            if (idSensor === 'VBat') {
+                if (num === 0) return 'transparent';      // De noche, solo reborde
+                if (num < 24) return 'rgba(255, 0, 0, 0.5)';       // Producción baja, fondo rojo
+                if (num < 25) return 'rgba(255, 165, 0, 0.5)';       // Producción baja, fondo naranja
+                if (num < 26) return 'rgba(255, 255, 0, 0.5)';       // Producción baja, fondo amarillo
+                return 'rgba(0, 255, 0, 0.5)';                        // Producción alta, fondo verde
+            }
+            
             return 'transparent';
         }
 
