@@ -8,53 +8,6 @@
     <link rel="stylesheet" href="marco-pantalla.css">
     <link rel="stylesheet" href="caja-pestana.css">
     <link rel="stylesheet" href="cajas-sensores.css">
-    <style>
-        body {
-             font-family: Arial, sans-serif;
-             background-color: #070166;
-             color: #ffffff;
-             margin: 0;
-             padding: 25px; /* Aumentado para que el contenido no toque el marco */
-             display: flex;
-             justify-content: space-between;
-          }
-      
-        .contenido-principal {
-            flex: 1;
-            padding-right: 10px;
-        }
-
-        /* Columna derecha reducida a la mitad de anchura (de 220px a 110px) */
-        .columna-derecha {
-            width: 110px; 
-            display: flex;
-            flex-direction: column;
-            gap: 5px; /* Espacio entre cajitas reducido a la mitad */
-        }
-
-        /* Cajitas reducidas a la mitad de altura y grosor */
-        .caja-sensor {
-            border: 1px solid #ffffff; /* Borde más fino */
-            border-radius: 6px; /* Curvatura más sutil */
-            padding: 4px; /* Menos espacio interno */
-            text-align: center;
-            font-size: 11px; /* Letra más pequeña */
-            font-weight: bold;
-            color: #ffffff;
-            background-color: transparent;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Título mini dentro de la caja */
-        .caja-sensor span {
-            display: block;
-            font-size: 8px; /* Texto ultra compacto */
-            color: #aaaaaa;
-            margin-bottom: 2px;
-            text-transform: uppercase;
-        }
-        
-    </style>
 </head>
 <body>
     <div class="contenido-principal">
