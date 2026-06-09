@@ -9,7 +9,7 @@
     
     /* El tubo baja de forma recta hasta el depósito AC */
     width: 6px; 
-    height: 378px; 
+    height: 275px; 
     
     pointer-events: none;
     z-index: 1; /* Pasa por debajo de los marcos para un acabado limpio */
