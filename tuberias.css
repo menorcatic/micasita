@@ -3,14 +3,16 @@
    ========================================== */
 #conducto-solar-ac {
     position: fixed;
+    /* Centrado exactamente bajo el bloque solar/tubos */
     left: 85px; 
+    top: 155px; /* Nace justo al terminar el contenedor solar */
     
-    /* CAMBIO CRÍTICO: Quitamos el 'top' y el 'height' viejo */
-    bottom: 140px; /* Se clava justo encima de la solapa del depósito */
-    height: 350px; /* Mantiene su longitud exacta */
+    /* El tubo baja de forma recta hasta el depósito AC */
+    width: 6px; 
+    height: 350px; 
     
     pointer-events: none;
-    z-index: 1;
+    z-index: 1; /* Pasa por debajo de los marcos para un acabado limpio */
 
     /* CAMBIO: DIBUJO DEL TUBO EN TONO COBRE / NARANJA INDUSTRIAL */
     background: linear-gradient(rgba(240, 80, 40, 0.6) 100%, transparent 0);
@@ -23,25 +25,26 @@
         inset -1px 0px 0px rgba(255, 255, 255, 0.2);
 }
 
+/* ANIMACIÓN DEL FLUJO EN TONOS CÁLIDOS (SUAVE) */
 #conducto-solar-ac::after {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     
-    /* BAJAMOS LA OPACIDAD DE CADA GUION A 0.25 (Antes 0.7) */
+    /* CAMBIO: Patrón repetitivo de guiones en color amarillo/crema cálido suave */
     background: repeating-linear-gradient(
         0deg,
-        rgba(255, 230, 180, 0.25) 0px,
-        rgba(255, 230, 180, 0.25) 8px,
+        rgba(255, 230, 180, 0.7) 0px,
+        rgba(255, 230, 180, 0.7) 8px,
         transparent 8px,
         transparent 20px
     );
     background-size: 6px 28px;
     
+    /* Animación infinita fluida hacia abajo */
     animation: flujoAgua 1.2s linear infinite;
-    opacity: 0.7; /* Puedes bajar este número a 0.5 si quieres suavizarlo aún más globalmente */
+    opacity: 0.8;
 }
-
 
 @keyframes flujoAgua {
     from {
@@ -51,5 +54,6 @@
         background-position: 0 28px;
     }
 }
+
 
 
