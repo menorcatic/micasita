@@ -36,12 +36,16 @@ function renderizarColumnaDerecha() {
             valorActual = '--';
         }
 
-        // Esta función viene del archivo colores.js externo
-        const colorFondo = obtenerColorRelleno(sensor.id, valorActual);
+        // Ahora recibimos el objeto con fondo y texto
+        const estilosEstablecidos = obtenerColorRelleno(sensor.id, valorActual);
 
         const caja = document.createElement('div');
         caja.className = 'caja-sensor';
-        caja.style.backgroundColor = colorFondo;
+        
+        // Aplicamos los dos colores dinámicamente desde JavaScript
+        caja.style.backgroundColor = estilosEstablecidos.fondo;
+        caja.style.color = estilosEstablecidos.texto; 
+        
         caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
         
         panel.appendChild(caja);
