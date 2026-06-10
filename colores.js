@@ -32,7 +32,7 @@ function obtenerColorRelleno(idSensor, valor) {
         else if (num < 26) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
         else { configuracion.fondo = 'rgb(0, 255, 0)'; }
     }
-    else if (idSensor === 'PotPlacas') {
+    else if (idSensor === 'PotPlaca') {
         if (num === 0) return configuracion; 
         if (num < 400) { configuracion.fondo = 'rgb(255, 0, 0)'; } 
         else if (num < 1000) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } 
