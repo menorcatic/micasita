@@ -19,10 +19,10 @@ function obtenerColorRelleno(idSensor, valor) {
 
     else if (idSensor === 'PotCons') {
         if (num === 0) return configuracion;
-        if (num < 300) { configuracion.fondo = 'rgb(0, 255, 0)'; } 
-        else if (num < 500) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
-        else if (num < 800) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } 
-        else { configuracion.fondo = 'rgb(255, 0, 0)'; }
+        if (num < 250) { configuracion.fondo = 'rgb(0, 255, 0)'; } //Verde
+        else if (num < 800) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } // Amarillo
+        else if (num < 1100) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } // Naranja
+        else { configuracion.fondo = 'rgb(255, 0, 0)'; }//Rojo
     }
     
     else if (idSensor === 'VBat') {
