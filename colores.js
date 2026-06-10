@@ -14,12 +14,12 @@ function obtenerColorRelleno(idSensor, valor) {
         if (num < 400) { configuracion.fondo = 'rgb(255, 0, 0)'; } 
         else if (num < 1000) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } 
         else if (num < 2000) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
-        else { configuracion.fondo = 'rgb(0, 255, 0)'; }
+        else { configuracion.fondo = 'rgb(0, 255, 0)'; configuracion.texto = '#000000';}
     }
 
     else if (idSensor === 'PotCons') {
         if (num === 0) return configuracion;
-        if (num < 250) { configuracion.fondo = 'rgb(0, 255, 0)'; } //Verde
+        if (num < 250) { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000';} //Verde
         else if (num < 800) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } // Amarillo
         else if (num < 1100) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } // Naranja
         else { configuracion.fondo = 'rgb(255, 0, 0)'; }//Rojo
@@ -30,14 +30,14 @@ function obtenerColorRelleno(idSensor, valor) {
         if (num < 24) { configuracion.fondo = 'rgb(255, 0, 0)'; } 
         else if (num < 25) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } 
         else if (num < 26) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
-        else { configuracion.fondo = 'rgb(0, 255, 0)'; }
+        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }
     }
     else if (idSensor === 'PotPlaca') {
         if (num === 0) return configuracion; 
         if (num < 300) { configuracion.fondo = 'rgb(255, 0, 0)'; } 
         else if (num < 1000) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } 
         else if (num < 2000) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
-        else { configuracion.fondo = 'rgb(0, 255, 0)'; }
+        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }
     }
 
     else if (idSensor === 'TSSR') {
@@ -85,7 +85,7 @@ function obtenerColorRelleno(idSensor, valor) {
         if (num < 1.23) { configuracion.fondo = 'rgb(255, 0, 0)'; } //Rojo
         else if (num < 1.25) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } //Naranja
         else if (num < 1.27) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } //Amarillo
-        else { configuracion.fondo = 'rgb(0, 255, 0)'; }//verde
+        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }//verde
     }
     return configuracion;
 }
