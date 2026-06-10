@@ -25,7 +25,7 @@ function renderizarColumnaDerecha() {
         { id: 'TBat', grupo: 'temperatura', etiqueta: 'T. Bat.' },
         { id: 'NDepCa', grupo: 'nivel', etiqueta: 'N. Dep. Ca.' },
         { id: 'NDepAl', grupo: 'nivel', etiqueta: 'N. Dep. Al.' },
-        { id: 'nDepfr', grupo: 'nivel', etiqueta: 'N. Dep. Fr.' },
+        { id: 'NDepfr', grupo: 'nivel', etiqueta: 'N. Dep. Fr.' },
         { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret.' },
         { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' }
     ];
