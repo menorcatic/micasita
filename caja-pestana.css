@@ -181,7 +181,7 @@
 #contenedor-lectura {
     position: fixed;
     right: 150px; /* Separado de la columna de sensores */
-    bottom: 25px;
+    bottom: 15px;
     font-size: 11px;
     color: #aaaaaa;
     font-weight: bold;
