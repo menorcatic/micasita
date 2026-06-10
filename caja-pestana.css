@@ -161,8 +161,8 @@
 }
 /* Rejilla inferior que simula los tubos de vacío de vidrio */
 .tubos-rejilla {
-    width: 90px;
-    height: 45px;
+    width: 120px;//90px
+    height: 55px;//45px
     /* Genera líneas verticales repetidas espaciadas simulando tubos */
     background: repeating-linear-gradient(
         90deg,
