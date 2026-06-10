@@ -9,7 +9,7 @@ function renderizarColumnaDerecha() {
 
     const listaOrdenada = [
         { id: 'PotPlaca_Est', grupo: 'potencia', etiqueta: 'Placa Est.' },
-        { id: 'PotPlacas', grupo: 'potencia', etiqueta: 'Placas Inst' },
+        { id: 'PotPlaca', grupo: 'potencia', etiqueta: 'Placas Inst' },
         { id: 'PotCons', grupo: 'potencia', etiqueta: 'Consumo' },
         { id: 'VBat', grupo: 'potencia', etiqueta: 'V. Batería' },
         { id: 'TSSR', grupo: 'temperatura', etiqueta: 'T. SSR' },
