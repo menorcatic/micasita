@@ -12,7 +12,7 @@ function renderizarColumnaDerecha() {
         { id: 'PotPlaca', grupo: 'potencia', etiqueta: 'Placas Inst' },
         { id: 'PotCons', grupo: 'potencia', etiqueta: 'Consumo' },
         { id: 'VBat', grupo: 'potencia', etiqueta: 'V. Batería' },
-        { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' } 
+        { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' }, 
         { id: 'TBat', grupo: 'temperatura', etiqueta: 'T. Bat.' },
         { id: 'TDepCa', grupo: 'temperatura', etiqueta: 'T. Dep. Ca.' },
         { id: 'TDepFr', grupo: 'temperatura', etiqueta: 'T. Dep. Fr.' },
@@ -27,7 +27,7 @@ function renderizarColumnaDerecha() {
         { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret.' },
         { id: 'TR', grupo: 'temperatura', etiqueta: 'T. TR' },
         { id: 'TSR1', grupo: 'temperatura', etiqueta: 'T. TSR1' },
-        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T. TSR2' },
+        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T. TSR2' }
     ];
 
     listaOrdenada.forEach(sensor => {
