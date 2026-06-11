@@ -39,6 +39,13 @@ function obtenerColorRelleno(idSensor, valor) {
         else if (num < 2000) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } 
         else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }
     }
+    else if (idSensor === 'TSSR') {
+        if (num === 0) return configuracion; 
+        if (num < 36) { configuracion.fondo = 'rgb(0, 0, 255)'; } //Azul
+        else if (num < 46) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } //Amarillo
+        else if (num < 55) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } //Naranja
+        else { configuracion.fondo = 'rgb(255, 0, 0)'; }//rojo
+    }    
 
     else if (idSensor === 'TT') {
         if (num === 0) return configuracion; 
