@@ -40,7 +40,7 @@ function obtenerColorRelleno(idSensor, valor) {
         else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }
     }
 
-    else if (idSensor === 'TSSR') {
+    else if (idSensor === 'TT') {
         if (num === 0) return configuracion; 
         if (num < 18) { configuracion.fondo = 'rgb(0, 0, 255)'; } //Azul
         else if (num < 24) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } //Amarillo
