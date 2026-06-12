@@ -47,7 +47,7 @@
     );
 
     /* TRUCO MAESTRO: Corta 4px de la izq y 3px de la der como una guillotina fija */
-    clip-path: inset(0 3px 0 4px);
+    clip-path: inset(0 4px 0 4px);
 }
 
 /* 2. HILERA DE PARALELOGRAMOS INFERIOR */
@@ -77,7 +77,7 @@
     );
 
     /* TRUCO MAESTRO: Mismo corte limpio en los extremos para la rejilla de abajo */
-    clip-path: inset(0 3px 0 4px);
+    clip-path: inset(0 4px 0 4px);
 }
 
 
