@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Casita - Monitoreo Compacto</title>
-    <link rel="stylesheet" href="estilos.css">
-    <!-- <link rel="stylesheet" href="base.css"> -->
-    <!-- <link rel="stylesheet" href="marco-scifi.css">
-    <!-- <link rel="stylesheet" href="marco-pantalla.css"> -->
-    <!-- <link rel="stylesheet" href="caja-pestana.css"> -->
-    <!-- <link rel="stylesheet" href="cajas-sensores.css"> -->
-    <!-- <link rel="stylesheet" href="tuberias.css"> -->
-    
+    <link rel="stylesheet" href="estilos.css"> 
 </head>
 <body>
     
-    <!-- CONTENEDOR MAESTRO PARA EL MARCO DE CONTORNO -->
-    <div class="marco-scifi"></div>
-
-    <div class="panel-control-temas">
-        <button class="btn-trapecio btn-invertir" onclick="invertirColores()">🔄 INV</button>
-        <button class="btn-trapecio btn-r" onclick="cambiarTema('rojo')">R</button>
-        <button class="btn-trapecio btn-g" onclick="cambiarTema('verde')">G</button>
-        <button class="btn-trapecio btn-b" onclick="cambiarTema('azul')">B</button>
+    <!-- MÓDULO CONSOLA DE TEMAS CON MARCO AVANZADO -->
+    <div class="contenedor-modulo-temas">
+        <!-- El fondo decorativo militar con solapas y paralelogramos -->
+        <div class="marco-modulo-decorativo"></div>
+        <!-- Tus 4 botones trapecio existentes -->
+        <div class="panel-control-temas">
+            <button class="btn-trapecio btn-invertir" onclick="invertirColores()">🔄 INV</button>
+            <button class="btn-trapecio btn-r" onclick="cambiarTema('rojo')">R</button>
+            <button class="btn-trapecio btn-g" onclick="cambiarTema('verde')">G</button>
+            <button class="btn-trapecio btn-b" onclick="cambiarTema('azul')">B</button>
+        </div>
     </div>
     
     <!-- CONTENEDOR MAESTRO PARA EL PANEL SOLAR (Arriba a la izquierda) -->
