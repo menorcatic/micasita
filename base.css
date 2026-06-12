@@ -1,13 +1,42 @@
+/* ==========================================================================
+   1. SISTEMA DE TEMAS DINÁMICOS (RGB)
+   ========================================================================== */
+
+/* --- TEMA B: BLUE (Azul - Por defecto) --- */
+:root, [data-theme="azul"][data-inverted="false"] {
+    --fondo: #050140;       /* Azul marino profundo */
+    --elemento: #00f3ff;    /* Azul cian brillante */
+}
+[data-theme="azul"][data-inverted="true"] {
+    --fondo: #00f3ff;       
+    --elemento: #050140;    
+}
+
+/* --- TEMA R: RED (Rojo) --- */
+[data-theme="rojo"][data-inverted="false"] {
+    --fondo: #220000;       /* Rojo oscuro */
+    --elemento: #ff3b30;    /* Rojo brillante */
+}
+[data-theme="rojo"][data-inverted="true"] {
+    --fondo: #ff3b30;       
+    --elemento: #220000;    
+}
+
+/* --- TEMA G: GREEN (Verde) --- */
+[data-theme="verde"][data-inverted="false"] {
+    --fondo: #001a00;       /* Verde oscuro */
+    --elemento: #00ff66;    /* Verde brillante */
+}
+[data-theme="verde"][data-inverted="true"] {
+    --fondo: #00ff66;       
+    --elemento: #001a00;    
+}
+
+/* ==========================================================================
+   2. CONFIGURACIÓN DEL BODY Y MALLA DINÁMICA
+   ========================================================================== */
 body {
     font-family: Arial, sans-serif;
-    background-color: #070166;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(#070166 5px, transparent 5px), 
-        linear-gradient(90deg, #070166 5px, transparent 5px);
-    background-size: 12px 12px, 12px 12px, 8px 8px, 8px 8px;
-    color: #ffffff;
     margin: 0;
     padding: 25px; 
     display: flex;
@@ -15,8 +44,29 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     position: relative; 
+    
+    /* Aplicamos el color de fondo del tema dinámico */
+    background-color: var(--fondo);
+    
+    /* CAMBIO CLAVE: Cambiamos el color fijo de la malla por la variable --elemento de forma sutil */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        /* Aquí usamos currentColor o var(--fondo) para las líneas de máscara de tu código */
+        linear-gradient(var(--fondo) 5px, transparent 5px), 
+        linear-gradient(90deg, var(--fondo) 5px, transparent 5px);
+    
+    background-size: 12px 12px, 12px 12px, 8px 8px, 8px 8px;
+    
+    /* El texto general ahora adoptará el color brillante del tema */
+    color: var(--elemento);
+    
+    /* Transición suave para cuando cambies de tema con los botones */
+    transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s ease;
 }
+
 .contenido-principal {
     flex: 1;
     padding-right: 10px;
 }
+
