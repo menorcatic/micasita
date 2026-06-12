@@ -8,26 +8,26 @@ function renderizarColumnaDerecha() {
     panel.innerHTML = '';
 
     const listaOrdenada = [
-        { id: 'PotPlaca_Est', grupo: 'potencia', etiqueta: 'Placa Est.' },
-        { id: 'PotPlaca', grupo: 'potencia', etiqueta: 'Placas Inst' },
-        { id: 'PotCons', grupo: 'potencia', etiqueta: 'Consumo' },
+        { id: 'PotPlaca_Est', grupo: 'potencia', etiqueta: 'P.Est' },
+        { id: 'PotPlaca', grupo: 'potencia', etiqueta: 'P.Inst' },
+        { id: 'PotCons', grupo: 'potencia', etiqueta:  'Consum' },
         { id: 'VBat', grupo: 'potencia', etiqueta: 'V. Batería' },
         { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' }, 
-        { id: 'TBat', grupo: 'temperatura', etiqueta: 'T. Bat.' },
-        { id: 'TDepCa', grupo: 'temperatura', etiqueta: 'T. Dep. Ca.' },
-        { id: 'TDepFr', grupo: 'temperatura', etiqueta: 'T. Dep. Fr.' },
-        { id: 'TTub', grupo: 'temperatura', etiqueta: 'T. Tubos' },
-        { id: 'TSSR', grupo: 'temperatura', etiqueta: 'T. SSR' },
-        { id: 'TT', grupo: 'temperatura', etiqueta: 'T. TT (TT)' },
-        { id: 'TM', grupo: 'temperatura', etiqueta: 'T. Amb (TM)' },
-        { id: 'TS', grupo: 'temperatura', etiqueta: 'T. TS (TS)' },
-        { id: 'NDepAl', grupo: 'nivel', etiqueta: 'N. Dep. Al.' },
-        { id: 'NDepCa', grupo: 'nivel', etiqueta: 'N. Dep. Ca.' },
-        { id: 'NDepfr', grupo: 'nivel', etiqueta: 'N. Dep. Fr.' },
-        { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret.' },
-        { id: 'TR', grupo: 'temperatura', etiqueta: 'T. TR' },
-        { id: 'TSR1', grupo: 'temperatura', etiqueta: 'T. TSR1' },
-        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T. TSR2' }
+        { id: 'TBat', grupo: 'temperatura', etiqueta: 'T.Bat' },
+        { id: 'TDepCa', grupo: 'temperatura', etiqueta: 'T.Dep.Ca' },
+        { id: 'TDepFr', grupo: 'temperatura', etiqueta: 'T.Dep.Fr.' },
+        { id: 'TTub', grupo: 'temperatura', etiqueta: 'T.Tubos' },
+        { id: 'TSSR', grupo: 'temperatura', etiqueta: 'T.SSR' },
+        { id: 'TT', grupo: 'temperatura', etiqueta: 'T.TT)' },
+        { id: 'TM', grupo: 'temperatura', etiqueta: 'T.TM' },
+        { id: 'TS', grupo: 'temperatura', etiqueta: 'T.TS' },
+        { id: 'NDepAl', grupo: 'nivel', etiqueta: 'N.Dep.Ds' },
+        { id: 'NDepCa', grupo: 'nivel', etiqueta: 'N.Dep.Ca' },
+        { id: 'NDepfr', grupo: 'nivel', etiqueta: 'N.Dep.Fr' },
+        { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret' },
+        { id: 'TR', grupo: 'temperatura', etiqueta: 'T.TR' },
+        { id: 'TSR1', grupo: 'temperatura', etiqueta: 'T.TSR1' },
+        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T.TSR2' }
     ];
 
     listaOrdenada.forEach(sensor => {
