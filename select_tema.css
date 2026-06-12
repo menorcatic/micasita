@@ -26,8 +26,8 @@
     height: 3px;        /* El grosor exacto de 3px que pedías */
     background-color: var(--elemento); /* Color dinámico del tema activo */
     /* CÁLCULO DE POSICIÓN REQUERIDO:*/
-    left: 6px; // - Empieza 6px más adelante del primer botón: left = 6px        
-    width: 205px; //la línea mide exactamente 205px de largo (211px - 6px de desfase inicial). */      
+    left: 6px; //- Empieza 6px más adelante del primer botón: left = 6px        
+    width: 205px; //la línea mide exactamente 205px de largo (211px - 6px de desfase inicial).     
     
     pointer-events: none; /* Evita que la línea interfiera con los clics */
 }
@@ -58,12 +58,6 @@
     /* Aplica la inclinación diagonal idéntica a tus botones trapecio */
     transform: skewX(-45deg); 
 }
-
-
-
-
-
-
 
 /* ==========================================================================
    DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
