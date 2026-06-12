@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PANEL DE BOTONES TRAPEZOIDALES (select_tema.css) - CORREGIDO
+   PANEL DE BOTONES TRAPEZOIDALES FIJOS (select_tema.css)
    ========================================================================== */
 
 /* CONTENEDOR DE BOTONES (Abajo a la izquierda) */
@@ -12,51 +12,51 @@
     z-index: 10000;  
 }
 
-/* EL TRAPECIO: Más ancho ARRIBA, alto total de 24px */
+/* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.3); /* Color base por defecto */
     border: none;
     cursor: pointer;
     font-family: Arial, sans-serif;
     font-size: 11px;
     font-weight: bold;
-    height: 0;
     
-    /* CAMBIO 1: Usamos border-top en lugar de border-bottom para voltear el trapecio */
-    border-top: 24px solid rgba(255, 255, 255, 0.3); 
+    /* CONTROL DE TAMAÑO: Todos miden exactamente igual */
+    width: 65px; 
+    height: 24px;
     
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
+    /* REDONDEADO DE CANTOS COMPATIBLE: Un suavizado de 2px en las esquinas */
+    border-radius: 2px;
     
+    /* CENTRADO DEFINITIVO DEL TEXTO: Vuelve a estar arriba en medio automáticamente */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     
-    /* CAMBIO 2: Al invertir el borde, empujamos el texto hacia arriba para centrarlo */
-    margin-top: -24px; 
-    height: 24px;
-    
-    padding: 0 12px; 
-    
-    /* El texto ahora se lee con más fuerza desde el principio */
+    /* El texto hereda el color del tema con fuerza */
     color: var(--elemento);
     opacity: 0.8;
     transition: all 0.2s ease;
+
+    /* EL CORTE TRAPEZOIDAL RECTO (Más ancho arriba):
+       Mete las esquinas inferiores 6px hacia adentro, dejando la parte superior al 100% */
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
 
-/* NUEVO ONMOUSE GENERAL: Casi sin transparencia */
+/* NUEVO ONMOUSE GENERAL: Alta opacidad */
 .btn-trapecio:hover {
     opacity: 1;
-    border-top-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8);
 }
 
-/* COLORES OFFMOUSE (Toman la intensidad del antiguo onmouse: 50%) */
-.btn-r { border-top-color: rgba(230, 50, 50, 0.5); }
-.btn-g { border-top-color: rgba(50, 230, 50, 0.5); }
-.btn-b { border-top-color: rgba(50, 150, 230, 0.5); }
+/* COLORES OFFMOUSE (Intensidad del 50% en reposo) */
+.btn-invertir { background: rgba(255, 255, 255, 0.3); }
+.btn-r { background: rgba(230, 50, 50, 0.5); }
+.btn-g { background: rgba(50, 230, 50, 0.5); }
+.btn-b { background: rgba(50, 150, 230, 0.5); }
 
 /* NUEVO ONMOUSE ESPECÍFICO: Brillo intenso (90% de opacidad) al pasar el cursor */
-.btn-r:hover { border-top-color: rgba(230, 50, 50, 0.9); }
-.btn-g:hover { border-top-color: rgba(50, 230, 50, 0.9); }
-.btn-b:hover { border-top-color: rgba(50, 150, 230, 0.9); }
-
+.btn-invertir:hover { background: rgba(255, 255, 255, 0.7); }
+.btn-r:hover { background: rgba(230, 50, 50, 0.9); }
+.btn-g:hover { background: rgba(50, 230, 50, 0.9); }
+.btn-b:hover { background: rgba(50, 150, 230, 0.9); }
