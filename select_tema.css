@@ -1,56 +1,35 @@
 /* ==========================================================================
-   ESTRUCTURA Y LÍNEAS HORIZONTALES PARALELAS (select_tema.css)
+   ESTRUCTURA Y LÍNEA HORIZONTAL SUPERIOR CALIBRADA (select_tema.css)
    ========================================================================== */
 
-/* CONTENEDOR GENERAL: Fija todo el bloque abajo a la izquierda */
+/* CONTENEDOR GENERAL: Fija todo el bloque sólidamente abajo a la izquierda */
 .contenedor-modulo-temas {
     position: fixed;
-    bottom: 25px;       
-    left: 25px;         
-    z-index: 10000;     
-}
-
-/* NUEVO: Dibujamos la línea fina de 1px usando el contenedor general.
-   Como este contenedor está 10px más arriba del panel interno, ajustamos la posición vertical */
-.contenedor-modulo-temas::before {
-    content: "";
-    position: absolute;
-    
-    /* CALIBRACIÓN VERTICAL: 
-       La línea gruesa está en el top: 0 del panel interno (que tiene padding-top: 10px).
-       Para que esta línea quede exactamente 2px por debajo de la gruesa, la colocamos a 15px del contenedor principal. */
-    top: 15px;           
-    
-    height: 1px;        /* El grosor exacto de 1px */
-    background-color: var(--elemento); 
-    opacity: 0.6;       /* Más tenue para hacer contraste */
-    
-    /* Mismo recorrido horizontal calibrado */
-    left: 20px;         /* Ajustado sumando el padding para que empiece a los 6px del botón */
-    width: 213px;       
-    pointer-events: none;
-    z-index: 3;
+    bottom: 25px;       /* Distancia desde el suelo de la pantalla */
+    left: 25px;         /* Distancia desde el borde izquierdo */
+    z-index: 10000;     /* Por encima de la malla general */
 }
 
 /* CONTENEDOR INTERNO DE BOTONES: Organiza los trapecios en fila */
 .panel-control-temas {
     position: relative;
     display: flex;
-    gap: 8px;           
-    padding-top: 10px;  
+    gap: 8px;           /* Separación limpia de 8px entre botones */
+    padding-top: 10px;  /* Espacio superior para que la línea no choque con los trapecios */
 }
 
-/* DIBUJO DE LA LÍNEA HORIZONTAL SUPERIOR DIRECTA (Mantenida intacta) */
+/* DIBUJO DE LA LÍNEA HORIZONTAL SUPERIOR DIRECTA (3px de grosor) */
 .panel-control-temas::before {
     content: "";
     position: absolute;
-    top: 0;             
-    height: 3px;        /* El grosor de 3px */
-    background-color: var(--elemento); 
-    left: 6px;          
-    width: 213px;       
-    pointer-events: none; 
-    z-index: 3;
+    top: 0;             /* Colocada justo encima de los botones */
+    height: 3px;        /* El grosor exacto de 3px que pedías */
+    background-color: var(--elemento); /* Color dinámico del tema activo */
+    /* CÁLCULO DE POSICIÓN REQUERIDO:*/
+    left: 6px; /* Empieza 6px más adelante del primer botón: left = 6px */       
+    width: 205px; /* la línea mide exactamente 205px de largo (211px - 6px de desfase inicial) */     
+    
+    pointer-events: none; /* Evita que la línea interfiera con los clics */
 }
 
 /* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Exactamente 4 en total) */
