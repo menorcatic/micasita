@@ -25,43 +25,26 @@
     top: 0;             /* Colocada justo encima de los botones */
     height: 3px;        /* El grosor exacto de 3px que pedías */
     background-color: var(--elemento); /* Color dinámico del tema activo */
-    
-    /* CÁLCULO DE POSICIÓN REQUERIDO:
-       - Empieza 6px más adelante del primer botón: left = 6px
-       - Termina donde empieza el cuarto botón (B): 
-         Cada botón mide 65px y el espacio (gap) es de 8px.
-         Los 3 primeros botones + 3 espacios ocupan exactamente 211px.
-         Por tanto, la línea mide exactamente 205px de largo (211px - 6px de desfase inicial). */
-    left: 6px;          
-    width: 205px;       
+    /* CÁLCULO DE POSICIÓN REQUERIDO:*/
+    left: 6px; // - Empieza 6px más adelante del primer botón: left = 6px        
+    width: 205px; //la línea mide exactamente 205px de largo (211px - 6px de desfase inicial). */      
     
     pointer-events: none; /* Evita que la línea interfiera con los clics */
 }
 
-/*
-// LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Patrón de rejilla táctica) 
-.marco-modulo-decorativo::after {
+/* DIBUJO DE LA SEGUNDA LÍNEA HORIZONTAL FINA (1px de grosor) */
+.panel-control-temas::after {
     content: "";
     position: absolute;
-    top: -2px;
-    right: 15px;
-    width: 60px;
-    height: 6px;
-    opacity: 0.7;
+    top: 5px;           
+    height: 1px;        /* El grosor exacto de 1px que pedías */
+    background-color: var(--elemento); /* Mismo color dinámico del tema activo */
+    left: 6px;          
+    width: 213px;       
     pointer-events: none;
-    
-    background-image: repeating-linear-gradient(
-        -45deg,
-        var(--elemento),
-        var(--elemento) 4px,
-        transparent 4px,
-        transparent 8px
-    );
-    
-    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
+    z-index: 2;
+    opacity: 0.6; /* Un poco más suave que la gruesa para que haga contraste de radar */
 }
-
-*/
 
 /* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Exactamente 4 en total) */
 .marco-modulo-decorativo::after {
