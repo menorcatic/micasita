@@ -35,7 +35,7 @@
         transparent 2px,          /* Empieza el hueco vacío */
         transparent 4px,          /* Termina el hueco vacío a los 4px (2px + 2px) */
         var(--elemento) 4px,      /* Empieza la línea fina */
-        var(--elemento) 15px       /* Termina la línea fina a los antes >> 5px */
+        var(--elemento) 5px       /* Termina la línea fina a los antes >> 5px */
     );
     
     /* Coordenadas horizontales exactas */
