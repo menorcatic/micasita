@@ -1,24 +1,21 @@
-
 /* ==========================================================================
-   ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO
+   ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO (select_tema.css)
    ========================================================================== */
 
-/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones */
+/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda */
 .contenedor-modulo-temas {
     position: fixed;
-    bottom: 18px;    /* Ajustado para encajar bajo los botones */
-    left: 18px;      
+    bottom: 20px;       /* Distancia desde el suelo de la pantalla */
+    left: 20px;         /* Distancia desde el borde izquierdo */
     padding: 12px 14px; /* Espacio interno para que respiren los botones */
     z-index: 10000;
 }
 
-/* Reajustamos el contenedor interno de botones para que fluya en el nuevo marco */
+/* CONTENEDOR INTERNO DE BOTONES: Fluye limpio dentro del marco */
 .panel-control-temas {
     position: relative;
-    bottom: 0;
-    left: 0;
     display: flex;
-    gap: 8px;
+    gap: 8px;           /* Separación entre los trapecios */
 }
 
 /* MARCO INDUSTRIAL PRINCIPAL (Línea exterior seccionada) */
@@ -28,7 +25,7 @@
     z-index: -1;
     border: 2px solid var(--elemento);
     opacity: 0.8;
-    background-color: rgba(5, 10, 25, 0.6); /* Fondo oscuro translúcido para el bloque */
+    background-color: rgba(5, 10, 25, 0.6); /* Fondo oscuro translúcido */
     
     /* Chaflán invertido en la esquina superior derecha y solapa abajo izquierda */
     clip-path: polygon(
@@ -39,12 +36,12 @@
     );
 }
 
-/* SEGUNDA LÍNEA INTERIOR Y ADORNO DE SOLAPA EXTRA (Línea Fina) */
+/* SEGUNDA LÍNEA INTERIOR Y ADORNO DE SOLAPA EXTRA (Línea Fina Punteada) */
 .marco-modulo-decorativo::before {
     content: "";
     position: absolute;
-    inset: 3px; /* Se pega a la línea exterior a 3px */
-    border: 1px dashed var(--elemento); /* Línea discontinua tipo radar/plano */
+    inset: 3px; 
+    border: 1px dashed var(--elemento); 
     opacity: 0.5;
     pointer-events: none;
     
@@ -60,17 +57,13 @@
 .marco-modulo-decorativo::after {
     content: "";
     position: absolute;
-    
-    /* Los ubicamos en la esquina superior derecha (en el espacio de la solapa/corte) */
     top: -2px;
     right: 25px;
     width: 60px;
     height: 6px;
-    
     opacity: 0.7;
     pointer-events: none;
     
-    /* TRUCO CSS: Crea una fila de pequeños paralelogramos repetidos usando rayas inclinadas */
     background-image: repeating-linear-gradient(
         -45deg,
         var(--elemento),
@@ -79,22 +72,16 @@
         transparent 8px
     );
     
-    /* Recorta la fila para darle un acabado aerodinámico en flecha */
     clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
-/* CONTENEDOR DE BOTONES (Abajo a la izquierda) */
-.panel-control-temas {
-    position: fixed;
-    bottom: 25px;    
-    left: 25px;      
-    display: flex;
-    gap: 8px;        
-    z-index: 10000;  
-}
+
+/* ==========================================================================
+   DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
+   ========================================================================== */
 
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
-    background: rgba(255, 255, 255, 0.3); /* Color base por defecto */
+    background: rgba(255, 255, 255, 0.3); 
     border: none;
     cursor: pointer;
     font-family: Arial, sans-serif;
@@ -108,18 +95,16 @@
     /* REDONDEADO DE CANTOS COMPATIBLE: Un suavizado de 2px en las esquinas */
     border-radius: 2px;
     
-    /* CENTRADO DEFINITIVO DEL TEXTO: Vuelve a estar arriba en medio automáticamente */
+    /* CENTRADO DEFINITIVO DEL TEXTO */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     
-    /* El texto hereda el color del tema con fuerza */
     color: var(--elemento);
     opacity: 0.8;
     transition: all 0.2s ease;
 
-    /* EL CORTE TRAPEZOIDAL RECTO (Más ancho arriba):
-       Mete las esquinas inferiores 6px hacia adentro, dejando la parte superior al 100% */
+    /* EL CORTE TRAPEZOIDAL RECTO (Más ancho arriba) */
     clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
 
@@ -129,13 +114,13 @@
     background: rgba(255, 255, 255, 0.8);
 }
 
-/* COLORES OFFMOUSE (Intensidad del 50% en reposo) */
+/* COLORES OFFMOUSE (Intensidad en reposo) */
 .btn-invertir { background: rgba(255, 255, 255, 0.3); }
 .btn-r { background: rgba(230, 50, 50, 0.5); }
 .btn-g { background: rgba(50, 230, 50, 0.5); }
 .btn-b { background: rgba(50, 150, 230, 0.5); }
 
-/* NUEVO ONMOUSE ESPECÍFICO: Brillo intenso (90% de opacidad) al pasar el cursor */
+/* NUEVO ONMOUSE ESPECÍFICO: Brillo intenso al pasar el cursor */
 .btn-invertir:hover { background: rgba(255, 255, 255, 0.7); }
 .btn-r:hover { background: rgba(230, 50, 50, 0.9); }
 .btn-g:hover { background: rgba(50, 230, 50, 0.9); }
