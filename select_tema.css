@@ -1,77 +1,50 @@
-
 /* ==========================================================================
-   DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
+   CARRIL DE PARALELOGRAMOS SUPERIOR (select_tema.css)
    ========================================================================== */
-/* CONTENEDOR GENERAL: Fija todo el bloque sólidamente abajo a la izquierda */
+
+/* CONTENEDOR GENERAL: Mantiene el bloque fijado abajo a la izquierda */
 .contenedor-modulo-temas {
     position: fixed;
-    bottom: 25px;       /* Distancia desde el suelo de la pantalla */
-    left: 25px;         /* Distancia desde el borde izquierdo */
-    z-index: 10000;     /* Por encima de la malla general */
+    bottom: 25px;       
+    left: 25px;         
+    z-index: 10000;     
 }
 
-/* CONTENEDOR INTERNO DE BOTONES: Organiza los trapecios en fila */
+/* CONTENEDOR INTERNO DE BOTONES: Genera la fila de trapecios */
 .panel-control-temas {
     position: relative;
     display: flex;
-    gap: 8px;           /* Separación limpia de 8px entre botones */
-    padding-top: 10px;  /* Espacio superior para que la línea no choque con los trapecios */
+    gap: 8px;           
+    padding-top: 14px;  /* Dejamos 14px de espacio arriba para que quepa la hilera */
 }
 
-/* DIBUJO DE LAS DOS LÍNEAS HORIZONTALES PARALELAS EN UN SOLO BLOQUE */
+/* LA HILERA DE PARALELOGRAMOS COMPLETA (Sustituye a las líneas horizontales) */
 .panel-control-temas::before {
     content: "";
     position: absolute;
     top: 0;             /* Colocada justo encima de los botones */
+    height: 6px;        /* El alto de cada pequeño paralelogramo */
     
-    /* ALTURA TOTAL: 3px (gruesa) + 2px (separación) + 1px (fina) = 6px de alto */
-    height: 5px;        
-    
-    /* EL TRUCO DEL DEGRADADO: Dibuja ambas líneas en un solo trazo */
-    background: linear-gradient(
-        to bottom,
-        var(--elemento) 0px,      /* Empieza la línea gruesa */
-        var(--elemento) 2px,      /* Termina la línea gruesa a los 2px */
-        transparent 2px,          /* Empieza el hueco vacío */
-        transparent 4px,          /* Termina el hueco vacío a los 4px (2px + 2px) */
-        var(--elemento) 4px,      /* Empieza la línea fina */
-        var(--elemento) 5px       /* Termina la línea fina a los antes >> 5px */
-    );
-    
-    /* Coordenadas horizontales exactas */
+    /* COORDENADAS HORIZONTALES:
+       Arranca alineada con el primer botón (left: 6px) y recorre todo el ancho 
+       hasta llegar al final de los botones. (Calculado: 213px + los 65px del botón B = 278px) */
     left: 6px;          
-    width: 213px;       /* Termina justo al inicio del cuarto botón */
+    width: 278px;       
     
-    pointer-events: none; 
-    z-index: 2;
-}
-
-
- /* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Hilera micro-compacta) */
-.marco-modulo-decorativo::after {
-    content: "";
-    position: absolute;
-    top: -2px;
-    right: 15px; /* Tu margen seguro de 15px */
-    
-    /* HACEMOS EL PARALELOGRAMO BASE MÁS PEQUEÑO */
-    width: 8px;
-    height: 6px; 
-    
-    background-color: var(--elemento); 
     opacity: 0.7;
     pointer-events: none;
+    z-index: 2;
     
-    /* CAMBIO REQUERIDO: Usamos incrementos milimétricos de 3 en 3 píxeles hacia la izquierda.
-       Esto pega las 4 figuras casi juntas en un bloque diminuto, evitando cualquier desborde. */
-    box-shadow: 
-        -10px 0 0 0 var(--elemento),  /* Segundo paralelogramo (pegado a -3px) */
-        -20px 0 0 0 var(--elemento),  /* Tercer paralelogramo (pegado a -6px) */
-        -30px 0 0 0 var(--elemento);  /* Cuarto paralelogramo (pegado a -9px) */
-    
-    transform: skewX(-45deg); 
+    /* EL DEGRADADO QUE PINTA LOS PARALELOGRAMOS UNO TRAS OTRO:
+       Crea pequeñas cuñas de 5px de ancho separadas por 4px de espacio transparente */
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--elemento),
+        var(--elemento) 5px,
+        transparent 5px,
+        transparent 9px
+    );
 }
-
 
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
