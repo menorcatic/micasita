@@ -40,6 +40,26 @@ function renderizarColumnaDerecha() {
             valorActual = '--';
         }
 
+        // --- ASIGNACIÓN DE UNIDADES ---
+        let unidad = '';
+        
+        // Si el valor no es un guión, calculamos su unidad
+        if (valorActual !== '--') {
+            if (sensor.id === 'VBat') {
+                unidad = ' V';         // Caso especial: V. Batería es del grupo potencia pero usa Voltios
+            } else if (sensor.grupo === 'potencia') {
+                unidad = ' W';         // Vatios
+            } else if (sensor.grupo === 'temperatura') {
+                unidad = 'º';          // Grados (puedes cambiarlo por ' ºC' si lo prefieres)
+            } else if (sensor.grupo === 'densidad') {
+                unidad = ' g/ml';      // Densidad
+            } else if (sensor.grupo === 'nivel') {
+                unidad = ' L';         // Litros para los depósitos
+            } else if (sensor.grupo === 'flujo') {
+                unidad = ' L/h';       // Unidad de ejemplo para el flujo, cámbiala si usas otra
+            }
+        }
+
         const estilosEstablecidos = obtenerColorRelleno(sensor.id, valorActual);
 
         const caja = document.createElement('div');
@@ -48,8 +68,8 @@ function renderizarColumnaDerecha() {
         caja.style.backgroundColor = estilosEstablecidos.fondo;
         caja.style.color = estilosEstablecidos.texto; 
         
-        caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
-        
+        //caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
+        caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}${unidad}`;
         panel.appendChild(caja);
     });
 }
