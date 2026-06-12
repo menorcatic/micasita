@@ -31,11 +31,11 @@
     background: linear-gradient(
         to bottom,
         var(--elemento) 0px,      /* Empieza la línea gruesa */
-        var(--elemento) 3px,      /* Termina la línea gruesa a los 3px */
-        transparent 3px,          /* Empieza el hueco vacío */
-        transparent 5px,          /* Termina el hueco vacío a los 5px (3px + 2px) */
-        var(--elemento) 5px,      /* Empieza la línea fina */
-        var(--elemento) 6px       /* Termina la línea fina a los 6px */
+        var(--elemento) 2px,      /* Termina la línea gruesa a los 3px */
+        transparent 2px,          /* Empieza el hueco vacío */
+        transparent 4px,          /* Termina el hueco vacío a los 5px (3px + 2px) */
+        var(--elemento) 4px,      /* Empieza la línea fina */
+        var(--elemento) 5px       /* Termina la línea fina a los 6px */
     );
     
     /* Coordenadas horizontales exactas */
