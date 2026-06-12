@@ -1,18 +1,18 @@
 /* ==========================================================================
-   PANEL DE BOTONES TRAPEZOIDALES (select_tema.css)
+   PANEL DE BOTONES TRAPEZOIDALES (select_tema.css) - CORREGIDO
    ========================================================================== */
 
 /* CONTENEDOR DE BOTONES (Abajo a la izquierda) */
 .panel-control-temas {
     position: fixed;
-    bottom: 25px;    /* Alineado con el espaciado del body */
-    left: 25px;      /* Alineado con el espaciado del body */
+    bottom: 25px;    
+    left: 25px;      
     display: flex;
-    gap: 8px;        /* Separación limpia entre botones */
-    z-index: 10000;  /* Por encima del marco y la malla para poder hacer clic */
+    gap: 8px;        
+    z-index: 10000;  
 }
 
-/* EL TRAPECIO: Más ancho arriba, alto total de 24px */
+/* EL TRAPECIO: Más ancho ARRIBA, alto total de 24px */
 .btn-trapecio {
     background: transparent;
     border: none;
@@ -22,38 +22,41 @@
     font-weight: bold;
     height: 0;
     
-    /* Crea la altura real de 24px mediante el grosor del borde */
-    border-bottom: 24px solid rgba(255, 255, 255, 0.15); 
+    /* CAMBIO 1: Usamos border-top en lugar de border-bottom para voltear el trapecio */
+    border-top: 24px solid rgba(255, 255, 255, 0.3); 
     
-    /* Ángulo diagonal simétrico: hace que la parte superior sea más ancha */
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     
-    /* Centrado perfecto del texto en el área visible */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 0;
+    
+    /* CAMBIO 2: Al invertir el borde, empujamos el texto hacia arriba para centrarlo */
+    margin-top: -24px; 
+    height: 24px;
+    
     padding: 0 12px; 
     
-    /* El texto hereda el color del tema de forma suave */
+    /* El texto ahora se lee con más fuerza desde el principio */
     color: var(--elemento);
-    opacity: 0.7;
+    opacity: 0.8;
     transition: all 0.2s ease;
 }
 
-/* Efecto al pasar el cursor (Hover) */
+/* NUEVO ONMOUSE GENERAL: Casi sin transparencia */
 .btn-trapecio:hover {
     opacity: 1;
-    border-bottom-color: rgba(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.8);
 }
 
-/* COLORES BASE APAGADOS (Estilo militar/industrial de baja intensidad) */
-.btn-r { border-bottom-color: rgba(230, 50, 50, 0.25); }
-.btn-g { border-bottom-color: rgba(50, 230, 50, 0.25); }
-.btn-b { border-bottom-color: rgba(50, 150, 230, 0.25); }
+/* COLORES OFFMOUSE (Toman la intensidad del antiguo onmouse: 50%) */
+.btn-r { border-top-color: rgba(230, 50, 50, 0.5); }
+.btn-g { border-top-color: rgba(50, 230, 50, 0.5); }
+.btn-b { border-top-color: rgba(50, 150, 230, 0.5); }
 
-/* Intensidad media al pasar el cursor */
-.btn-r:hover { border-bottom-color: rgba(230, 50, 50, 0.5); }
-.btn-g:hover { border-bottom-color: rgba(50, 230, 50, 0.5); }
-.btn-b:hover { border-bottom-color: rgba(50, 150, 230, 0.5); }
+/* NUEVO ONMOUSE ESPECÍFICO: Brillo intenso (90% de opacidad) al pasar el cursor */
+.btn-r:hover { border-top-color: rgba(230, 50, 50, 0.9); }
+.btn-g:hover { border-top-color: rgba(50, 230, 50, 0.9); }
+.btn-b:hover { border-top-color: rgba(50, 150, 230, 0.9); }
+
