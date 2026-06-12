@@ -32,20 +32,6 @@
     pointer-events: none; /* Evita que la línea interfiera con los clics */
 }
 
-/* DIBUJO DE LA SEGUNDA LÍNEA HORIZONTAL FINA (1px de grosor) */
-.panel-control-temas::after {
-    content: "";
-    position: absolute;
-    top: 5px;           
-    height: 1px;        /* El grosor exacto de 1px que pedías */
-    background-color: var(--elemento); /* Mismo color dinámico del tema activo */
-    left: 6px;          
-    width: 213px;       
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.6; /* Un poco más suave que la gruesa para que haga contraste de radar */
-}
-
 /* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Exactamente 4 en total) */
 .marco-modulo-decorativo::after {
     content: "";
