@@ -27,14 +27,12 @@
     top: 0;             
     height: 6px;        
     
-    /* MODIFICACIÓN 1: Movemos el inicio 4px a la derecha para eliminar el trozo izquierdo */
-    left: 10px;          
+    /* Volvemos a las medidas base que cubrían bien los botones */
+    left: 6px;          
+    width: 278px;       
     
-    /* MODIFICACIÓN 2: Ajustamos el ancho a 272px (-3px) para clavar el final derecho */
-    width: 272px;       
-    
-    /* Mantenemos el patrón alineado */
-    background-position: 4px 0; 
+    /* Quitamos el desplazamiento que encimaba los bloques */
+    background-position: 0 0; 
     
     opacity: 0.7;
     pointer-events: none;
@@ -47,6 +45,9 @@
         transparent 5px,
         transparent 9px
     );
+
+    /* TRUCO MAESTRO: Corta 4px de la izq y 3px de la der como una guillotina fija */
+    clip-path: inset(0 3px 0 4px);
 }
 
 /* 2. HILERA DE PARALELOGRAMOS INFERIOR */
@@ -56,14 +57,12 @@
     top: calc(100% - 20px); 
     height: 6px;        
     
-    /* MODIFICACIÓN 1: Mismo ajuste de inicio a 10px */
-    left: 10px;          
+    /* Volvemos a las medidas base que cubrían bien los botones */
+    left: 6px;          
+    width: 278px;       
     
-    /* MODIFICACIÓN 2: Mismo ajuste de ancho a 272px */
-    width: 272px;       
-    
-    /* Mantenemos el patrón alineado */
-    background-position: 4px 0; 
+    /* Quitamos el desplazamiento que encimaba los bloques */
+    background-position: 0 0; 
     
     opacity: 0.7;
     pointer-events: none;
@@ -76,7 +75,11 @@
         transparent 5px,
         transparent 9px
     );
+
+    /* TRUCO MAESTRO: Mismo corte limpio en los extremos para la rejilla de abajo */
+    clip-path: inset(0 3px 0 4px);
 }
+
 
 
 
