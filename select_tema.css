@@ -34,11 +34,9 @@
     /* Chaflán invertido en la esquina superior derecha y solapa abajo izquierda */
     clip-path: polygon(
         0% 0%, 
-        60% 0%,                  /* Avanza recto por arriba hasta el 60% */
-        60% 100%,                /* Baja verticalmente cortando la línea superior */
-        100% 100%,               /* Sigue por el suelo hacia la derecha */
-        12px 100%, 
-        0% calc(100% - 12px)     /* Cierra la solapa inferior izquierda */
+        calc(100% - 14px) 0%, 100% 11px, 
+        100% 100%, 
+        11px 100%, 0% calc(100% - 11px)
     );
 }
 
