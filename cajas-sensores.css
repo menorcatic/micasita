@@ -1,21 +1,31 @@
-/* COLUMNA DERECHA: La ampliamos un poco para dar espacio al título lateral */
+/* COLUMNA DERECHA: Centrada verticalmente y con 25px menos de ancho */
 .columna-derecha {
-    width: 160px; 
+    width: 135px; /* Reducido de 160px a 135px (-25px) */
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Reducimos ligeramente el espacio entre cajas para ganar altura */
+    justify-content: center; /* Centra el conjunto de cajas verticalmente en la pantalla */
+    gap: 4px; 
+    position: fixed; /* Asegura que se fije a la derecha de la pantalla */
+    right: 25px;    /* Distancia desde el borde derecho (ajústalo si choca con tu marco) */
+    top: 0;
+    height: 100vh;  /* Toma todo el alto de la pantalla para poder centrar */
+    pointer-events: none; /* Permite clicks detrás si es necesario */
 }
 
-/* LA CAJA DEL SENSOR: Ahora es una fila horizontal */
+/* LA CAJA DEL SENSOR: Activamos pointer-events para que se pueda interactuar con ellas */
 .caja-sensor {
+    pointer-events: auto; 
     display: flex;
-    align-items: center;       /* Centra el título y el valor verticalmente */
-    justify-content: space-between; /* Envía el título a la izquierda y el valor a la derecha */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Línea más sutil estilo Sci-Fi */
+    align-items: center;       
+    justify-content: space-between; 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
     border-radius: 4px; 
-    padding: 3px 6px;          /* Compactamos el relleno vertical (arriba/abajo) */
-    background-color: rgba(255, 255, 255, 0.03); /* Un toque sutil de fondo */
+    padding: 3px 6px;          
+    background-color: rgba(255, 255, 255, 0.03); 
     transition: all 0.3s ease;
+    font-size: 14px;           
+    font-weight: bold;
+    color: #ffffff;
 }
 
 /* EL TÍTULO DEL SENSOR: Ahora está frente a la caja, alineado a la izquierda */
