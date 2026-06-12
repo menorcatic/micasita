@@ -1,24 +1,39 @@
+/* COLUMNA DERECHA: La ampliamos un poco para dar espacio al título lateral */
 .columna-derecha {
-    width: 110px; 
+    width: 160px; 
     display: flex;
     flex-direction: column;
-    gap: 5px; 
+    gap: 4px; /* Reducimos ligeramente el espacio entre cajas para ganar altura */
 }
+
+/* LA CAJA DEL SENSOR: Ahora es una fila horizontal */
 .caja-sensor {
-    border: 1px solid #ffffff; 
-    border-radius: 6px; 
-    padding: 4px; 
-    text-align: center;
-    font-size: 11px; 
+    display: flex;
+    align-items: center;       /* Centra el título y el valor verticalmente */
+    justify-content: space-between; /* Envía el título a la izquierda y el valor a la derecha */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Línea más sutil estilo Sci-Fi */
+    border-radius: 4px; 
+    padding: 3px 6px;          /* Compactamos el relleno vertical (arriba/abajo) */
+    background-color: rgba(255, 255, 255, 0.03); /* Un toque sutil de fondo */
+    transition: all 0.3s ease;
+}
+
+/* EL TÍTULO DEL SENSOR: Ahora está frente a la caja, alineado a la izquierda */
+.caja-sensor span {
+    display: inline-block;
+    font-size: 9px;            /* Subimos a 9px para que sea legible en mayúsculas */
+    color: #888888;            /* Gris tecnológico */
+    text-transform: uppercase;
+    text-align: left;
+    padding-right: 5px;        /* Separación con el número */
+    font-weight: normal;       /* Menos peso para que resalte más el dato */
+}
+
+/* EL VALOR EN SÍ (El texto principal de la caja) */
+/* Nota: Como tu JS probablemente imprime el texto del número suelto dentro de .caja-sensor,
+   este estilo afecta directamente a ese texto */
+.caja-sensor {
+    font-size: 11px;           /* Aumentado a 14px como pedías */
     font-weight: bold;
     color: #ffffff;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-}
-.caja-sensor span {
-    display: block;
-    font-size: 8px; 
-    color: #aaaaaa;
-    margin-bottom: 2px;
-    text-transform: uppercase;
 }
