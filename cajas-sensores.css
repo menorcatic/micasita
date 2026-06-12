@@ -23,7 +23,7 @@
     background-color: rgba(255, 255, 255, 0.03); 
     transition: all 0.3s ease;
     /* TEXTO PRINCIPAL: El número del sensor y su unidad */
-    font-size: 14px;           
+    font-size: 13px;           
     font-weight: bold;
     color: #ffffff;
     padding-right: 10px; /* Era 6px, al sumarle 4px queda en 10px */
@@ -37,7 +37,7 @@
     padding-right: 5px;        
     font-weight: normal;       
     /* TEXTO SECUNDARIO: El nombre identificador del sensor */
-    font-size: 9px;            
+    font-size: 8px;            
     color: #888888;            
 }
 
