@@ -2,6 +2,51 @@
 /* ==========================================================================
    DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
    ========================================================================== */
+/* CONTENEDOR GENERAL: Fija todo el bloque sólidamente abajo a la izquierda */
+.contenedor-modulo-temas {
+    position: fixed;
+    bottom: 25px;       /* Distancia desde el suelo de la pantalla */
+    left: 25px;         /* Distancia desde el borde izquierdo */
+    z-index: 10000;     /* Por encima de la malla general */
+}
+
+/* CONTENEDOR INTERNO DE BOTONES: Organiza los trapecios en fila */
+.panel-control-temas {
+    position: relative;
+    display: flex;
+    gap: 8px;           /* Separación limpia de 8px entre botones */
+    padding-top: 10px;  /* Espacio superior para que la línea no choque con los trapecios */
+}
+
+/* DIBUJO DE LAS DOS LÍNEAS HORIZONTALES PARALELAS EN UN SOLO BLOQUE */
+.panel-control-temas::before {
+    content: "";
+    position: absolute;
+    top: 0;             /* Colocada justo encima de los botones */
+    
+    /* ALTURA TOTAL: 3px (gruesa) + 2px (separación) + 1px (fina) = 6px de alto */
+    height: 6px;        
+    
+    /* EL TRUCO DEL DEGRADADO: Dibuja ambas líneas en un solo trazo */
+    background: linear-gradient(
+        to bottom,
+        var(--elemento) 0px,      /* Empieza la línea gruesa */
+        var(--elemento) 3px,      /* Termina la línea gruesa a los 3px */
+        transparent 3px,          /* Empieza el hueco vacío */
+        transparent 5px,          /* Termina el hueco vacío a los 5px (3px + 2px) */
+        var(--elemento) 5px,      /* Empieza la línea fina */
+        var(--elemento) 6px       /* Termina la línea fina a los 6px */
+    );
+    
+    /* Coordenadas horizontales exactas */
+    left: 6px;          
+    width: 213px;       /* Termina justo al inicio del cuarto botón */
+    
+    pointer-events: none; 
+    z-index: 2;
+}
+
+
 
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
