@@ -1,31 +1,35 @@
 /* ==========================================================================
    ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO (select_tema.css)
    ========================================================================== */
-
-/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda*/
+/* CONTENEDOR GENERAL: Fijamos el tamaño físico real para que el marco no explote */
 .contenedor-modulo-temas {
     position: fixed;
-    bottom: 20px;       /* Distancia desde el suelo de la pantalla */
-    left: 20px;         /* Distancia desde el borde izquierdo */
-    padding: 12px 14px; /* Espacio interno para que respiren los botones */
-    z-index: 10000;
+    bottom: 25px;       
+    left: 25px;         
+    z-index: 10000;     /* Muy por encima del -1 del marco general de la pantalla */
+    
+    /* CALCULADO: (65px de botón * 4) + (8px de separación * 3) + 28px de relleno interno = 312px */
+    width: 312px;       
+    height: 24px;       /* La altura exacta de tus botones */
+    padding: 12px 14px; 
 }
 
 /* CONTENEDOR INTERNO DE BOTONES: Fluye limpio dentro del marco */
 .panel-control-temas {
     position: relative;
     display: flex;
-    gap: 8px;           /* Separación entre los trapecios */
+    gap: 8px;           
+    z-index: 2;         /* Obliga a los botones a estar ARRIBA del sub-marco */
 }
 
 /* MARCO INDUSTRIAL PRINCIPAL (Línea exterior seccionada) */
 .marco-modulo-decorativo {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 1;         /* Cambiado de -1 a 1 para que flote sobre el fondo y sea visible */
     border: 2px solid var(--elemento);
     opacity: 0.8;
-    background-color: rgba(5, 10, 25, 0.6); /* Fondo oscuro translúcido */
+    background-color: rgba(5, 10, 25, 0.85); /* Un fondo más sólido para tapar la malla */
     
     /* Chaflán invertido en la esquina superior derecha y solapa abajo izquierda */
     clip-path: polygon(
@@ -35,6 +39,43 @@
         12px 100%, 0% calc(100% - 12px)
     );
 }
+
+
+
+/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda
+.contenedor-modulo-temas {
+    position: fixed;
+    bottom: 20px;       // Distancia desde el suelo de la pantalla 
+    left: 20px;         // Distancia desde el borde izquierdo 
+    padding: 12px 14px; // Espacio interno para que respiren los botones 
+    z-index: 10000;
+}
+
+// CONTENEDOR INTERNO DE BOTONES: Fluye limpio dentro del marco 
+.panel-control-temas {
+    position: relative;
+    display: flex;
+    gap: 8px;           // Separación entre los trapecios 
+}
+
+// MARCO INDUSTRIAL PRINCIPAL (Línea exterior seccionada) 
+.marco-modulo-decorativo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 2px solid var(--elemento);
+    opacity: 0.8;
+    background-color: rgba(5, 10, 25, 0.6); // Fondo oscuro translúcido 
+    
+    // Chaflán invertido en la esquina superior derecha y solapa abajo izquierda 
+    clip-path: polygon(
+        0% 0%, 
+        calc(100% - 15px) 0%, 100% 12px, 
+        100% 100%, 
+        12px 100%, 0% calc(100% - 12px)
+    );
+}
+*/
 
 /* SEGUNDA LÍNEA INTERIOR Y ADORNO DE SOLAPA EXTRA (Línea Fina Punteada) */
 .marco-modulo-decorativo::before {
