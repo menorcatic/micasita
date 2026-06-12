@@ -10,15 +10,17 @@
     z-index: 10000;     
 }
 
-/* CONTENEDOR INTERNO DE BOTONES: Genera la fila de trapecios */
+/* CONTENEDOR INTERNO DE BOTONES: Ampliamos el espacio inferior */
 .panel-control-temas {
     position: relative;
     display: flex;
     gap: 8px;           
-    padding-top: 14px;  /* Dejamos 14px de espacio arriba para que quepa la hilera */
+    padding-top: 14px;  
+    /* CAMBIO 1: Dejamos 26px de colchón abajo (14px originales + 12px de desplazamiento) */
+    padding-bottom: 26px; 
 }
 
-/* LA HILERA DE PARALELOGRAMOS COMPLETA (Sustituye a las líneas horizontales) */
+/* LA HILERA DE PARALELOGRAMOS COMPLETA  */
 .panel-control-temas::before {
     content: "";
     position: absolute;
@@ -46,22 +48,22 @@
     );
 }
 
-/* 2. NUEVA HILERA DE PARALELOGRAMOS COMPLETA INFERIOR (Dibujada abajo) */
+/* 2. NUEVA HILERA DE PARALELOGRAMOS COMPLETA INFERIOR (Desplazada 12px más abajo) */
 .panel-control-temas::after {
     content: "";
     position: absolute;
-    bottom: 0;          /* Colocada justo debajo de los botones */
-    height: 6px;        /* Mismo alto de 6px */
     
-    /* Mismo recorrido horizontal calibrado al milímetro */
+    /* CAMBIO 2: En lugar de pegarse al fondo (0), la empujamos 12px hacia abajo 
+       tomando como referencia el final de los botones. */
+    top: calc(100% - 20px); 
+    
+    height: 6px;        
     left: 6px;          
     width: 278px;       
-    
     opacity: 0.7;
     pointer-events: none;
     z-index: 2;
     
-    /* Mismo degradado inclinado para que vayan en paralelo perfecto */
     background-image: repeating-linear-gradient(
         -45deg,
         var(--elemento),
