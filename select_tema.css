@@ -2,13 +2,23 @@
    ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO (select_tema.css)
    ========================================================================== */
 
-/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda */
+/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda
 .contenedor-modulo-temas {
     position: fixed;
     bottom: 20px;       /* Distancia desde el suelo de la pantalla */
     left: 20px;         /* Distancia desde el borde izquierdo */
     padding: 12px 14px; /* Espacio interno para que respiren los botones */
     z-index: 10000;
+}*/
+.contenedor-modulo-temas {
+    position: fixed;
+    bottom: 20px;       /* Distancia desde el suelo de la pantalla */
+    left: 20px;         /* Distancia desde el borde izquierdo */
+    padding: 12px 14px; /* Espacio interno para que respiren los botones */
+    z-index: 10000;
+    
+    /* CAMBIO CLAVE: Obliga al contenedor a estirarse al tamaño exacto de los botones */
+    display: inline-block; 
 }
 
 /* CONTENEDOR INTERNO DE BOTONES: Fluye limpio dentro del marco */
