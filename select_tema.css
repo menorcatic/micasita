@@ -46,6 +46,32 @@
     );
 }
 
+/* 2. NUEVA HILERA DE PARALELOGRAMOS COMPLETA INFERIOR (Dibujada abajo) */
+.panel-control-temas::after {
+    content: "";
+    position: absolute;
+    bottom: 0;          /* Colocada justo debajo de los botones */
+    height: 6px;        /* Mismo alto de 6px */
+    
+    /* Mismo recorrido horizontal calibrado al milímetro */
+    left: 6px;          
+    width: 278px;       
+    
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 2;
+    
+    /* Mismo degradado inclinado para que vayan en paralelo perfecto */
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--elemento),
+        var(--elemento) 5px,
+        transparent 5px,
+        transparent 9px
+    );
+}
+
+
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
     background: rgba(255, 255, 255, 0.3); 
