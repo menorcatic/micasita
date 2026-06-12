@@ -25,7 +25,7 @@
     top: 0;             /* Colocada justo encima de los botones */
     
     /* ALTURA TOTAL: 3px (gruesa) + 2px (separación) + 1px (fina) = 6px de alto */
-    height: 6px;        
+    height: 5px;        
     
     /* EL TRUCO DEL DEGRADADO: Dibuja ambas líneas en un solo trazo */
     background: linear-gradient(
