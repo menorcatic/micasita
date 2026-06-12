@@ -12,9 +12,8 @@
     pointer-events: none; /* Permite clicks detrás si es necesario */
 }
 
-/* LA CAJA DEL SENSOR: Activamos pointer-events para que se pueda interactuar con ellas */
+/* LA CAJA DEL SENSOR (Controla la estructura y el número con su unidad) */
 .caja-sensor {
-    pointer-events: auto; 
     display: flex;
     align-items: center;       
     justify-content: space-between; 
@@ -23,27 +22,21 @@
     padding: 3px 6px;          
     background-color: rgba(255, 255, 255, 0.03); 
     transition: all 0.3s ease;
+    /* TEXTO PRINCIPAL: El número del sensor y su unidad */
     font-size: 14px;           
     font-weight: bold;
     color: #ffffff;
 }
 
-/* EL TÍTULO DEL SENSOR: Ahora está frente a la caja, alineado a la izquierda */
+/* EL TÍTULO DEL SENSOR (Alineado a la izquierda) */
 .caja-sensor span {
     display: inline-block;
-    font-size: 9px;            /* Subimos a 9px para que sea legible en mayúsculas */
-    color: #888888;            /* Gris tecnológico */
     text-transform: uppercase;
     text-align: left;
-    padding-right: 5px;        /* Separación con el número */
-    font-weight: normal;       /* Menos peso para que resalte más el dato */
+    padding-right: 5px;        
+    font-weight: normal;       
+    /* TEXTO SECUNDARIO: El nombre identificador del sensor */
+    font-size: 9px;            
+    color: #888888;            
 }
 
-/* EL VALOR EN SÍ (El texto principal de la caja) */
-/* Nota: Como tu JS probablemente imprime el texto del número suelto dentro de .caja-sensor,
-   este estilo afecta directamente a ese texto */
-.caja-sensor {
-    font-size: 11px;           /* Aumentado a 14px como pedías */
-    font-weight: bold;
-    color: #ffffff;
-}
