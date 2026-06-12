@@ -1,7 +1,89 @@
 /* ==========================================================================
    PANEL DE BOTONES TRAPEZOIDALES FIJOS (select_tema.css)
    ========================================================================== */
+/* ==========================================================================
+   ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO
+   ========================================================================== */
 
+/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones */
+.contenedor-modulo-temas {
+    position: fixed;
+    bottom: 18px;    /* Ajustado para encajar bajo los botones */
+    left: 18px;      
+    padding: 12px 14px; /* Espacio interno para que respiren los botones */
+    z-index: 10000;
+}
+
+/* Reajustamos el contenedor interno de botones para que fluya en el nuevo marco */
+.panel-control-temas {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 8px;
+}
+
+/* MARCO INDUSTRIAL PRINCIPAL (Línea exterior seccionada) */
+.marco-modulo-decorativo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 2px solid var(--elemento);
+    opacity: 0.8;
+    background-color: rgba(5, 10, 25, 0.6); /* Fondo oscuro translúcido para el bloque */
+    
+    /* Chaflán invertido en la esquina superior derecha y solapa abajo izquierda */
+    clip-path: polygon(
+        0% 0%, 
+        calc(100% - 15px) 0%, 100% 12px, 
+        100% 100%, 
+        12px 100%, 0% calc(100% - 12px)
+    );
+}
+
+/* SEGUNDA LÍNEA INTERIOR Y ADORNO DE SOLAPA EXTRA (Línea Fina) */
+.marco-modulo-decorativo::before {
+    content: "";
+    position: absolute;
+    inset: 3px; /* Se pega a la línea exterior a 3px */
+    border: 1px dashed var(--elemento); /* Línea discontinua tipo radar/plano */
+    opacity: 0.5;
+    pointer-events: none;
+    
+    clip-path: polygon(
+        0% 0%, 
+        calc(100% - 14px) 0%, 100% 11px, 
+        100% 100%, 
+        11px 100%, 0% calc(100% - 11px)
+    );
+}
+
+/* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Patrón de rejilla táctica) */
+.marco-modulo-decorativo::after {
+    content: "";
+    position: absolute;
+    
+    /* Los ubicamos en la esquina superior derecha (en el espacio de la solapa/corte) */
+    top: -2px;
+    right: 25px;
+    width: 60px;
+    height: 6px;
+    
+    opacity: 0.7;
+    pointer-events: none;
+    
+    /* TRUCO CSS: Crea una fila de pequeños paralelogramos repetidos usando rayas inclinadas */
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--elemento),
+        var(--elemento) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    
+    /* Recorta la fila para darle un acabado aerodinámico en flecha */
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
+}
 /* CONTENEDOR DE BOTONES (Abajo a la izquierda) */
 .panel-control-temas {
     position: fixed;
