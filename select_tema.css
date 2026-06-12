@@ -26,12 +26,14 @@
     position: absolute;
     top: 0;             
     height: 6px;        
-    left: 6px;          
     
-    /* MODIFICACIÓN 1: Reducimos 3px de ancho para quitar el tramo sobrante de la derecha */
-    width: 275px;       
+    /* MODIFICACIÓN 1: Movemos el inicio 4px a la derecha para eliminar el trozo izquierdo */
+    left: 10px;          
     
-    /* MODIFICACIÓN 2: Desplazamos el patrón 4px a la derecha para arreglar el inicio izquierdo */
+    /* MODIFICACIÓN 2: Ajustamos el ancho a 272px (-3px) para clavar el final derecho */
+    width: 272px;       
+    
+    /* Mantenemos el patrón alineado */
     background-position: 4px 0; 
     
     opacity: 0.7;
@@ -53,12 +55,14 @@
     position: absolute;
     top: calc(100% - 20px); 
     height: 6px;        
-    left: 6px;          
     
-    /* MODIFICACIÓN 1: Mismo ancho de 275px para la derecha */
-    width: 275px;       
+    /* MODIFICACIÓN 1: Mismo ajuste de inicio a 10px */
+    left: 10px;          
     
-    /* MODIFICACIÓN 2: Mismo ajuste de 4px para la izquierda */
+    /* MODIFICACIÓN 2: Mismo ajuste de ancho a 272px */
+    width: 272px;       
+    
+    /* Mantenemos el patrón alineado */
     background-position: 4px 0; 
     
     opacity: 0.7;
@@ -73,6 +77,7 @@
         transparent 9px
     );
 }
+
 
 
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
