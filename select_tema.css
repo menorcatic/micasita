@@ -25,17 +25,17 @@
     top: 0;             /* Colocada justo encima de los botones */
     
     /* ALTURA TOTAL: 3px (gruesa) + 2px (separación) + 1px (fina) = 6px de alto */
-    height: 4px;        
+    height: 5px;        
     
     /* EL TRUCO DEL DEGRADADO: Dibuja ambas líneas en un solo trazo */
     background: linear-gradient(
         to bottom,
         var(--elemento) 0px,      /* Empieza la línea gruesa */
-        var(--elemento) 2px,      /* Termina la línea gruesa a los 3px */
+        var(--elemento) 2px,      /* Termina la línea gruesa a los 2px */
         transparent 2px,          /* Empieza el hueco vacío */
-        transparent 4px,          /* Termina el hueco vacío a los 5px (3px + 2px) */
+        transparent 4px,          /* Termina el hueco vacío a los 4px (2px + 2px) */
         var(--elemento) 4px,      /* Empieza la línea fina */
-        var(--elemento) 5px       /* Termina la línea fina a los 6px */
+        var(--elemento) 15px       /* Termina la línea fina a los antes >> 5px */
     );
     
     /* Coordenadas horizontales exactas */
