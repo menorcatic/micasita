@@ -1,15 +1,15 @@
 /* COLUMNA DERECHA: Centrada verticalmente y con 25px menos de ancho */
 .columna-derecha {
-    width: 135px; /* Reducido de 160px a 135px (-25px) */
+    width: 135px; 
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra el conjunto de cajas verticalmente en la pantalla */
     gap: 4px; 
-    position: fixed; /* Asegura que se fije a la derecha de la pantalla */
-    right: 25px;    /* Distancia desde el borde derecho (ajústalo si choca con tu marco) */
+    position: fixed; 
+    right: 25px;    /* Distancia desde el borde derecho */
     top: 0;
-    height: 100vh;  /* Toma todo el alto de la pantalla para poder centrar */
-    pointer-events: none; /* Permite clicks detrás si es necesario */
+    height: 100vh;  
+    pointer-events: none; 
 }
 
 /* LA CAJA DEL SENSOR (Controla la estructura y el número con su unidad) */
@@ -17,16 +17,26 @@
     display: flex;
     align-items: center;       
     justify-content: space-between; 
-    border: 1px solid rgba(255, 255, 255, 0.4); 
+    
+    /* CAMBIO 1: El borde ahora adopta el color del tema de forma sutil */
+    border: 1px solid var(--elemento); 
+    opacity: 0.85; /* Da un aspecto de pantalla técnica de cristal */
+    
     border-radius: 4px; 
     padding: 4px 6px;          
-    background-color: rgba(255, 255, 255, 0.03); 
+    
+    /* CAMBIO 2: El fondo usa un destello muy suave del mismo color del tema */
+    background-color: rgba(255, 255, 255, 0.02); 
+    
     transition: all 0.3s ease;
+    
     /* TEXTO PRINCIPAL: El número del sensor y su unidad */
     font-size: 13px;           
     font-weight: bold;
-    color: #ffffff;
-    padding-right: 10px; /* Era 6px, al sumarle 4px queda en 10px */
+    
+    /* CAMBIO 3: El número brilla con el color del tema activo */
+    color: var(--elemento);
+    padding-right: 10px; 
 }
 
 /* EL TÍTULO DEL SENSOR (Alineado a la izquierda) */
@@ -36,8 +46,11 @@
     text-align: left;
     padding-right: 5px;        
     font-weight: normal;       
+    
     /* TEXTO SECUNDARIO: El nombre identificador del sensor */
     font-size: 8px;            
-    color: #888888;            
+    
+    /* CAMBIO 4: El título usa el color del tema pero más apagado para que no compita con el número */
+    color: var(--elemento);
+    opacity: 0.6;
 }
-
