@@ -20,25 +20,24 @@
     padding-bottom: 26px; 
 }
 
-/* LA HILERA DE PARALELOGRAMOS COMPLETA  */
+/* 1. HILERA DE PARALELOGRAMOS SUPERIOR */
 .panel-control-temas::before {
     content: "";
     position: absolute;
-    top: 0;             /* Colocada justo encima de los botones */
-    height: 6px;        /* El alto de cada pequeño paralelogramo */
-    
-    /* COORDENADAS HORIZONTALES:
-       Arranca alineada con el primer botón (left: 6px) y recorre todo el ancho 
-       hasta llegar al final de los botones. (Calculado: 213px + los 65px del botón B = 278px) */
+    top: 0;             
+    height: 6px;        
     left: 6px;          
-    width: 278px;       
+    
+    /* MODIFICACIÓN 1: Reducimos 3px de ancho para quitar el tramo sobrante de la derecha */
+    width: 275px;       
+    
+    /* MODIFICACIÓN 2: Desplazamos el patrón 4px a la derecha para arreglar el inicio izquierdo */
+    background-position: 4px 0; 
     
     opacity: 0.7;
     pointer-events: none;
     z-index: 2;
     
-    /* EL DEGRADADO QUE PINTA LOS PARALELOGRAMOS UNO TRAS OTRO:
-       Crea pequeñas cuñas de 5px de ancho separadas por 4px de espacio transparente */
     background-image: repeating-linear-gradient(
         -45deg,
         var(--elemento),
@@ -48,18 +47,20 @@
     );
 }
 
-/* 2. NUEVA HILERA DE PARALELOGRAMOS COMPLETA INFERIOR (Desplazada 12px más abajo) */
+/* 2. HILERA DE PARALELOGRAMOS INFERIOR */
 .panel-control-temas::after {
     content: "";
     position: absolute;
-    
-    /* CAMBIO 2: En lugar de pegarse al fondo (0), la empujamos 12px hacia abajo 
-       tomando como referencia el final de los botones. */
     top: calc(100% - 20px); 
-    
     height: 6px;        
     left: 6px;          
-    width: 278px;       
+    
+    /* MODIFICACIÓN 1: Mismo ancho de 275px para la derecha */
+    width: 275px;       
+    
+    /* MODIFICACIÓN 2: Mismo ajuste de 4px para la izquierda */
+    background-position: 4px 0; 
+    
     opacity: 0.7;
     pointer-events: none;
     z-index: 2;
