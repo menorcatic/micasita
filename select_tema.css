@@ -1,84 +1,127 @@
 /* ==========================================================================
-   VERSION DE DIAGNÓSTICO ULTRA-ROBUSTA (select_tema.css)
+   ESTRUCTURA DE SUB-MÓDULO DE COMANDOS AVANZADO (select_tema.css)
    ========================================================================== */
 
-/* CONTENEDOR MAESTRO: Forzamos dimensiones físicas reales */
+/* CONTENEDOR GENERAL: Agrupa el marco Sci-Fi y los botones abajo a la izquierda */
 .contenedor-modulo-temas {
-    position: fixed !important; /* El !important rompe cualquier bloqueo externo */
-    bottom: 30px !important;       
-    left: 30px !important;         
-    z-index: 99999 !important;    /* Lo subimos al máximo nivel de la pantalla */
-    display: block !important;
-    width: auto !important;
-    height: auto !important;
+    position: fixed;
+    bottom: 20px;       /* Distancia desde el suelo de la pantalla */
+    left: 20px;         /* Distancia desde el borde izquierdo */
+    padding: 12px 14px; /* Espacio interno para que respiren los botones */
+    z-index: 10000;
 }
 
-/* EL MARCO CONTENEDOR */
+/* CONTENEDOR INTERNO DE BOTONES: Fluye limpio dentro del marco */
 .panel-control-temas {
-    position: relative !important;
-    display: flex !important;
-    gap: 8px !important;           
-    padding: 10px 14px !important; 
-    
-    /* Forzamos un borde tradicional visible sin depender de recortes */
-    border: 2px solid var(--elemento) !important;
-    background-color: #050a19 !important; /* Fondo sólido oscuro para asegurar visibilidad */
-    border-radius: 4px !important;
-    
-    /* Caja de luz técnica para asegurar que resalte en la pantalla */
-    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    position: relative;
+    display: flex;
+    gap: 8px;           /* Separación entre los trapecios */
 }
 
-/* MINI-PARALELOGRAMOS EN LA ESQUINA (Usando un degradado directo) */
-.panel-control-temas::after {
-    content: "" !important;
-    position: absolute !important;
-    top: -8px !important;
-    right: 20px !important;
-    width: 50px !important;
-    height: 6px !important;
+/* MARCO INDUSTRIAL PRINCIPAL (Línea exterior seccionada) */
+.marco-modulo-decorativo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 2px solid var(--elemento);
+    opacity: 0.8;
+    background-color: rgba(5, 10, 25, 0.6); /* Fondo oscuro translúcido */
+    
+    /* Chaflán invertido en la esquina superior derecha y solapa abajo izquierda */
+    clip-path: polygon(
+        0% 0%, 
+        calc(100% - 15px) 0%, 100% 12px, 
+        100% 100%, 
+        12px 100%, 0% calc(100% - 12px)
+    );
+}
+
+/* SEGUNDA LÍNEA INTERIOR Y ADORNO DE SOLAPA EXTRA (Línea Fina Punteada) */
+.marco-modulo-decorativo::before {
+    content: "";
+    position: absolute;
+    inset: 3px; 
+    border: 1px dashed var(--elemento); 
+    opacity: 0.5;
+    pointer-events: none;
+    
+    clip-path: polygon(
+        0% 0%, 
+        calc(100% - 14px) 0%, 100% 11px, 
+        100% 100%, 
+        11px 100%, 0% calc(100% - 11px)
+    );
+}
+
+/* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Patrón de rejilla táctica) */
+.marco-modulo-decorativo::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 25px;
+    width: 60px;
+    height: 6px;
+    opacity: 0.7;
+    pointer-events: none;
+    
     background-image: repeating-linear-gradient(
         -45deg,
         var(--elemento),
-        var(--elemento) 3px,
-        transparent 3px,
-        transparent 6px
-    ) !important;
-    opacity: 0.8 !important;
+        var(--elemento) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
 
 /* ==========================================================================
-   BOTONES TRAPEZOIDALES INTERIORES
+   DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
    ========================================================================== */
+
+/* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
-    border: none !important;
-    cursor: pointer !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 11px !important;
-    font-weight: bold !important;
-    width: 65px !important; 
-    height: 24px !important;
-    border-radius: 2px !important;
+    background: rgba(255, 255, 255, 0.3); 
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
     
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    /* CONTROL DE TAMAÑO: Todos miden exactamente igual */
+    width: 65px; 
+    height: 24px;
     
-    color: var(--elemento) !important;
-    opacity: 0.8 !important;
-    transition: all 0.2s ease !important;
+    /* REDONDEADO DE CANTOS COMPATIBLE: Un suavizado de 2px en las esquinas */
+    border-radius: 2px;
+    
+    /* CENTRADO DEFINITIVO DEL TEXTO */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: var(--elemento);
+    opacity: 0.8;
+    transition: all 0.2s ease;
 
-    /* Cada botón mantiene su corte de cuña futurista */
-    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%) !important;
+    /* EL CORTE TRAPEZOIDAL RECTO (Más ancho arriba) */
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
 
+/* NUEVO ONMOUSE GENERAL: Alta opacidad */
 .btn-trapecio:hover {
-    opacity: 1 !important;
-    background: rgba(255, 255, 255, 0.8) !important;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.8);
 }
 
-/* COLORES EN REPOSO */
-.btn-invertir { background: rgba(255, 255, 255, 0.25) !important; }
-.btn-r { background: rgba(230, 50, 50, 0.5) !important; }
-.btn-g { background: rgba(50, 230, 50, 0.5) !important; }
-.btn-b { background: rgba(50, 150, 230, 0.5) !important; }
+/* COLORES OFFMOUSE (Intensidad en reposo) */
+.btn-invertir { background: rgba(255, 255, 255, 0.3); }
+.btn-r { background: rgba(230, 50, 50, 0.5); }
+.btn-g { background: rgba(50, 230, 50, 0.5); }
+.btn-b { background: rgba(50, 150, 230, 0.5); }
+
+/* NUEVO ONMOUSE ESPECÍFICO: Brillo intenso al pasar el cursor */
+.btn-invertir:hover { background: rgba(255, 255, 255, 0.7); }
+.btn-r:hover { background: rgba(230, 50, 50, 0.9); }
+.btn-g:hover { background: rgba(50, 230, 50, 0.9); }
+.btn-b:hover { background: rgba(50, 150, 230, 0.9); }
