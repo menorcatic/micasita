@@ -47,6 +47,31 @@
 }
 
 
+ /* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Hilera micro-compacta) */
+.marco-modulo-decorativo::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 15px; /* Tu margen seguro de 15px */
+    
+    /* HACEMOS EL PARALELOGRAMO BASE MÁS PEQUEÑO */
+    width: 8px;
+    height: 6px; 
+    
+    background-color: var(--elemento); 
+    opacity: 0.7;
+    pointer-events: none;
+    
+    /* CAMBIO REQUERIDO: Usamos incrementos milimétricos de 3 en 3 píxeles hacia la izquierda.
+       Esto pega las 4 figuras casi juntas en un bloque diminuto, evitando cualquier desborde. */
+    box-shadow: 
+        -10px 0 0 0 var(--elemento),  /* Segundo paralelogramo (pegado a -3px) */
+        -20px 0 0 0 var(--elemento),  /* Tercer paralelogramo (pegado a -6px) */
+        -30px 0 0 0 var(--elemento);  /* Cuarto paralelogramo (pegado a -9px) */
+    
+    transform: skewX(-45deg); 
+}
+
 
 /* EL TRAPECIO INDUSTRIAL: Más ancho arriba, todos IGUAL de anchos */
 .btn-trapecio {
