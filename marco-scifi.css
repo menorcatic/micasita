@@ -1,36 +1,37 @@
-/* MARCO PRINCIPAL EXTERIOR (Línea Neón Gruesa) */
+/* MARCO PRINCIPAL EXTERIOR */
 .marco-scifi {
   position: fixed;
-  inset: 15px; /* Distancia de 15px desde los bordes de la pantalla */
-  pointer-events: none; /* Permite hacer clic en los botones que estén atrás */
-  z-index: 9999; /* Asegura que el marco quede por encima de todo */
+  inset: 15px;
+  pointer-events: none;
   
-  /* Color del borde exterior y fondo oscuro transparente */
+  /* CAMBIO 1: Enviamos el marco al fondo para que no tape tus objetos */
+  z-index: -1; 
+  
+  /* CAMBIO 2: Fondo totalmente transparente (eliminamos el rgba oscuro) */
+  background-color: transparent; 
+  
+  /* Línea exterior intacta */
   border: 3px solid #00f3ff; 
-  background-color: rgba(5, 10, 20, 0.4); 
   
-  /* El truco del chaflán: corta las 4 esquinas a 30px */
+  /* El truco del chaflán */
   clip-path: polygon(
     30px 0%, calc(100% - 30px) 0%, 100% 30px, 
     100% calc(100% - 30px), calc(100% - 30px) 100%, 
     30px 100%, 0% calc(100% - 30px), 0% 30px
   );
   
-  /* Brillo Neón Exterior */
+  /* Brillo Neón */
   filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.6));
 }
 
-/* MARCO SECUNDARIO INTERIOR (Línea Fina de Contraste) */
+/* MARCO SECUNDARIO INTERIOR */
 .marco-scifi::after {
   content: "";
   position: absolute;
-  /* Se encoge 6px hacia adentro para separarse de la línea exterior */
   inset: 6px; 
   
-  /* Línea interior más fina y de otro color típico Sci-Fi (Rosa/Cian suave) */
   border: 1px solid rgba(255, 0, 128, 0.8); 
   
-  /* Mismo recorte para que encaje perfectamente con el exterior */
   clip-path: polygon(
     28px 0%, calc(100% - 28px) 0%, 100% 28px, 
     100% calc(100% - 28px), calc(100% - 28px) 100%, 
