@@ -38,8 +38,8 @@
     pointer-events: none; /* Evita que la línea interfiera con los clics */
 }
 
-
-/* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Patrón de rejilla táctica) */
+/*
+// LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Patrón de rejilla táctica) 
 .marco-modulo-decorativo::after {
     content: "";
     position: absolute;
@@ -60,6 +60,41 @@
     
     clip-path: polygon(0% 0%, 100% 0%, calc(100% - 6px) 100%, 6px 100%);
 }
+
+*/
+
+/* LOS PEQUEÑOS PARALELOGRAMOS DE RELLENO (Exactamente 4 en total) */
+.marco-modulo-decorativo::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 15px; /* Mantenemos tus 15px de seguridad contra errores */
+    
+    /* CONTROL DEL TAMAÑO DE UN SOLO PARALELOGRAMO */
+    width: 8px;  /* Ancho de cada paralelogramo */
+    height: 6px; /* Alto de cada paralelogramo */
+    
+    /* El color del primer paralelogramo base */
+    background-color: var(--elemento); 
+    opacity: 0.7;
+    pointer-events: none;
+    
+    /* EL TRUCO MAESTRO: Dibujamos 3 paralelogramos más usando sombras sólidas.
+       Cada sombra se desplaza 12px más hacia la derecha (X) que la anterior */
+    box-shadow: 
+        12px 0 0 0 var(--elemento),  /* Segundo paralelogramo */
+        24px 0 0 0 var(--elemento),  /* Tercer paralelogramo */
+        36px 0 0 0 var(--elemento);  /* Cuarto paralelogramo */
+    
+    /* Aplica la inclinación diagonal idéntica a tus botones trapecio */
+    transform: skewX(-45deg); 
+}
+
+
+
+
+
+
 
 /* ==========================================================================
    DISEÑO DE LOS BOTONES TRAPEZOIDALES INDIVIDUALES
