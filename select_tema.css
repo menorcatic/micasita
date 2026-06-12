@@ -82,7 +82,7 @@
     content: "";
     position: absolute;
     inset: 3px; 
-    border: 1px dashed var(--elemento); 
+    border: 1px solid var(--elemento); /* border: 1px dashed var(--elemento);*/ 
     opacity: 0.5;
     pointer-events: none;
     
