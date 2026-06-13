@@ -76,7 +76,7 @@
     font-weight: bold; 
     line-height: 18px;  /* Controla el espaciado exacto entre cada barra hacia abajo */
     
-    /* Obliga al navegador a respetar los saltos de línea (\n) del JavaScript */
+    /* Obliga al navegador a respetar los saltos de línea del JavaScript */
     white-space: pre; 
     
     text-align: center; 
