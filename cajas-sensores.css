@@ -29,7 +29,7 @@
     padding-right: 10px; 
 }
 
-/* EL TÍTULO DEL SENSOR (Alineado a la izquierda) 
+/* EL TÍTULO DEL SENSOR (Alineado a la izquierda) */
 .caja-sensor span {
     display: inline-block;
     text-transform: uppercase;
@@ -39,7 +39,7 @@
     font-size: 8px;            
     color: var(--elemento);
     opacity: 0.6;
-} */
+} 
 
 /* ==========================================================================
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
