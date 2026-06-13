@@ -74,6 +74,30 @@ function renderizarColumnaDerecha() {
     });
 }
 
+
+// --- GENERADOR AUTOMÁTICO DE BARRAS INCLINADAS ---
+let cadenaBarras = "";
+const totalBarras = 30; // Puedes cambiar este número por las barras que necesites
+
+for (let i = 0; i < totalBarras; i++) {
+    // Si el índice es par pone '/', si es impar pone '\'
+    if (i % 2 === 0) {
+        cadenaBarras += "/\n";
+    } else {
+        cadenaBarras += "\\\n";
+    }
+}
+
+// Buscamos el pasillo de tus sensores e inyectamos la cadena en su CSS de forma nativa
+const columna = document.getElementById('panel-sensores');
+if (columna) {
+    columna.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
+}
+
+
+
+
+
 // ==========================================
 // 2. FUNCIÓN PARA LOS DEPÓSITOS DE ABAJO (NUEVA)
 // ==========================================
