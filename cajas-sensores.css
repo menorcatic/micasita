@@ -69,15 +69,15 @@
     content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
     
     position: absolute;
-    left: 7px;          
-    top: 12px;
-    width: 9px;         /* El ancho de 9px que calza perfecto con tu letra */
-    height: 95%;       
+    left: 7px;     /* Determina dónde arranca el riel en el eje horizontal */      
+    top: 12px;     /* Determina de donde arranca en el eje vertical */
+    width: 8px;    /* ancho del riel antes 9px*/
+    height: 95%;   /* alto del riel */
     
     font-family: monospace; 
-    font-size: 18px;    /* antes 14px */
+    font-size: 18px;   
     font-weight: bold; 
-    line-height: 18px;  /* Controla la distancia exacta entre cada barra hacia abajo */
+    line-height: 18px;  /* Controla el espaciado exacta entre cada barra hacia abajo */
     
     /* CAMBIO CLAVE: Obliga al navegador a respetar los saltos de línea del 'content'. 
        Cada barra caerá de forma obligatoria debajo de la anterior, sin ponerse nunca de lado. */
