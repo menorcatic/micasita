@@ -75,26 +75,22 @@ function renderizarColumnaDerecha() {
 }
 
 
-// --- GENERADOR AUTOMÁTICO DE BARRAS INCLINADAS ---
-   const totalBarras = 30; // Puedes cambiar este número por las barras que necesites
-
+    const totalBarras = 40;
     let cadenaBarras = "";
     
-    // Generamos 40 barras hacia abajo. Si necesitas más longitud, sube este número.
     for (let i = 0; i < totalBarras; i++) {
         if (i % 2 === 0) {
-            cadenaBarras += "/\n";  // Barra derecha y salto de línea real
+            cadenaBarras += "/\n";
         } else {
-            cadenaBarras += "\\\n"; // Barra izquierda y salto de línea real
+            cadenaBarras += "\\\\\n";
         }
     }
 
-// Buscamos el contenedor físico de tu columna derecha en el HTML
-const panelSensores = document.getElementById('panel-sensores');
-if (panelSensores) {
-    // Le inyectamos la torre de texto directamente a la variable de CSS
-    panelSensores.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
-}
+    const panelSensores = document.getElementById('panel-sensores');
+    if (panelSensores) {
+        panelSensores.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
+    }
+
 
 
 
