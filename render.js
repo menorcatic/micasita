@@ -68,8 +68,7 @@ function renderizarColumnaDerecha() {
         caja.style.backgroundColor = estilosEstablecidos.fondo;
         caja.style.color = estilosEstablecidos.texto; 
         
-        //caja.innerHTML = '<span>${sensor.etiqueta}</span> ${valorActual}';
-        caja.innerHTML = '<span>${sensor.etiqueta}</span> ${valorActual}${unidad}';
+        caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}${unidad}`;
         panel.appendChild(caja);
     });
 }
