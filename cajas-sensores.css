@@ -77,32 +77,29 @@
     padding-left: 18px; 
 }
 
-/* EL RIEL DE TRAPECIOS VERTICALES (Fila completa corregida) */
+/* EL RIEL DE TRAPECIOS VERTICALES (Separación y forma garantizadas) */
 .columna-derecha::before {
     content: "";
     position: absolute;
-    left: 0;            /* Pegado al costado izquierdo de la columna */
-    
-    /* CONTROL DE TAMAÑO: El riel mide 8px de ancho y cubre el alto de tus sensores */
-    width: 8px;        
+    left: 0;            
+    width: 10px;        /* Ampliado a 10px para que la diagonal se note bien */
     height: 100%;       
-    
-    opacity: 0.6;       /* Un toque más sutil para que actúe como guía */
+    opacity: 0.6;       
     pointer-events: none;
     
-    /* TRUCO SEGURO: Usamos un ángulo de 115 grados para pintar las diagonales.
-       Dibuja trapecios de 14px de alto con el lado más ancho a la derecha,
-       dejando 4px de espacio transparente entre ellos para que bajen en fila. */
+    /* 1. PINTAMOS LOS BLOQUES: Líneas rectas de 14px con 4px de separación limpia */
     background-image: repeating-linear-gradient(
-        115deg,
+        to bottom,
         var(--elemento),
         var(--elemento) 14px,
         transparent 14px,
         transparent 18px
     );
-    
-    /* Asegura que el patrón se repita en bloques verticales exactos de 18px */
     background-size: 100% 18px;
+
+    /* 2. EL TRUCO DE LA MÁSCARA: Usamos una plantilla inclinada a -45 grados.
+       Esto rebana el lado izquierdo de cada bloque de pintura anterior en diagonal, 
+       dejando el lado derecho ancho e intacto, sin comerse los espacios vacíos. */
+    -webkit-mask-image: linear-gradient(-45deg, #000 70%, transparent 70%);
+    mask-image: linear-gradient(-45deg, #000 70%, transparent 70%);
 }
-
-
