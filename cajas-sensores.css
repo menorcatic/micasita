@@ -1,42 +1,30 @@
-/* COLUMNA DERECHA: Centrada verticalmente y con 25px menos de ancho */
+/* COLUMNA DERECHA: Centrada verticalmente y ultra compacta */
 .columna-derecha {
-    width: 135px; 
+    width: 110px; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el conjunto de cajas verticalmente en la pantalla */
+    justify-content: center;
     gap: 4px; 
     position: fixed; 
-    right: 25px;    /* Distancia desde el borde derecho */
+    right: 25px;    
     top: 0;
     height: 100vh;  
     pointer-events: none; 
-    padding-left: 18px;
-    box-sizing: border-box; /* Agregado */
 }
 
-/* LA CAJA DEL SENSOR (Controla la estructura y el número con su unidad) */
+/* LA CAJA DEL SENSOR: Diseño compacto horizontal */
 .caja-sensor {
     display: flex;
     align-items: center;       
     justify-content: space-between; 
-    
-    /* CAMBIO 1: El borde ahora adopta el color del tema de forma sutil */
     border: 1px solid var(--elemento); 
-    opacity: 0.85; /* Da un aspecto de pantalla técnica de cristal */
-    
+    opacity: 0.85; 
     border-radius: 4px; 
     padding: 4px 6px;          
-    
-    /* CAMBIO 2: El fondo usa un destello muy suave del mismo color del tema */
     background-color: rgba(255, 255, 255, 0.02); 
-    
     transition: all 0.3s ease;
-    
-    /* TEXTO PRINCIPAL: El número del sensor y su unidad */
     font-size: 13px;           
     font-weight: bold;
-    
-    /* CAMBIO 3: El número brilla con el color del tema activo */
     color: var(--elemento);
     padding-right: 10px; 
 }
@@ -48,11 +36,7 @@
     text-align: left;
     padding-right: 5px;        
     font-weight: normal;       
-    
-    /* TEXTO SECUNDARIO: El nombre identificador del sensor */
     font-size: 8px;            
-    
-    /* CAMBIO 4: El título usa el color del tema pero más apagado para que no compita con el número */
     color: var(--elemento);
     opacity: 0.6;
 }
