@@ -66,8 +66,8 @@
     content: "/ \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\";
     
     position: absolute;
-    left: 0;            /* Centrado en el pasillo de 18px */
-    top: 0;
+    left: 3px;            /* Centrado en el pasillo de 18px */
+    top: 6px;
     
     /* CONTROL DE TAMAÑO: Hacemos la línea del mismo ancho que las letras */
     width: 6px;        /* El ancho total del riel */
@@ -91,7 +91,6 @@
     /* TRUCO 2: La línea pasa de ser un borde fino a ser el FONDO de la propia caja.
        Ocupa los mismos 14px de ancho que el texto, quedando justo por debajo de las barras */
     background-color: var(--elemento); 
-    background-position-x: 2px; 
 }
 
 
