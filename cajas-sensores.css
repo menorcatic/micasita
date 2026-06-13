@@ -69,7 +69,7 @@
     content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
     
     position: absolute;
-    left: 6px;     /* Determina dónde arranca el riel en el eje horizontal antes 7px*/      
+    left: 8px;     /* Determina dónde arranca el riel en el eje horizontal antes 7px*/      
     top: 12px;     /* Determina de donde arranca en el eje vertical */
     width: 8px;    /* ancho del riel antes 9px*/
     height: 95%;   /* alto del riel */
