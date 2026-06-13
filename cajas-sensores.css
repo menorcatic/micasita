@@ -83,7 +83,7 @@
        Cada barra caerá de forma obligatoria debajo de la anterior, sin ponerse nunca de lado. */
     white-space: pre-wrap; 
     
-    text-align: left; 
+    text-align: center; 
     text-indent: -1px;
     color: var(--fondo);
     opacity: 1;         
