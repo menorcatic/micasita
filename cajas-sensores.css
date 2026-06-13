@@ -11,6 +11,7 @@
     height: 100vh;  
     pointer-events: none; 
     padding-left: 18px;
+    box-sizing: border-box; /* Agregado */
 }
 
 /* LA CAJA DEL SENSOR (Controla la estructura y el número con su unidad) */
