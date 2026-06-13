@@ -55,32 +55,3 @@
     color: var(--elemento);
     opacity: 0.6;
 }
-
-/* ==========================================================================
-   RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
-   ========================================================================== */
-
-.columna-derecha::before {
-    content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
-    position: absolute;
-    left: 7px;          
-    top: 12px;
-    width: 9px;         
-    height: 95%;       
-    font-family: monospace; 
-    font-size: 14px;    
-    font-weight: bold; 
-    line-height: 18px;  
-    white-space: pre-wrap; 
-    text-align: center; 
-    color: var(--fondo);
-    opacity: 1;         
-    pointer-events: none;
-    z-index: 2;
-    background-color: var(--elemento); 
-}
-
-
-
-
-
