@@ -84,6 +84,7 @@
     white-space: pre-wrap; 
     
     text-align: left; 
+    text-indent: -1px;
     color: var(--fondo);
     opacity: 1;         
     pointer-events: none;
