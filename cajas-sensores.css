@@ -60,43 +60,34 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL VERTICAL SECCIONADO (Calibrado matemáticamente al ancho del texto) */
+/* EL RIEL VERTICAL SECCIONADO (Salto de línea estricto garantizado) */
 .columna-derecha::before {
-    /* Mantenemos tu secuencia limpia de barras continuas sin espacios */
-    content: "/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\";
+    /* TRUCO INDUSTRIAL MAESTRO: 
+       Usamos '\00000a' que es el código universal de CSS para presionar 'Intro' (Salto de línea).
+       Escribimos alternando: barra, intro, barra, intro. 
+       Recuerda que la barra izquierda '\' debe escribirse doble '\\' para que se pinte. */
+    content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
     
     position: absolute;
-    
-    /* REAJUSTE DE POSICIÓN: 
-       Al ensanchar la caja a 9px, la movemos a left: 7px para que el centro visual 
-       se quede exactamente en el mismo lugar que te gustaba antes. */
     left: 7px;          
-    
     top: 12px;
-    
-    /* CAMBIO INDUSTRIAL DEFECTIVO: 
-       Fijamos el ancho en 9px exactos. Ahora coincide perfectamente con el tamaño 
-       real que ocupa la letra monospace de 14px. Desaparece el desborde de 4px. */
-    width: 9px;        
-    
+    width: 9px;         /* El ancho de 9px que calza perfecto con tu letra */
     height: 95%;       
     
     font-family: monospace; 
     font-size: 14px;    
     font-weight: bold; 
-    line-height: 18px;  
-    word-break: break-all; 
+    line-height: 18px;  /* Controla la distancia exacta entre cada barra hacia abajo */
     
-    /* Forzamos el centrado perfecto. Al medir la caja lo mismo que la letra, 
-       las barras se clavan en el eje central exacto sin desviarse un solo milímetro. */
+    /* CAMBIO CLAVE: Obliga al navegador a respetar los saltos de línea del 'content'. 
+       Cada barra caerá de forma obligatoria debajo de la anterior, sin ponerse nunca de lado. */
+    white-space: pre-wrap; 
+    
     text-align: center; 
-    
     color: var(--fondo);
     opacity: 1;         
     pointer-events: none;
     z-index: 2;
-    
-    /* El fondo brillante ahora también mide 9px, rellenando el trazo de borde a borde */
     background-color: var(--elemento); 
 }
 
