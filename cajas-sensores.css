@@ -70,15 +70,15 @@
     top: 0;
     
     /* CONTROL DE TAMAÑO: Hacemos la línea del mismo ancho que las letras */
-    width: 6px;        /* El ancho total del riel */
-    height: 100%;       
+    width: 6px;        /* El ancho total del riel o linea vertical*/
+    height: 90%;    /*Determina la altura de la linea o riel respecto su contenedor   */   
     
     font-family: monospace; 
-    font-size: 14px;    
-    font-weight: bold;
-    line-height: 18px;  /* Sincronizado con el alto de tus cajas */
-    word-break: break-all; 
-    text-align: center;
+    font-size: 14px;  /* Tamaño de las barras */  
+    font-weight: bold; /* negrita para las barras */
+    line-height: 18px;  /* Espaciado entre barras  */
+    word-break: break-all; /* es como un tabulador; hace saltar la siguiente barra cuando alcanza el limite del ancho de la linea: Width: 6px*/
+    text-align: left; /* posicion de la barras respecto a su contenedor*/
     
     /* TRUCO 1: El color de las barras es el FONDO oscuro. 
        Actúan como máscaras que hacen desaparecer los trozos de línea que tocan */
