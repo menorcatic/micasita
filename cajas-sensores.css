@@ -77,42 +77,32 @@
     padding-left: 18px; 
 }
 
-/* EL RIEL DE TRAPECIOS VERTICALES (Inyectado al costado izquierdo) */
+/* EL RIEL DE TRAPECIOS VERTICALES (Fila completa corregida) */
 .columna-derecha::before {
     content: "";
     position: absolute;
-    left: 0;            /* Pegado al inicio del padding izquierdo */
+    left: 0;            /* Pegado al costado izquierdo de la columna */
     
-    /* CONTROL DE TAMAÑO DEL RIEL:
-       Mide 10px de ancho y ocupa exactamente el mismo alto que tus cajas de sensores.
-       Al usar '100% de la altura disponible del flex', se centrará verticalmente en paralelo perfecto. */
-    width: 10px;        
+    /* CONTROL DE TAMAÑO: El riel mide 8px de ancho y cubre el alto de tus sensores */
+    width: 8px;        
     height: 100%;       
     
-    opacity: 0.7;
+    opacity: 0.6;       /* Un toque más sutil para que actúe como guía */
     pointer-events: none;
     
-    /* EL TRUCO DEL DEGRADADO REPETIDO VERTICAL:
-       Crea los trapecios de 14px de alto (para que coincidan con el tamaño de tus cajas)
-       y deja un espacio vacío de 4px entre ellos (igual al gap de tus sensores). */
+    /* TRUCO SEGURO: Usamos un ángulo de 115 grados para pintar las diagonales.
+       Dibuja trapecios de 14px de alto con el lado más ancho a la derecha,
+       dejando 4px de espacio transparente entre ellos para que bajen en fila. */
     background-image: repeating-linear-gradient(
-        to bottom,
+        115deg,
         var(--elemento),
         var(--elemento) 14px,
         transparent 14px,
-        transparent 18px  /* 14px de cuerpo + 4px de separación */
-    );
-
-    /* EL CORTE TRAPECIO VERTICAL (Más ancho a la derecha):
-       Mete las esquinas de la IZQUIERDA (X: 0%) hacia adentro unos 4px, 
-       dejando el muro de la DERECHA (X: 100%) recto y completo al 100%. */
-    clip-path: polygon(
-        4px 0%, 100% 0%, 
-        100% 14px, 4px 14px
+        transparent 18px
     );
     
-    /* Nota: Para que el clip-path corte cada trapecio de forma individual en lugar de 
-       cortar toda la tira completa, le decimos al navegador que sincronice el tamaño del patrón */
-    background-size: 100% 18px; 
+    /* Asegura que el patrón se repita en bloques verticales exactos de 18px */
+    background-size: 100% 18px;
 }
+
 
