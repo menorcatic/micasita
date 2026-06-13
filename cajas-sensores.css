@@ -60,36 +60,37 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL VERTICAL SECCIONADO (Línea gruesa cortada por barras) */
+/* EL RIEL VERTICAL SECCIONADO (Solución definitiva con modo de escritura vertical) */
 .columna-derecha::before {
-    /* Las barras inclinadas que actuarán como cuchillas */
-    content: "/ \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\"; 
-    position: absolute;
-    left: 0;            /* Centrado en el pasillo de 18px */
-    top: 12px;
+    /* Escribimos las barras una detrás de otra, limpias y sin espacios.
+       Recuerda el truco: para que se pinte la barra izquierda '\' hay que ponerla doble '\\' */
+    content: "/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\";
     
-    /* CONTROL DE TAMAÑO: Hacemos la línea del mismo ancho que las letras */
-    width: 6px;        /* El ancho total del riel o linea vertical */
-    height: 95%;    /* Determina la altura de la linea o riel respecto su contenedor   */   
+    position: absolute;
+    left: 9px;          /* Tu distancia ideal de 9px a la derecha */
+    top: 12px;
+    width: 6px;        
+    height: 95%;       
     
     font-family: monospace; 
-    font-size: 14px;  /* Tamaño de las barras */  
-    font-weight: bold; /* negrita para las barras */
-    line-height: 18px;  /* Espaciado entre barras  */
-    word-break: break-all; /* es como un tabulador; hace saltar la siguiente barra cuando alcanza el limite del ancho de la linea: Width: 6px*/
-    /* text-align: center;  posicion de la barras respecto a su contenedor */
-    text-indent: -1px;
+    font-size: 14px;    
+    font-weight: bold; 
     
-    /* TRUCO 1: El color de las barras es el FONDO oscuro. 
-       Actúan como máscaras que hacen desaparecer los trozos de línea que tocan */
+    /* CAMBIO CLAVE 1: Forzamos el modo de escritura vertical de izquierda a derecha.
+       El texto fluye de forma nativa hacia abajo como una columna perfecta. */
+    writing-mode: vertical-lr;
+    
+    /* CAMBIO CLAVE 2: Regulamos el espacio entre cada barra usando el espaciado de letras.
+       Ajustamos a 4px (o el número que quieras) para que se separen limpiamente hacia abajo. */
+    letter-spacing: 4px; 
+    
+    /* Eliminamos el 'word-break' y el 'line-height' que causaban el zigzag de 3px */
+    text-align: center;
+    
     color: var(--fondo);
-    opacity: 1;         /* Opacidad al máximo para que el corte sea limpio y sólido */
-    
+    opacity: 1;         
     pointer-events: none;
     z-index: 2;
-
-    /* TRUCO 2: La línea pasa de ser un borde fino a ser el FONDO de la propia caja.
-       Ocupa los mismos 14px de ancho que el texto, quedando justo por debajo de las barras */
     background-color: var(--elemento); 
 }
 
