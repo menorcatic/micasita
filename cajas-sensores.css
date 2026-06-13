@@ -63,7 +63,7 @@
 /* EL RIEL VERTICAL SECCIONADO (Línea gruesa cortada por barras) */
 .columna-derecha::before {
     /* Las barras inclinadas que actuarán como cuchillas */
-    content: "/ \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\";
+    content: "/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\";
     
     position: absolute;
     left: 0;            /* Centrado en el pasillo de 18px */
