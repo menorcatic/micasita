@@ -10,6 +10,7 @@
     top: 0;
     height: 100vh;  
     pointer-events: none; 
+    padding-left: 18px;
 }
 
 /* LA CAJA DEL SENSOR (Controla la estructura y el número con su unidad) */
@@ -58,24 +59,6 @@
 /* ==========================================================================
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
-
-/* EL CONTENEDOR DE LA COLUMNA: Le damos espacio a la izquierda para el riel */
-.columna-derecha {
-    /* ... mantén tus propiedades anteriores (width: 135px, height: 100vh, etc.) ... */
-    
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    right: 25px;
-    top: 0;
-    height: 100vh;
-    pointer-events: none;
-
-    /* REQUERIDO: Añadimos un espacio a la izquierda para albergar el riel sin pisar las cajas */
-    padding-left: 18px; 
-}
 
 /* EL RIEL DE TRAPECIOS VERTICALES DEFINITIVO (Inyectado con código vectorial) */
 .columna-derecha::before {
