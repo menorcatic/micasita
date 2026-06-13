@@ -67,7 +67,10 @@
        Escribimos alternando: barra, intro, barra, intro. 
        Recuerda que la barra izquierda '\' debe escribirse doble '\\' para que se pinte. */
     /* content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /"; */
-
+    .columna-derecha::before {
+        /* CAMBIO REQUERIDO: Aquí pones la variable que lee el bucle FOR de JavaScript.
+           El "/\\" del final es solo un salvavidas por si el JS tarda en cargar. */
+        content: var(--barras-riel, "/\\"); 
     
     position: absolute;
     
