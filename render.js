@@ -86,7 +86,7 @@ function renderizarColumnaDerecha() {
         }
     }
 
-    document.documentElement.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
+    document.documentElement.style.setProperty('--barras-riel', '"' + cadenaBarras.trim() + '"');
 
 
 
