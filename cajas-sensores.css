@@ -60,25 +60,18 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL VERTICAL SECCIONADO (Sintaxis corregida para el servidor) */
 .columna-derecha::before {
-    /* Lee la cadena generada dinámicamente por el bucle FOR de JavaScript */
     content: var(--barras-riel, "/\\"); 
-    
     position: absolute;
-    left: 8px;          /* Determina dónde arranca el riel en el eje horizontal */      
-    top: 12px;          /* Determina de donde arranca en el eje vertical */
-    width: 8px;         /* Ancho del riel calibrado */
-    height: 95%;        /* Alto del riel */
-    
+    left: 8px;          
+    top: 12px;          
+    width: 8px;         
+    height: 95%;        
     font-family: monospace; 
     font-size: 18px;   
     font-weight: bold; 
-    line-height: 18px;  /* Controla el espaciado exacto entre cada barra hacia abajo */
-    
-    /* Obliga al navegador a respetar los saltos de línea del JavaScript */
+    line-height: 18px;  
     white-space: pre; 
-    
     text-align: center; 
     color: var(--fondo);
     opacity: 1;         
@@ -86,6 +79,7 @@
     z-index: 2;
     background-color: var(--elemento); 
 }
+
 
 
 
