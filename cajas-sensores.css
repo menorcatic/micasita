@@ -77,29 +77,28 @@
     padding-left: 18px; 
 }
 
-/* EL RIEL DE TRAPECIOS VERTICALES (Separación y forma garantizadas) */
+/* EL RIEL DE TRAPECIOS VERTICALES DEFINITIVO (Inyectado con código vectorial) */
 .columna-derecha::before {
     content: "";
     position: absolute;
     left: 0;            
-    width: 10px;        /* Ampliado a 10px para que la diagonal se note bien */
+    width: 10px;        /* El ancho exacto del riel */
     height: 100%;       
     opacity: 0.6;       
     pointer-events: none;
     
-    /* 1. PINTAMOS LOS BLOQUES: Líneas rectas de 14px con 4px de separación limpia */
-    background-image: repeating-linear-gradient(
-        to bottom,
-        var(--elemento),
-        var(--elemento) 14px,
-        transparent 14px,
-        transparent 18px
-    );
-    background-size: 100% 18px;
-
-    /* 2. EL TRUCO DE LA MÁSCARA: Usamos una plantilla inclinada a -45 grados.
-       Esto rebana el lado izquierdo de cada bloque de pintura anterior en diagonal, 
-       dejando el lado derecho ancho e intacto, sin comerse los espacios vacíos. */
-    -webkit-mask-image: linear-gradient(-45deg, #000 70%, transparent 70%);
-    mask-image: linear-gradient(-45deg, #000 70%, transparent 70%);
+    /* TRUCO MAESTRO: Inyectamos un dibujo SVG transparente que se adapta a tu color RGB activo.
+       - 'M 4 0': Empieza arriba dejando 4px vacíos a la izquierda.
+       - 'L 10 0': Tira una línea recta hacia la derecha hasta el píxel 10.
+       - 'L 10 14': Baja recto pegado al muro derecho 14 píxeles.
+       - 'L 0 14': Tira la diagonal inferior hacia la izquierda completa hasta el píxel 0.
+       - 'Z': Cierra el trapecio subiendo en diagonal hacia el inicio. */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='10' height='18'><path d='M4,0 L10,0 L10,14 L0,14 Z' fill='currentColor'/></svg>");
+    
+    /* REPETICIÓN: Le decimos que se repita solo hacia abajo de 18px en 18px */
+    background-repeat: repeat-y;
+    background-size: 10/18px;
+    
+    /* 'currentColor' hace que el dibujo SVG adopte automáticamente el color de var(--elemento) */
+    color: var(--elemento); 
 }
