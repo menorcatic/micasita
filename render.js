@@ -68,8 +68,8 @@ function renderizarColumnaDerecha() {
         caja.style.backgroundColor = estilosEstablecidos.fondo;
         caja.style.color = estilosEstablecidos.texto; 
         
-        //caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}`;
-        caja.innerHTML = `<span>${sensor.etiqueta}</span> ${valorActual}${unidad}`;
+        //caja.innerHTML = '<span>${sensor.etiqueta}</span> ${valorActual}';
+        caja.innerHTML = '<span>${sensor.etiqueta}</span> ${valorActual}${unidad}';
         panel.appendChild(caja);
     });
 }
@@ -94,7 +94,7 @@ function renderizarDepositos() {
         caja.className = 'caja-pestana';
         caja.id = dep.idHtml; 
 
-        caja.innerHTML = `
+        caja.innerHTML = '
             <span class="titulo-solapa">${dep.etiqueta}</span>
             <div class="contenedor-deposito">
                 <div class="tanque-visual">
@@ -105,7 +105,7 @@ function renderizarDepositos() {
                     <div class="valor-temp"><span id="${dep.idTemp}">${dep.temp}</span> °C</div>
                 </div>
             </div>
-        `;
+        ';
 
         contenedorMaestro.appendChild(caja);
     });
@@ -136,7 +136,7 @@ function renderizarSolar() {
     caja.className = 'caja-pestana';
     caja.id = 'contenedor-solar';
 
-    caja.innerHTML = `
+    caja.innerHTML = '
         <span class="titulo-solapa">PANEL S.</span>
         <div class="esquema-solar">
             <!-- El colector rectangular adopta el color térmico del sensor -->
@@ -146,7 +146,7 @@ function renderizarSolar() {
             <!-- El dibujo de los tubos alineados debajo -->
             <div class="tubos-rejilla"></div>
         </div>
-    `;
+    ';
 
     contenedorMaestro.appendChild(caja);
 }
