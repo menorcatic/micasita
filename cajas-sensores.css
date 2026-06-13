@@ -60,34 +60,37 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL VERTICAL MULTI-TEXTURA (Línea + Barras alternadas) */
+/* EL RIEL VERTICAL SECCIONADO (Línea gruesa cortada por barras) */
 .columna-derecha::before {
-    /* 1. SECCIÓN: GENERAR LAS BARRAS INCLINADAS ALTERNADAS */
-    /* Metemos una cadena de barras cruzadas estilo interfaz Sci-Fi */
+    /* Las barras inclinadas que actuarán como cuchillas */
     content: "/ \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\";
     
     position: absolute;
-    left: 0;            /* Pegado al costado izquierdo de tus cajas */
+    left: 0;            /* Centrado en el pasillo de 18px */
     top: 0;
     
-    /* CONTROL DE ESPACIO DE LAS LETRAS */
-    width: 12px;        /* El ancho que ocupará la columna de texto */
+    /* CONTROL DE TAMAÑO: Hacemos la línea del mismo ancho que las letras */
+    width: 14px;        /* El ancho total del riel */
     height: 100%;       
-    font-family: monospace; /* Fuente de ancho fijo para que todas las barras midan igual */
-    font-size: 14px;    /* Tamaño de las barras para alinearse con tus cajas */
+    
+    font-family: monospace; 
+    font-size: 14px;    
     font-weight: bold;
-    line-height: 18px;  /* Forzamos a que cada barra ocupe exactamente 18px de alto (14px + 4px de gap) */
-    word-break: break-all; /* Obliga al texto a bajar en una sola columna vertical */
+    line-height: 18px;  /* Sincronizado con el alto de tus cajas */
+    word-break: break-all; 
     text-align: center;
     
-    /* COLOR Y OPACIDAD */
-    color: var(--elemento);
-    opacity: 0.8;
+    /* TRUCO 1: El color de las barras es el FONDO oscuro. 
+       Actúan como máscaras que hacen desaparecer los trozos de línea que tocan */
+    color: var(--fondo);
+    opacity: 1;         /* Opacidad al máximo para que el corte sea limpio y sólido */
+    
     pointer-events: none;
     z-index: 2;
 
-    /* 2. SECCIÓN: DIBUJAR LA LÍNEA VERTICAL GRUESA DE FONDO */
-    /* Usamos el fondo de la propia caja para pintar la línea que pasa por detrás de las letras */
-    border-right: 3px solid var(--elemento); 
+    /* TRUCO 2: La línea pasa de ser un borde fino a ser el FONDO de la propia caja.
+       Ocupa los mismos 14px de ancho que el texto, quedando justo por debajo de las barras */
+    background-color: var(--elemento); 
 }
+
 
