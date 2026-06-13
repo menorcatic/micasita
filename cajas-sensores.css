@@ -67,7 +67,7 @@
     
     position: absolute;
     left: 0;            /* Centrado en el pasillo de 18px */
-    top: 10%;
+    top: 12px;
     
     /* CONTROL DE TAMAÑO: Hacemos la línea del mismo ancho que las letras */
     width: 6px;        /* El ancho total del riel o linea vertical*/
@@ -78,7 +78,8 @@
     font-weight: bold; /* negrita para las barras */
     line-height: 18px;  /* Espaciado entre barras  */
     word-break: break-all; /* es como un tabulador; hace saltar la siguiente barra cuando alcanza el limite del ancho de la linea: Width: 6px*/
-    text-align: right; /* posicion de la barras respecto a su contenedor*/
+    /*text-align: center;  posicion de la barras respecto a su contenedor*/
+    text-indent: -3px;
     
     /* TRUCO 1: El color de las barras es el FONDO oscuro. 
        Actúan como máscaras que hacen desaparecer los trozos de línea que tocan */
