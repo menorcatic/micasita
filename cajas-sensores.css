@@ -61,17 +61,17 @@
    ========================================================================== */
 
 .columna-derecha::before {
-    content: var(--barras-riel, "/\\"); 
+    content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
     position: absolute;
-    left: 8px;          
-    top: 12px;          
-    width: 8px;         
-    height: 95%;        
+    left: 7px;          
+    top: 12px;
+    width: 9px;         
+    height: 95%;       
     font-family: monospace; 
-    font-size: 18px;   
+    font-size: 14px;    
     font-weight: bold; 
     line-height: 18px;  
-    white-space: pre; 
+    white-space: pre-wrap; 
     text-align: center; 
     color: var(--fondo);
     opacity: 1;         
@@ -79,6 +79,7 @@
     z-index: 2;
     background-color: var(--elemento); 
 }
+
 
 
 
