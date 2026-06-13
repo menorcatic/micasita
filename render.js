@@ -76,24 +76,25 @@ function renderizarColumnaDerecha() {
 
 
 // --- GENERADOR AUTOMÁTICO DE BARRAS INCLINADAS ---
-let cadenaBarras = "";
-const totalBarras = 30; // Puedes cambiar este número por las barras que necesites
+   const totalBarras = 30; // Puedes cambiar este número por las barras que necesites
 
-for (let i = 0; i < totalBarras; i++) {
-    // Si el índice es par pone '/', si es impar pone '\'
-    if (i % 2 === 0) {
-        cadenaBarras += "/\n";
-    } else {
-        cadenaBarras += "\\\n";
+    let cadenaBarras = "";
+    
+    // Generamos 40 barras hacia abajo. Si necesitas más longitud, sube este número.
+    for (let i = 0; i < totalBarras; i++) {
+        if (i % 2 === 0) {
+            cadenaBarras += "/\n";  // Barra derecha y salto de línea real
+        } else {
+            cadenaBarras += "\\\n"; // Barra izquierda y salto de línea real
+        }
     }
-}
 
-// Buscamos el pasillo de tus sensores e inyectamos la cadena en su CSS de forma nativa
-const columna = document.getElementById('panel-sensores');
-if (columna) {
-    columna.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
+// Buscamos el contenedor físico de tu columna derecha en el HTML
+const panelSensores = document.getElementById('panel-sensores');
+if (panelSensores) {
+    // Le inyectamos la torre de texto directamente a la variable de CSS
+    panelSensores.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
 }
-
 
 
 
