@@ -74,24 +74,6 @@ function renderizarColumnaDerecha() {
     });
 }
 
-
-    const totalBarras = 40;
-    let cadenaBarras = "";
-    
-    for (let i = 0; i < totalBarras; i++) {
-        if (i % 2 === 0) {
-            cadenaBarras += "/\n";
-        } else {
-            cadenaBarras += "\\\\\n";
-        }
-    }
-
-    document.documentElement.style.setProperty('--barras-riel', '"' + cadenaBarras.trim() + '"');
-
-
-
-
-
 // ==========================================
 // 2. FUNCIÓN PARA LOS DEPÓSITOS DE ABAJO (NUEVA)
 // ==========================================
