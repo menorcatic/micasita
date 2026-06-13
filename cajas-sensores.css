@@ -60,28 +60,34 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL DE TRAPECIOS VERTICALES DEFINITIVO (Inyectado con código vectorial) */
+/* EL RIEL VERTICAL MULTI-TEXTURA (Línea + Barras alternadas) */
 .columna-derecha::before {
-    content: "";
+    /* 1. SECCIÓN: GENERAR LAS BARRAS INCLINADAS ALTERNADAS */
+    /* Metemos una cadena de barras cruzadas estilo interfaz Sci-Fi */
+    content: "/ \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\";
+    
     position: absolute;
-    left: 0;            
-    width: 10px;        /* El ancho exacto del riel */
+    left: 0;            /* Pegado al costado izquierdo de tus cajas */
+    top: 0;
+    
+    /* CONTROL DE ESPACIO DE LAS LETRAS */
+    width: 12px;        /* El ancho que ocupará la columna de texto */
     height: 100%;       
-    opacity: 0.6;       
+    font-family: monospace; /* Fuente de ancho fijo para que todas las barras midan igual */
+    font-size: 14px;    /* Tamaño de las barras para alinearse con tus cajas */
+    font-weight: bold;
+    line-height: 18px;  /* Forzamos a que cada barra ocupe exactamente 18px de alto (14px + 4px de gap) */
+    word-break: break-all; /* Obliga al texto a bajar en una sola columna vertical */
+    text-align: center;
+    
+    /* COLOR Y OPACIDAD */
+    color: var(--elemento);
+    opacity: 0.8;
     pointer-events: none;
-    
-    /* TRUCO MAESTRO: Inyectamos un dibujo SVG transparente que se adapta a tu color RGB activo.
-       - 'M 4 0': Empieza arriba dejando 4px vacíos a la izquierda.
-       - 'L 10 0': Tira una línea recta hacia la derecha hasta el píxel 10.
-       - 'L 10 14': Baja recto pegado al muro derecho 14 píxeles.
-       - 'L 0 14': Tira la diagonal inferior hacia la izquierda completa hasta el píxel 0.
-       - 'Z': Cierra el trapecio subiendo en diagonal hacia el inicio. */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='10' height='18'><path d='M4,0 L10,0 L10,14 L0,14 Z' fill='currentColor'/></svg>");
-    
-    /* REPETICIÓN: Le decimos que se repita solo hacia abajo de 18px en 18px */
-    background-repeat: repeat-y;
-    background-size: 10/18px;
-    
-    /* 'currentColor' hace que el dibujo SVG adopte automáticamente el color de var(--elemento) */
-    color: var(--elemento); 
+    z-index: 2;
+
+    /* 2. SECCIÓN: DIBUJAR LA LÍNEA VERTICAL GRUESA DE FONDO */
+    /* Usamos el fondo de la propia caja para pintar la línea que pasa por detrás de las letras */
+    border-right: 3px solid var(--elemento); 
 }
+
