@@ -54,3 +54,65 @@
     color: var(--elemento);
     opacity: 0.6;
 }
+
+/* ==========================================================================
+   RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
+   ========================================================================== */
+
+/* EL CONTENEDOR DE LA COLUMNA: Le damos espacio a la izquierda para el riel */
+.columna-derecha {
+    /* ... mantén tus propiedades anteriores (width: 135px, height: 100vh, etc.) ... */
+    
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    right: 25px;
+    top: 0;
+    height: 100vh;
+    pointer-events: none;
+
+    /* REQUERIDO: Añadimos un espacio a la izquierda para albergar el riel sin pisar las cajas */
+    padding-left: 18px; 
+}
+
+/* EL RIEL DE TRAPECIOS VERTICALES (Inyectado al costado izquierdo) */
+.columna-derecha::before {
+    content: "";
+    position: absolute;
+    left: 0;            /* Pegado al inicio del padding izquierdo */
+    
+    /* CONTROL DE TAMAÑO DEL RIEL:
+       Mide 10px de ancho y ocupa exactamente el mismo alto que tus cajas de sensores.
+       Al usar '100% de la altura disponible del flex', se centrará verticalmente en paralelo perfecto. */
+    width: 10px;        
+    height: 100%;       
+    
+    opacity: 0.7;
+    pointer-events: none;
+    
+    /* EL TRUCO DEL DEGRADADO REPETIDO VERTICAL:
+       Crea los trapecios de 14px de alto (para que coincidan con el tamaño de tus cajas)
+       y deja un espacio vacío de 4px entre ellos (igual al gap de tus sensores). */
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--elemento),
+        var(--elemento) 14px,
+        transparent 14px,
+        transparent 18px  /* 14px de cuerpo + 4px de separación */
+    );
+
+    /* EL CORTE TRAPECIO VERTICAL (Más ancho a la derecha):
+       Mete las esquinas de la IZQUIERDA (X: 0%) hacia adentro unos 4px, 
+       dejando el muro de la DERECHA (X: 100%) recto y completo al 100%. */
+    clip-path: polygon(
+        4px 0%, 100% 0%, 
+        100% 14px, 4px 14px
+    );
+    
+    /* Nota: Para que el clip-path corte cada trapecio de forma individual en lugar de 
+       cortar toda la tira completa, le decimos al navegador que sincronice el tamaño del patrón */
+    background-size: 100% 18px; 
+}
+
