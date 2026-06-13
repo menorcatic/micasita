@@ -66,9 +66,11 @@
        Usamos '\00000a' que es el código universal de CSS para presionar 'Intro' (Salto de línea).
        Escribimos alternando: barra, intro, barra, intro. 
        Recuerda que la barra izquierda '\' debe escribirse doble '\\' para que se pinte. */
-    content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /";
+    /* content: "/\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /\00000a \\ \00000a /"; */
+
     
     position: absolute;
+    
     left: 8px;     /* Determina dónde arranca el riel en el eje horizontal antes 7px*/      
     top: 12px;     /* Determina de donde arranca en el eje vertical */
     width: 8px;    /* ancho del riel antes 9px*/
@@ -81,10 +83,9 @@
     
     /* CAMBIO CLAVE: Obliga al navegador a respetar los saltos de línea del 'content'. 
        Cada barra caerá de forma obligatoria debajo de la anterior, sin ponerse nunca de lado. */
-    white-space: pre-wrap; 
+    white-space: pre; 
     
     text-align: center; 
-    text-indent: -1px;
     color: var(--fondo);
     opacity: 1;         
     pointer-events: none;
