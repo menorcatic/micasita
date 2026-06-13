@@ -86,10 +86,7 @@ function renderizarColumnaDerecha() {
         }
     }
 
-    const panelSensores = document.getElementById('panel-sensores');
-    if (panelSensores) {
-        panelSensores.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
-    }
+    document.documentElement.style.setProperty('--barras-riel', `"${cadenaBarras.trim()}"`);
 
 
 
