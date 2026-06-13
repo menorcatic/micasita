@@ -91,6 +91,7 @@
     /* TRUCO 2: La línea pasa de ser un borde fino a ser el FONDO de la propia caja.
        Ocupa los mismos 14px de ancho que el texto, quedando justo por debajo de las barras */
     background-color: var(--elemento); 
+    background-position-x: 2px; 
 }
 
 
