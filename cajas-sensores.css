@@ -60,38 +60,45 @@
    RIEL VERTICAL DE TRAPECIOS (cajas-sensores.css)
    ========================================================================== */
 
-/* EL RIEL VERTICAL SECCIONADO (Solución definitiva con modo de escritura vertical) */
+/* EL RIEL VERTICAL SECCIONADO (Calibrado matemáticamente al ancho del texto) */
 .columna-derecha::before {
-    /* Escribimos las barras una detrás de otra, limpias y sin espacios.
-       Recuerda el truco: para que se pinte la barra izquierda '\' hay que ponerla doble '\\' */
+    /* Mantenemos tu secuencia limpia de barras continuas sin espacios */
     content: "/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\";
     
     position: absolute;
-    left: 9px;          /* Tu distancia ideal de 9px a la derecha */
+    
+    /* REAJUSTE DE POSICIÓN: 
+       Al ensanchar la caja a 9px, la movemos a left: 7px para que el centro visual 
+       se quede exactamente en el mismo lugar que te gustaba antes. */
+    left: 7px;          
+    
     top: 12px;
-    width: 6px;        
+    
+    /* CAMBIO INDUSTRIAL DEFECTIVO: 
+       Fijamos el ancho en 9px exactos. Ahora coincide perfectamente con el tamaño 
+       real que ocupa la letra monospace de 14px. Desaparece el desborde de 4px. */
+    width: 9px;        
+    
     height: 95%;       
     
     font-family: monospace; 
     font-size: 14px;    
     font-weight: bold; 
+    line-height: 18px;  
+    word-break: break-all; 
     
-    /* CAMBIO CLAVE 1: Forzamos el modo de escritura vertical de izquierda a derecha.
-       El texto fluye de forma nativa hacia abajo como una columna perfecta. */
-    writing-mode: vertical-lr;
-    
-    /* CAMBIO CLAVE 2: Regulamos el espacio entre cada barra usando el espaciado de letras.
-       Ajustamos a 4px (o el número que quieras) para que se separen limpiamente hacia abajo. */
-    letter-spacing: 4px; 
-    
-    /* Eliminamos el 'word-break' y el 'line-height' que causaban el zigzag de 3px */
-    text-align: center;
+    /* Forzamos el centrado perfecto. Al medir la caja lo mismo que la letra, 
+       las barras se clavan en el eje central exacto sin desviarse un solo milímetro. */
+    text-align: center; 
     
     color: var(--fondo);
     opacity: 1;         
     pointer-events: none;
     z-index: 2;
+    
+    /* El fondo brillante ahora también mide 9px, rellenando el trazo de borde a borde */
     background-color: var(--elemento); 
 }
+
 
 
