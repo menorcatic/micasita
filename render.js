@@ -11,12 +11,12 @@ function renderizarColumnaDerecha() {
         { id: 'PotPlaca_Est', grupo: 'potencia', etiqueta: 'P.Est' },
         { id: 'PotPlaca', grupo: 'potencia', etiqueta: 'P.Inst' },
         { id: 'PotCons', grupo: 'potencia', etiqueta:  'Consum' },
-        { id: 'VBat', grupo: 'potencia', etiqueta: 'V. Batería' },
-        { id: 'Den', grupo: 'densidad', etiqueta: 'Densidad' }, 
+        { id: 'VBat', grupo: 'potencia', etiqueta: 'V.Bat' },
+        { id: 'Den', grupo: 'densidad', etiqueta: 'Dens' }, 
         { id: 'TBat', grupo: 'temperatura', etiqueta: 'T.Bat' },
         { id: 'TDepCa', grupo: 'temperatura', etiqueta: 'T.Dep.Ca' },
         { id: 'TDepFr', grupo: 'temperatura', etiqueta: 'T.Dep.Fr.' },
-        { id: 'TTub', grupo: 'temperatura', etiqueta: 'T.Tubos' },
+        { id: 'TTub', grupo: 'temperatura', etiqueta: 'T.Tub' },
         { id: 'TSSR', grupo: 'temperatura', etiqueta: 'T.SSR' },
         { id: 'TT', grupo: 'temperatura', etiqueta: 'T.TT)' },
         { id: 'TM', grupo: 'temperatura', etiqueta: 'T.TM' },
@@ -26,8 +26,8 @@ function renderizarColumnaDerecha() {
         { id: 'NDepfr', grupo: 'nivel', etiqueta: 'N.Dep.Fr' },
         { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo Ret' },
         { id: 'TR', grupo: 'temperatura', etiqueta: 'T.TR' },
-        { id: 'TSR1', grupo: 'temperatura', etiqueta: 'T.TSR1' },
-        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'T.TSR2' }
+        { id: 'TSR1', grupo: 'temperatura', etiqueta: 'TSR1' },
+        { id: 'TSR2', grupo: 'temperatura', etiqueta: 'TSR2' }
     ];
 
     listaOrdenada.forEach(sensor => {
