@@ -5,30 +5,30 @@
 /* --- TEMA B: BLUE (Azul - Por defecto) --- */
 :root, [data-theme="azul"][data-inverted="false"] {
     --fondo: #050140;       /* Azul marino profundo */
-    --elemento: #00f3ff;    /* Azul cian brillante */
+    --elemento: #caf8fa;    /* Azul cian claro */
 }
 [data-theme="azul"][data-inverted="true"] {
-    --fondo: #00f3ff;       
+    --fondo: #caf8fa;       
     --elemento: #050140;    
 }
 
 /* --- TEMA R: RED (Rojo) --- */
 [data-theme="rojo"][data-inverted="false"] {
     --fondo: #220000;       /* Rojo oscuro */
-    --elemento: #ff3b30;    /* Rojo brillante */
+    --elemento: #fcc1bd;    /* Rojo claro */
 }
 [data-theme="rojo"][data-inverted="true"] {
-    --fondo: #ff3b30;       
+    --fondo: #fcc1bd;       
     --elemento: #220000;    
 }
 
 /* --- TEMA G: GREEN (Verde) --- */
 [data-theme="verde"][data-inverted="false"] {
     --fondo: #001a00;       /* Verde oscuro */
-    --elemento: #00ff66;    /* Verde brillante */
+    --elemento: #abf7c9;    /* Verde claro */
 }
 [data-theme="verde"][data-inverted="true"] {
-    --fondo: #00ff66;       
+    --fondo: #abf7c9;       
     --elemento: #001a00;    
 }
 
