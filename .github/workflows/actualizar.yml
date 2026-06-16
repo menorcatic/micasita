@@ -19,8 +19,7 @@ jobs:
       - name: Hacer Commit y Push (Sobrescribir archivo)
         run: |
           git config --global user.name "HA Bot"
-          /* git config --global user.email "ha-bot@://github.com" */
-          git config --global user.email "ha-bot@users.noreply.github.com"
+          git config --global user.email "ha-bot@://github.com"
           git add sensores.json
           git commit -m "Actualización de sensores en tiempo real" --allow-empty
           git push origin main
