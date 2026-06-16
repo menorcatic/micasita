@@ -7,9 +7,9 @@ async function consultarServidor() {
 
         window.datosSensores = datos;
 
-        renderizarColumnaDerecha(); // Dibuja tus sensores
-        renderizarDepositos();      // ¡Dibuja tus depósitos automáticamente!
-        renderizarSolar();          // ¡Dibuja tus tubos de vacío del techo!
+        renderizarColumnaDerecha();
+        renderizarDepositos();
+        renderizarSolar();
 
         const elementoHora = document.getElementById('hora-lectura');
         if (elementoHora) {
@@ -21,6 +21,5 @@ async function consultarServidor() {
     }
 }
 
-// Lanza la petición al cargar la web y la repite cada 20 segundos
 consultarServidor();
 setInterval(consultarServidor, 20000);
