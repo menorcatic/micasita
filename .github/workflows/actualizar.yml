@@ -10,7 +10,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Crear o sobrescribir sensores.json
         run: |
@@ -19,7 +19,8 @@ jobs:
       - name: Hacer Commit y Push (Sobrescribir archivo)
         run: |
           git config --global user.name "HA Bot"
-          git config --global user.email "ha-bot@://github.com"
+          /* git config --global user.email "ha-bot@://github.com" */
+          git config --global user.email "ha-bot@users.noreply.github.com"
           git add sensores.json
           git commit -m "Actualización de sensores en tiempo real" --allow-empty
           git push origin main
