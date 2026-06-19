@@ -37,7 +37,7 @@
     padding-right: 5px;        
     font-weight: normal;       
     font-size: 8px;            
-    color: var(--elemento);
+    color: #000000 /* var(--elemento); */
     opacity: 0.6;
 } 
 
