@@ -92,7 +92,7 @@ function obtenerColorRelleno(idSensor, valor) {
         if (num < 1.23) { configuracion.fondo = 'rgb(255, 0, 0)'; } /* Rojo */
         else if (num < 1.25) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* Naranja */
         else if (num < 1.27) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* Amarillo */
-        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; }/* verde */
+        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; } /* verde */
     }
         
     else if (idSensor === 'TDepCa') {
@@ -101,10 +101,18 @@ function obtenerColorRelleno(idSensor, valor) {
         else if (num < 35) { configuracion.fondo = 'rgb(0, 255, 0)'; configuracion.texto = '#000000'; } /* verde */
         else if (num < 45) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* Amarillo */
         else if (num < 65) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* naranja */
-        else { configuracion.fondo = 'rgb(255, 0, 0)';configuracion.texto = '#000000'; }/* rojo */
+        else { configuracion.fondo = 'rgb(255, 0, 0)';configuracion.texto = '#000000'; } /* rojo */
     }
 
+    else if (idSensor === 'NDepAl') {
+        if (num === 0) return configuracion; 
+        if (num < 80) { configuracion.fondo = 'rgb(255, 0, 0)'; } /* Rojo */
+        else if (num < 120) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* naranja */
+        else if (num < 160) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* amarillo */
+        else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; } /* verde */
+    }
 
+    
 
     
     return configuracion;
