@@ -130,7 +130,7 @@ function obtenerColorRelleno(idSensor, valor) {
 
     else if (idSensor === 'Ret') {
         if (num === 0) return configuracion; 
-        num = num / 270;
+        /* num = num / 270; */
         if (num < 0.01) { configuracion.fondo = 'rgb(255, 0, 0)'; } /* Rojo */
         else if (num < 1.2) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* naranja */
         else if (num < 2.20) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* amarillo */
