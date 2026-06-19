@@ -4,7 +4,7 @@ function obtenerColorRelleno(idSensor, valor) {
     /* Configuración por defecto (Fondo transparente, texto blanco) */
     let configuracion = {
         fondo: 'transparent',
-        texto: '#ffffff'
+        texto: '#000000'
     };
 
     if (isNaN(num)) return configuracion;
