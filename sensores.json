@@ -3,24 +3,24 @@
     "Den": "1.27"
   },
   "flujo": {
-    "Ret": "2.05"
+    "Ret": "1.96"
   },
   "nivel": {
     "NDepAl": "229",
-    "NDepCa": "149",
-    "NDepfr": "228"
+    "NDepCa": "164",
+    "NDepfr": "229"
   },
   "potencia": {
-    "PotCons": "892.0",
-    "PotPlaca": "935.0",
-    "PotPlaca_Est": "3817.12",
+    "PotCons": "808.0",
+    "PotPlaca": "977.0",
+    "PotPlaca_Est": "3809.39",
     "VBat": "27.0"
   },
   "temperatura": {
     "TBat": "26.62",
-    "TDepCa": "34.69",
+    "TDepCa": "34.62",
     "TDepFr": "--",
-    "TM": "23.08",
+    "TM": "23.0",
     "TR": "unknown",
     "TS": "22.75",
     "TSR1": "unknown",
