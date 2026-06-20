@@ -7,20 +7,20 @@
   },
   "nivel": {
     "NDepAl": "229",
-    "NDepCa": "229",
+    "NDepCa": "228",
     "NDepfr": "229"
   },
   "potencia": {
-    "PotCons": "80.0",
+    "PotCons": "72.0",
     "PotPlaca": "0.0",
     "PotPlaca_Est": "0.0",
     "VBat": "24.8"
   },
   "temperatura": {
     "TBat": "24.25",
-    "TDepCa": "32.88",
+    "TDepCa": "--",
     "TDepFr": "--",
-    "TM": "25.08",
+    "TM": "25.0",
     "TR": "unknown",
     "TS": "24.0",
     "TSR1": "unknown",
