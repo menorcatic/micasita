@@ -104,6 +104,13 @@ function obtenerColorRelleno(idSensor, valor) {
         else { configuracion.fondo = 'rgb(255, 0, 0)';configuracion.texto = '#000000'; } /* rojo */
     }
 
+    else if (idSensor === 'TDepfr') {
+        if (num === 0) return configuracion; 
+        if (num < 10) { configuracion.fondo = 'rgb(0, 0, 255)'; } /* Azul */
+        else if (num < 20) { configuracion.fondo = 'rgb(0, 255, 0)'; configuracion.texto = '#000000'; } /* verde */
+        else { configuracion.fondo = 'rgb(255, 255, 0)';configuracion.texto = '#000000'; } /* amarillo */
+    }    
+
     else if (idSensor === 'NDepAl') {
         if (num === 0) return configuracion; 
         if (num < 80) { configuracion.fondo = 'rgb(255, 0, 0)'; } /* Rojo */
