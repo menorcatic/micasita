@@ -56,7 +56,7 @@ function renderizarColumnaDerecha() {
             } else if (sensor.grupo === 'nivel') {
                 unidad = ' L';         // Litros para los depósitos
             } else if (sensor.grupo === 'flujo') {
-                unidad = ' L/h';       // Unidad de ejemplo para el flujo, cámbiala si usas otra
+                unidad = ' L/m';       // Unidad de ejemplo para el flujo, cámbiala si usas otra
             }
         }
 
