@@ -95,12 +95,21 @@ function obtenerColorRelleno(idSensor, valor) {
         else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; } /* verde */
     }
         
-    else if (idSensor === 'TDepCa') {
+    else if (idSensor === 'TTub') {
         if (num === 0) return configuracion; 
         if (num < 20) { configuracion.fondo = 'rgb(0, 0, 255)'; } /* Azul */
         else if (num < 35) { configuracion.fondo = 'rgb(0, 255, 0)'; configuracion.texto = '#000000'; } /* verde */
         else if (num < 45) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* Amarillo */
         else if (num < 65) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* naranja */
+        else { configuracion.fondo = 'rgb(255, 0, 0)';configuracion.texto = '#000000'; } /* rojo */
+    }
+    
+    else if (idSensor === 'TDepCa') {
+        if (num === 0) return configuracion; 
+        if (num < 20) { configuracion.fondo = 'rgb(0, 0, 255)'; } /* Azul */
+        else if (num < 35) { configuracion.fondo = 'rgb(0, 255, 0)'; configuracion.texto = '#000000'; } /* verde */
+        else if (num < 45) { configuracion.fondo = 'rgb(255, 255, 0)'; configuracion.texto = '#000000'; } /* Amarillo */
+        else if (num < 55) { configuracion.fondo = 'rgb(255, 165, 0)'; configuracion.texto = '#000000'; } /* naranja */
         else { configuracion.fondo = 'rgb(255, 0, 0)';configuracion.texto = '#000000'; } /* rojo */
     }
 
