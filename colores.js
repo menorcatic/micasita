@@ -121,7 +121,7 @@ function obtenerColorRelleno(idSensor, valor) {
     }    
 
     else if (idSensor === 'NDepAl') {
-        if (num === 0) return configuracion; 
+        if (num === '--' || num === 'unknown' || num === 'unavailable') return configuracion; 
         if (num === 'on') { configuracion.fondo = 'rgb(255, 0, 0)'; } /* Rojo */
         else { configuracion.fondo = 'rgb(0, 255, 0)';configuracion.texto = '#000000'; } /* verde */
     }
