@@ -21,7 +21,7 @@ function renderizarColumnaDerecha() {
         { id: 'TT', grupo: 'temperatura', etiqueta: 'T.TT' },
         { id: 'TM', grupo: 'temperatura', etiqueta: 'T.TM' },
         { id: 'TS', grupo: 'temperatura', etiqueta: 'T.TS' },
-        { id: 'NDepAl', grupo: 'nivel', etiqueta: 'Niv. AL' },
+        { id: 'NDepAl', grupo: 'nivel', etiqueta: 'Niv.AL' },
         { id: 'NDepCa', grupo: 'nivel', etiqueta: 'N.Dep.Ca' },
         { id: 'NDepfr', grupo: 'nivel', etiqueta: 'N.Dep.Fr' },
         { id: 'Ret', grupo: 'flujo', etiqueta: 'Flujo' },
