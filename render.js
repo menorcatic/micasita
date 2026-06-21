@@ -47,6 +47,8 @@ function renderizarColumnaDerecha() {
         if (valorActual !== '--') {
             if (sensor.id === 'VBat') {
                 unidad = ' V';         // Caso especial: V. Batería es del grupo potencia pero usa Voltios
+            } else if (sensor.id === 'NDepAl') {
+                unidad = '';     
             } else if (sensor.grupo === 'potencia') {
                 unidad = ' W';         // Vatios
             } else if (sensor.grupo === 'temperatura') {
