@@ -1,9 +1,9 @@
 {
   "densidad": {
-    "Den": "1.29"
+    "Den": "1.28"
   },
   "flujo": {
-    "Ret": "2.88"
+    "Ret": "2.93"
   },
   "nivel": {
     "NDepAl": "0",
@@ -17,16 +17,16 @@
     "VBat": "25.0"
   },
   "temperatura": {
-    "TBat": "27.31",
-    "TDepCa": "38.81",
+    "TBat": "27.38",
+    "TDepCa": "46.45",
     "TDepFr": "29.29",
-    "TM": "26.67",
+    "TM": "26.75",
     "TR": "unknown",
     "TS": "25.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
-    "TSSR": "27.67",
-    "TT": "28.17",
+    "TSSR": "27.75",
+    "TT": "28.08",
     "TTub": "46.06"
   }
 }
