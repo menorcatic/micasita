@@ -62,15 +62,14 @@
     overflow: hidden; 
     background-color: rgba(255, 255, 255, 0.05);
 }
-
-.fluido {
+/* .fluido {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     top: 40%; 
     transition: top 0.5s ease, background-color 0.5s ease; 
-}
+} */
 
 .datos-deposito {
     display: flex;
