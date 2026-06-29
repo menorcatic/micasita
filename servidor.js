@@ -9,7 +9,7 @@ async function consultarServidor() {
 
         renderizarColumnaDerecha();
         /* renderizarDepositos(); */
-        renderizarSolar();
+        /* renderizarSolar(); */
 
         const elementoHora = document.getElementById('hora-lectura');
         if (elementoHora) {
