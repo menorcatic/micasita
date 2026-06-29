@@ -8,7 +8,7 @@ async function consultarServidor() {
         window.datosSensores = datos;
 
         renderizarColumnaDerecha();
-        renderizarDepositos();
+        /* renderizarDepositos(); */
         renderizarSolar();
 
         const elementoHora = document.getElementById('hora-lectura');
