@@ -7,12 +7,12 @@
   },
   "nivel": {
     "NDepAl": "0",
-    "NDepCa": "1353",
-    "NDepfr": "229"
+    "NDepCa": "1344",
+    "NDepfr": "226"
   },
   "potencia": {
-    "PotCons": "155.0",
-    "PotPlaca": "1.0",
+    "PotCons": "160.0",
+    "PotPlaca": "0.0",
     "PotPlaca_Est": "0.0",
     "VBat": "24.8"
   },
@@ -27,6 +27,6 @@
     "TSR2": "unknown",
     "TSSR": "26.58",
     "TT": "28.5",
-    "TTub": "46.56"
+    "TTub": "44.98"
   }
 }
