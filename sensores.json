@@ -3,11 +3,11 @@
     "Den": "18.02"
   },
   "flujo": {
-    "Ret": "2.9"
+    "Ret": "2.89"
   },
   "nivel": {
     "NDepAl": "0",
-    "NDepCa": "1344",
+    "NDepCa": "1343",
     "NDepfr": "228"
   },
   "potencia": {
@@ -17,7 +17,7 @@
     "VBat": "24.8"
   },
   "temperatura": {
-    "TBat": "27.75",
+    "TBat": "27.69",
     "TDepCa": "38.42",
     "TDepFr": "30.25",
     "TM": "27.25",
@@ -25,8 +25,8 @@
     "TS": "26.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
-    "TSSR": "28.5",
-    "TT": "28.5",
+    "TSSR": "28.58",
+    "TT": "28.42",
     "TTub": "33.7"
   }
 }
