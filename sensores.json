@@ -8,7 +8,7 @@
   "nivel": {
     "NDepAl": "0",
     "NDepCa": "1329",
-    "NDepfr": "228"
+    "NDepfr": "229"
   },
   "potencia": {
     "PotCons": "76.0",
@@ -17,7 +17,7 @@
     "VBat": "24.9"
   },
   "temperatura": {
-    "TBat": "27.94",
+    "TBat": "28.0",
     "TDepCa": "38.32",
     "TDepFr": "29.54",
     "TM": "27.0",
@@ -27,6 +27,6 @@
     "TSR2": "unknown",
     "TSSR": "28.0",
     "TT": "28.0",
-    "TTub": "25.28"
+    "TTub": "25.26"
   }
 }
