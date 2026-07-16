@@ -8,11 +8,11 @@
   "nivel": {
     "NDepAl": "0",
     "NDepCa": "1312",
-    "NDepfr": "229"
+    "NDepfr": "228"
   },
   "potencia": {
-    "PotCons": "143.0",
-    "PotPlaca": "75.0",
+    "PotCons": "118.0",
+    "PotPlaca": "82.0",
     "PotPlaca_Est": "0.0",
     "VBat": "27.0"
   },
@@ -20,13 +20,13 @@
     "TBat": "31.12",
     "TDepCa": "62.27",
     "TDepFr": "41.04",
-    "TM": "24.5",
+    "TM": "24.67",
     "TR": "unknown",
     "TS": "25.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
     "TSSR": "25.75",
     "TT": "29.0",
-    "TTub": "42.64"
+    "TTub": "46.47"
   }
 }
