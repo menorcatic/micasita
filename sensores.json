@@ -7,25 +7,25 @@
   },
   "nivel": {
     "NDepAl": "0",
-    "NDepCa": "1312",
+    "NDepCa": "1304",
     "NDepfr": "228"
   },
   "potencia": {
-    "PotCons": "222.0",
-    "PotPlaca": "1090.0",
-    "PotPlaca_Est": "510.67",
-    "VBat": "27.4"
+    "PotCons": "172.0",
+    "PotPlaca": "1121.0",
+    "PotPlaca_Est": "520.35",
+    "VBat": "27.5"
   },
   "temperatura": {
-    "TBat": "28.75",
+    "TBat": "28.69",
     "TDepCa": "37.38",
-    "TDepFr": "28.93",
+    "TDepFr": "28.94",
     "TM": "29.75",
     "TR": "unknown",
     "TS": "28.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
-    "TSSR": "30.75",
+    "TSSR": "30.83",
     "TT": "31.0",
     "TTub": "45.08"
   }
