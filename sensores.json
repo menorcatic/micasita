@@ -7,7 +7,7 @@
   },
   "nivel": {
     "NDepAl": "0",
-    "NDepCa": "1310",
+    "NDepCa": "1311",
     "NDepfr": "228"
   },
   "potencia": {
@@ -17,16 +17,16 @@
     "VBat": "25.0"
   },
   "temperatura": {
-    "TBat": "29.38",
+    "TBat": "29.31",
     "TDepCa": "38.0",
-    "TDepFr": "30.44",
-    "TM": "28.17",
+    "TDepFr": "30.4",
+    "TM": "28.25",
     "TR": "unknown",
     "TS": "27.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
     "TSSR": "29.0",
-    "TT": "29.83",
-    "TTub": "26.69"
+    "TT": "29.75",
+    "TTub": "26.64"
   }
 }
