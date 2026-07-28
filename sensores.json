@@ -11,8 +11,8 @@
     "NDepfr": "--"
   },
   "potencia": {
-    "PotCons": "136.0",
-    "PotPlaca": "1.0",
+    "PotCons": "140.0",
+    "PotPlaca": "6.0",
     "PotPlaca_Est": "0.0",
     "VBat": "25.0"
   },
@@ -22,11 +22,11 @@
     "TDepFr": "--",
     "TM": "25.5",
     "TR": "unknown",
-    "TS": "25.42",
+    "TS": "25.5",
     "TSR1": "unknown",
     "TSR2": "unknown",
     "TSSR": "26.0",
-    "TT": "28.5",
+    "TT": "28.33",
     "TTub": "--"
   }
 }
