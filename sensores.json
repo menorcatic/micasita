@@ -11,22 +11,22 @@
     "NDepfr": "--"
   },
   "potencia": {
-    "PotCons": "133.0",
+    "PotCons": "143.0",
     "PotPlaca": "0.0",
     "PotPlaca_Est": "0.0",
     "VBat": "24.8"
   },
   "temperatura": {
-    "TBat": "30.0",
+    "TBat": "29.94",
     "TDepCa": "--",
     "TDepFr": "--",
-    "TM": "26.42",
+    "TM": "26.5",
     "TR": "unknown",
-    "TS": "26.67",
+    "TS": "26.75",
     "TSR1": "unknown",
     "TSR2": "unknown",
     "TSSR": "26.75",
-    "TT": "29.08",
+    "TT": "29.25",
     "TTub": "--"
   }
 }
